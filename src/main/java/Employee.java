@@ -1,6 +1,8 @@
 
-public class Employee {
+public abstract class Employee {
 
+	
+	//CLASS ABSTRACTED. TESTS FAIL
 	private int empID;
 	private String empName;
 	private boolean isAvailable;
