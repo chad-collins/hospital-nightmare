@@ -16,4 +16,8 @@ public class Doctor extends Employee {
 	}
 
 
+	public void busy() {
+	super.busy();
+	
+	}
 }

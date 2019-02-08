@@ -34,7 +34,7 @@ public class DoctorTest {
 	@Test
 	public void AvailableShouldReturnFalse() {
 		
-		doctorTest.availableToggle();
+		doctorTest.busy();
 		
 		boolean answer = doctorTest.getIsAvailable();
 		
@@ -53,6 +53,7 @@ public class DoctorTest {
 		assertEquals(answer, "Practitioner"); 
 		
 	}
+	
 	
 	
 }

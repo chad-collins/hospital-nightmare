@@ -31,11 +31,15 @@ public abstract class Employee {
 	}
 
 
-	public void availableToggle() {
-		isAvailable = !isAvailable;
+	public void notBusy() {
+		isAvailable = true;
 		
 	}
 
+	public void busy() {
+		isAvailable = false;
+		
+	}
 
 	
 	
