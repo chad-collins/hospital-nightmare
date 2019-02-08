@@ -16,8 +16,8 @@ public class Doctor extends Employee {
 	}
 
 
-	public String busy() {
+	public void busy() {
 	super.busy();
-	return this.getEmpName() + " is treating a patient";
+	
 	}
 }

@@ -30,11 +30,12 @@ public class Patient implements HasVitals  {
 	}
 
 
-	
+
+
+
 	@Override
 	public void drawBlood() {
-	bloodLevel -= 5;
-		
+		// TODO Auto-generated method stub
 		
 	}
 
