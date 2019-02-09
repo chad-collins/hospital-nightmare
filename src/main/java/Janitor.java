@@ -25,19 +25,24 @@ public class Janitor extends Employee implements HasVitals{
 
 	public void busy() {
 	super.busy();
-	System.out.println(this.getEmpName() + " is sweeping.");
 	}
 
 	@Override
 	public void bloodIsDrawn() {
-		bloodLevel -= 5;
-		
+		bloodLevel -= 5;		
 	}
-
 
 	@Override
 	public void receivesCare() {
 		this.healthLevel += 10;		
+	}
+	
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("SWEEPING");
+		} else {
+			System.out.println("Janitor " + this.getEmpName() + " is available.");
+		}
 	}
 	
 

@@ -25,7 +25,6 @@ public abstract class Employee {
 	}
 
 	public boolean getIsAvailable() {
-
 		return isAvailable;
 	}
 
@@ -41,6 +40,10 @@ public abstract class Employee {
 	public void busy() {
 		isAvailable = false;
 
+	}
+	
+	public void busyStatus() {
+		return;
 	}
 
 }

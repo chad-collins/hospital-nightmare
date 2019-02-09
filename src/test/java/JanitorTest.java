@@ -53,6 +53,14 @@ public class JanitorTest {
 		
 	}
 	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testJ.busyStatus();
+		testJ.busy();
+		testJ.busyStatus();
+		
+	}
+	
 
 
 	

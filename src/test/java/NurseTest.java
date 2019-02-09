@@ -43,4 +43,12 @@ public class NurseTest {
 		assertEquals(answer, 20); 
 		
 	}
+	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testN.busyStatus();
+		testN.busy();
+		testN.busyStatus();
+		
+	}
 }

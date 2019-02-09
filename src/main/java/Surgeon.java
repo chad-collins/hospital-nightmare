@@ -25,7 +25,6 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	
 	public void busy() {
 		super.busy();
-		System.out.println(this.getEmpName() + " is in surgery.");
 
 	}
 
@@ -39,6 +38,14 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	public void receivesCare() {
 		this.healthLevel += 10;
 
+	}
+	
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("IN SURGERY");
+		} else {
+			System.out.println("Surgeon " + this.getEmpName() + " is available.");
+		}
 	}
 
 }

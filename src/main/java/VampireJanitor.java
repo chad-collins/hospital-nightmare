@@ -5,13 +5,18 @@ public class VampireJanitor extends Janitor {
 		super(empID, empName, isAvailable);
 
 	}
-	
-	
 
 	public void busy() {
-	super.busy();
-	System.out.println(this.getEmpName() + " is sweeping.");
+		super.busy();
 	}
-	
+
+	@Override
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("DRINKING BL.. UH.. SWEEPING");
+		} else {
+			System.out.println("Janitor " + this.getEmpName() + " is available.");
+		}
+	}
 
 }
