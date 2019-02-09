@@ -4,7 +4,7 @@ public class Nurse extends Employee implements HasVitals{
 	private int bloodLevel;
 	private int healthLevel;
 
-	public Nurse(int empID, String empName, boolean isAvailable) {
+	public Nurse(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
 	
 		this.bloodLevel = BLOOD_LEVEL;
