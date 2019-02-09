@@ -65,6 +65,11 @@ public class Patient implements HasVitals {
 		this.bloodLevel -= 9;
 		
 	}
+	
+	public void treatPatient() {
+		this.bloodLevel += 4;
+		
+	}
 
 
 }
