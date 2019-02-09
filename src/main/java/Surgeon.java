@@ -1,26 +1,44 @@
 
-public class Surgeon extends Doctor implements HasVitals {
+public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 
-	
-	public Surgeon(int empID, String empName, boolean isAvailable, String specialty) {
-		
+	private int bloodLevel;
+	private int healthLevel;
+	private int salary;
+
+	public Surgeon(String empID, String empName, boolean isAvailable, String specialty) {
+
 		super(empID, empName, isAvailable, specialty);
-		
 
-	
+		this.bloodLevel = BLOOD_LEVEL;
+		this.healthLevel = HEALTH_LEVEL;
+		this.salary = 120;
+
 	}
 
+	public int getBloodLevel() {
+		return this.bloodLevel;
+	}
 
-
-	public void busy() {
-	super.busy();
+	public int getHealthLevel() {
+		return this.healthLevel;
+	}
 	
+	public void busy() {
+		super.busy();
+		System.out.println(this.getEmpName() + " is in surgery.");
+
 	}
 
 	@Override
-	public void drawBlood() {
-		//DELETE WHEN HASVITALS IS FINISHED
-		
-	}
-}
+	public void bloodIsDrawn() {
+		this.bloodLevel -= 5;
 
+	}
+
+	@Override
+	public void receivesCare() {
+		this.healthLevel += 10;
+
+	}
+
+}

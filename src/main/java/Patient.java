@@ -1,22 +1,22 @@
 
-public class Patient implements HasVitals  {
+public class Patient implements HasVitals {
 
-	private int patientID;
+	private String patientID;
 	private String patientName;
 	private String ward;
 	private int bloodLevel;
-	
-	
-	public Patient(int patientID, String patientName, String ward) {
-		
+	private int healthLevel;
+
+	public Patient(String patientID, String patientName, String ward) {
+
 		this.patientID = patientID;
 		this.patientName = patientName;
 		this.ward = ward;
 		this.bloodLevel = BLOOD_LEVEL;
+		this.healthLevel = HEALTH_LEVEL;
 	}
-	
-	
-	public int getPatientID() {
+
+	public String getPatientID() {
 		return patientID;
 	}
 
@@ -24,22 +24,27 @@ public class Patient implements HasVitals  {
 		return patientName;
 	}
 
-
 	public String getWard() {
 		return ward;
 	}
 
-
-
-
-
-	@Override
-	public void drawBlood() {
-		// TODO Auto-generated method stub
-		
+	public int getBloodLevel() {
+		return bloodLevel;
 	}
 
+	public int getHealthLevel() {
+		return healthLevel;
+	}
 
-	
+	@Override
+	public void bloodIsDrawn() {
+		this.bloodLevel -= 5;
+
+	}
+
+	@Override
+	public void receivesCare() {
+		this.healthLevel += 10;
+
+	}
 }
-

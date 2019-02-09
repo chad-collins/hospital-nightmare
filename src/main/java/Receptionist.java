@@ -1,20 +1,47 @@
 
 public class Receptionist extends Employee implements HasVitals{
 	
-	public Receptionist(int empID, String empName, boolean isAvailable) {
+	private int bloodLevel;
+	private int healthLevel;
+	private int salary;
+	
+
+	public Receptionist(String empID, String empName, boolean isAvailable) {
+
+	
+
 		super(empID, empName, isAvailable);
 		
-	}
-
-	public void drawBlood() {
-		//DELETE THIS AFTER HASVITALS INTERFACE IS FINISHED AND MERGED.
-
+		this.bloodLevel = BLOOD_LEVEL;
+		this.healthLevel = HEALTH_LEVEL;
+		this.salary = 45;
+		
 	}
 	
+	public int getBloodLevel() {
+		return this.bloodLevel;
+	}
+	
+	public int getHealthLevel() {
+		return this.healthLevel;
+	}
+
 
 	public void busy() {
 	super.busy();
 	System.out.println(this.getEmpName() + "is on the phone.");
+	}
+
+	@Override
+	public void bloodIsDrawn() {
+		this.bloodLevel -= 5;
+		
+	}
+
+	@Override
+	public void receivesCare() {
+		healthLevel += 10;
+		
 	}
 	
 
