@@ -1,7 +1,7 @@
 
 public class VampireJanitor extends Janitor {
 
-	public VampireJanitor(int empID, String empName, boolean isAvailable) {
+	public VampireJanitor(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
 
 	}

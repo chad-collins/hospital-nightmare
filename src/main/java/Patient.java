@@ -1,13 +1,13 @@
 
 public class Patient implements HasVitals  {
 
-	private int patientID;
+	private String patientID;
 	private String patientName;
 	private String ward;
 	private int bloodLevel;
 	
 	
-	public Patient(int patientID, String patientName, String ward) {
+	public Patient(String patientID, String patientName, String ward) {
 		
 		this.patientID = patientID;
 		this.patientName = patientName;
@@ -16,7 +16,7 @@ public class Patient implements HasVitals  {
 	}
 	
 	
-	public int getPatientID() {
+	public String getPatientID() {
 		return patientID;
 	}
 
@@ -33,11 +33,6 @@ public class Patient implements HasVitals  {
 
 
 
-	@Override
-	public void drawBlood() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 	

@@ -1,7 +1,7 @@
 
 public class Janitor extends Employee implements HasVitals{
 
-	public Janitor(int empID, String empName, boolean isAvailable) {
+	public Janitor(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
 		
 	}
