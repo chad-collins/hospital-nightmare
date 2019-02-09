@@ -1,14 +1,14 @@
 
 public class Patient implements HasVitals  {
 
-	private int patientID;
+	private String patientID;
 	private String patientName;
 	private String ward;
 	private int bloodLevel;
 	private int healthLevel;
 	
 	
-	public Patient(int patientID, String patientName, String ward) {
+	public Patient(String patientID, String patientName, String ward) {
 		
 		this.patientID = patientID;
 		this.patientName = patientName;
@@ -18,7 +18,7 @@ public class Patient implements HasVitals  {
 	}
 	
 	
-	public int getPatientID() {
+	public String getPatientID() {
 		return patientID;
 	}
 

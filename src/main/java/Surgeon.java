@@ -33,7 +33,6 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 
 	}
 
-
 	@Override
 	public void receivesCare() {
 		this.healthLevel += 10;

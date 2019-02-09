@@ -6,12 +6,12 @@ import org.junit.Test;
 
 public class PatientTest {
 
-	Patient test = new Patient(1, "Sicky", "Psych Ward");
+	Patient test = new Patient("1", "Sicky", "Psych Ward");
 	
 	@Test
 	public void patientIDShouldReturnOne() {
-		int answer = test.getPatientID();
-		assertEquals(answer, 1); 
+		String answer = test.getPatientID();
+		assertEquals(answer, "1"); 
 		
 		
 	}
