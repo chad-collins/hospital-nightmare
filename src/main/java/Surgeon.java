@@ -22,9 +22,9 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	}
 
 	public int getHealthLevel() {
-		if (this.bloodLevel > 0 && this.bloodLevel <= 9) {
+		if (this.bloodLevel == 0) {
 			this.healthLevel = 0;
-		} else if (this.bloodLevel >= 10 && this.bloodLevel <= 19) {
+		} else if (this.bloodLevel > 0 && this.bloodLevel <= 19) {
 			this.healthLevel = 5;
 		} else if (this.bloodLevel >= 20 && this.bloodLevel <= 29) {
 			this.healthLevel = 10;
@@ -49,7 +49,6 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 		return salary;
 	}
 
-
 	public String busyStatus() {
 		if (!getIsAvailable()) {
 			return "IN SURGERY";
@@ -57,19 +56,19 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 			return "AVAILABLE";
 		}
 	}
-	
+
 	@Override
 	public int infuse() {
 		return 100;
-		
+
 	}
-	
+
 	@Override
 	public int medicatePatient() {
 		return 75;
 
 	}
-	
+
 	@Override
 	public void bite() {
 		this.bloodLevel -= 9;
