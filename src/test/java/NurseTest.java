@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class NurseTest {
 
-	Nurse testN = new Nurse("1", "TestN", true);
+	Nurse testN = new Nurse("1", "TestN", true, null);
 	
 	@Test
 	public void empIDshouldReturnNum() {
