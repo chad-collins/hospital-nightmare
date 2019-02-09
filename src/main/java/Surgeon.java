@@ -3,6 +3,7 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 
 	private int bloodLevel;
 	private int healthLevel;
+	private String empTitle;
 	private int salary;
 
 	public Surgeon(String empID, String empName, boolean isAvailable, String specialty) {
@@ -11,6 +12,7 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
+		this.empTitle = "Surgeon";
 		this.salary = 120;
 
 	}
@@ -22,11 +24,18 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	public int getHealthLevel() {
 		return this.healthLevel;
 	}
-	
+
 	public void busy() {
 		super.busy();
-		System.out.println(this.getEmpName() + " is in surgery.");
 
+	}
+
+	public String getEmpTitle() {
+		return empTitle;
+	}
+
+	public int getSalary() {
+		return salary;
 	}
 
 	@Override
@@ -39,6 +48,14 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	public void receivesCare() {
 		this.healthLevel += 10;
 
+	}
+
+	public String busyStatus() {
+		if (!getIsAvailable()) {
+			return "IN SURGERY";
+		} else {
+			return "AVAILABLE";
+		}
 	}
 
 }

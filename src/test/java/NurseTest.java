@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class NurseTest {
 
-	Nurse testN = new Nurse("1", "TestN", true);
+	Nurse testN = new Nurse("1", "TestN", true, null);
 	
 	@Test
 	public void empIDshouldReturnNum() {
@@ -41,6 +41,14 @@ public class NurseTest {
 		testN.receivesCare();
 		int answer = testN.getHealthLevel();
 		assertEquals(answer, 20); 
+		
+	}
+	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testN.busyStatus();
+		testN.busy();
+		testN.busyStatus();
 		
 	}
 }

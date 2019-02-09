@@ -52,6 +52,14 @@ public class ReceptionistTest {
 		
 	}
 	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testR.busyStatus();
+		testR.busy();
+		testR.busyStatus();
+		
+	}
+	
 
 
 	

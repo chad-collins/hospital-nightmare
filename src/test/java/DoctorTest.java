@@ -23,13 +23,13 @@ public class DoctorTest {
 	
 		
 	}
-	@Test
-	public void AvailableShouldReturnFalse() {
-		doctorTest.busy();
-		boolean answer = doctorTest.getIsAvailable();
-		assertEquals(answer, false); 
-		
-	}
+//	@Test
+//	public void AvailableShouldReturnFalse() {
+//		doctorTest.busy();
+//		boolean answer = doctorTest.getIsAvailable();
+//		assertEquals(answer, false); 
+//		
+//	}
 	
 	@Test
 	public void docSpecialtyShouldReturnPractioner() {
@@ -51,6 +51,14 @@ public class DoctorTest {
 		doctorTest.receivesCare();
 		int answer = doctorTest.getHealthLevel();
 		assertEquals(answer, 20); 
+		
+	}
+	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		doctorTest.busyStatus();
+		doctorTest.busy();
+		doctorTest.busyStatus();
 		
 	}
 	

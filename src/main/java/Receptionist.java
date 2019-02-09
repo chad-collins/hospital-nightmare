@@ -3,8 +3,8 @@ public class Receptionist extends Employee implements HasVitals{
 	
 	private int bloodLevel;
 	private int healthLevel;
+	private String empTitle;
 	private int salary;
-	
 
 	public Receptionist(String empID, String empName, boolean isAvailable) {
 
@@ -14,8 +14,16 @@ public class Receptionist extends Employee implements HasVitals{
 		
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
-		this.salary = 45;
+		this.empTitle = "Receptionist";
+		this.salary =45;
 		
+	}
+	
+	public String getEmpTitle() {
+		return empTitle;
+	}
+	public int getSalary() {
+		return salary;
 	}
 	
 	public int getBloodLevel() {
@@ -29,7 +37,6 @@ public class Receptionist extends Employee implements HasVitals{
 
 	public void busy() {
 	super.busy();
-	System.out.println(this.getEmpName() + "is on the phone.");
 	}
 
 	@Override
@@ -42,6 +49,14 @@ public class Receptionist extends Employee implements HasVitals{
 	public void receivesCare() {
 		healthLevel += 10;
 		
+	}
+	
+	public String busyStatus() {
+		if (!getIsAvailable()) {
+			return "ON THE PHONE";
+		} else {
+			return "AVAILABLE";
+		}
 	}
 	
 

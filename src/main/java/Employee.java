@@ -1,9 +1,9 @@
 
 public abstract class Employee {
 
-	// CLASS ABSTRACTED. TESTS FAIL
 	private String empID;
 	private String empName;
+	private String empTitle;
 	private boolean isAvailable;
 	private int salary;
 
@@ -12,7 +12,6 @@ public abstract class Employee {
 		this.empID = empID;
 		this.empName = empName;
 		this.isAvailable = isAvailable;
-		this.salary = salary;
 	}
 
 	public String getEmpID() {
@@ -24,13 +23,20 @@ public abstract class Employee {
 		return empName;
 	}
 
-	public boolean getIsAvailable() {
+	public String getEmpTitle() {
+		return empTitle;
+	}
 
+	public String getSpecialty() {
+		return "";
+	}
+
+	public boolean getIsAvailable() {
 		return isAvailable;
 	}
 
 	public int getSalary() {
-		return this.salary;
+		return salary;
 	}
 
 	public void notBusy() {
@@ -40,6 +46,19 @@ public abstract class Employee {
 
 	public void busy() {
 		isAvailable = false;
+
+	}
+
+	public String busyStatus() {
+
+		return "";
+	}
+
+	public String statusSummary() {
+		System.out.println(
+				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[CURRENTLY: "
+						+ this.busyStatus() + "]\t[Salary: $" + this.getSalary() + "]\t" + this.getSpecialty());
+		return "";
 
 	}
 
