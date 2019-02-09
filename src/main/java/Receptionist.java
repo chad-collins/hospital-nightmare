@@ -3,6 +3,7 @@ public class Receptionist extends Employee implements HasVitals{
 	
 	private int bloodLevel;
 	private int healthLevel;
+	private int salary;
 	
 
 	public Receptionist(String empID, String empName, boolean isAvailable) {
@@ -13,16 +14,18 @@ public class Receptionist extends Employee implements HasVitals{
 		
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
+		this.salary = 45;
 		
 	}
 	
 	public int getBloodLevel() {
-		return bloodLevel;
+		return this.bloodLevel;
 	}
 	
 	public int getHealthLevel() {
-		return healthLevel;
+		return this.healthLevel;
 	}
+
 
 	public void busy() {
 	super.busy();
