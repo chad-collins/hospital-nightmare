@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class ReceptionistTest {
 
-	Receptionist testR = new Receptionist(1, "Test", true);
+	Receptionist testR = new Receptionist("1", "Test", true);
 	
 	@Test
 	public void empIDshouldReturnNum() {
-		int answer = testR.getEmpID();
-		assertEquals(answer, 1); 
+		String answer = testR.getEmpID();
+		assertEquals(answer, "1"); 
 		
 	}
 
