@@ -7,9 +7,9 @@ public class PatientCollection {
 	public int getCollectionLength() {
 		return patients.size();
 	}
-
-	public void getPatient(String patientID) {
-		patients.get(patientID);
+	//Changed patient getter from a void method in order to return a patient
+	public Patient getPatient(String patientID) {
+		return patients.get(patientID);
 
 	}
 
