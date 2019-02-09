@@ -5,7 +5,7 @@ public class Janitor extends Employee implements HasVitals{
 	private int healthLevel;
 	private int salary;
 
-	public Janitor(int empID, String empName, boolean isAvailable) {
+	public Janitor(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
 		
 		this.bloodLevel = BLOOD_LEVEL;

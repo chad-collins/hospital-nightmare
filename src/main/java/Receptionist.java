@@ -5,7 +5,11 @@ public class Receptionist extends Employee implements HasVitals{
 	private int healthLevel;
 	private int salary;
 	
-	public Receptionist(int empID, String empName, boolean isAvailable) {
+
+	public Receptionist(String empID, String empName, boolean isAvailable) {
+
+	
+
 		super(empID, empName, isAvailable);
 		
 		this.bloodLevel = BLOOD_LEVEL;

@@ -5,7 +5,7 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	private int healthLevel;
 	private int salary;
 
-	public Surgeon(int empID, String empName, boolean isAvailable, String specialty) {
+	public Surgeon(String empID, String empName, boolean isAvailable, String specialty) {
 
 		super(empID, empName, isAvailable, specialty);
 

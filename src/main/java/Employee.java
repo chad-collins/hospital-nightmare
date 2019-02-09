@@ -1,12 +1,13 @@
 
 public abstract class Employee {
 
-	private int empID;
+	// CLASS ABSTRACTED. TESTS FAIL
+	private String empID;
 	private String empName;
 	private boolean isAvailable;
 	private int salary;
 
-	public Employee(int empID, String empName, boolean isAvailable) {
+	public Employee(String empID, String empName, boolean isAvailable) {
 
 		this.empID = empID;
 		this.empName = empName;
@@ -14,7 +15,7 @@ public abstract class Employee {
 		this.salary = salary;
 	}
 
-	public int getEmpID() {
+	public String getEmpID() {
 
 		return empID;
 	}
@@ -27,11 +28,11 @@ public abstract class Employee {
 
 		return isAvailable;
 	}
-	
+
 	public int getSalary() {
 		return this.salary;
 	}
-	
+
 	public void notBusy() {
 		isAvailable = true;
 
