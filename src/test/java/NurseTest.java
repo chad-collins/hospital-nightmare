@@ -4,12 +4,12 @@ import org.junit.Test;
 
 public class NurseTest {
 
-	Nurse testN = new Nurse(1, "TestN", true);
+	Nurse testN = new Nurse("1", "TestN", true);
 	
 	@Test
 	public void empIDshouldReturnNum() {
-		int answer = testN.getEmpID();
-		assertEquals(answer, 1); 
+		String answer = testN.getEmpID();
+		assertEquals(answer, "1"); 
 		
 	}
 

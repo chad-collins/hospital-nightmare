@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class SurgeonTest {
 
-	Surgeon testS = new Surgeon(1, "TestS", true, "Master Lobotomist");
+	Surgeon testS = new Surgeon("1", "TestS", true, "Master Lobotomist");
 
 	@Test
 	public void empIDshouldReturnNum() {
-		int answer = testS.getEmpID();
-		assertEquals(answer, 1);
+		String answer = testS.getEmpID();
+		assertEquals(answer, "1");
 
 	}
 

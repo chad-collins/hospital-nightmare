@@ -5,11 +5,11 @@ import org.junit.Test;
 
 public class JanitorTest {
 
-	Janitor testJ = new Janitor(1, "TestJ", true);
+	Janitor testJ = new Janitor("1", "TestJ", true);
 	@Test
 	public void empIDshouldReturnNum() {
-		int answer = testJ.getEmpID();
-		assertEquals(answer, 1); 
+		String answer = testJ.getEmpID();
+		assertEquals(answer, "1"); 
 		
 	}
 
