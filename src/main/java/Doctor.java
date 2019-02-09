@@ -54,20 +54,9 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 
 	}
 
-	public void drawBlood() {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
-	public void sedatePatient() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void medicatePatient() {
-		// TODO Auto-generated method stub
+	public int medicatePatient() {
+		return 30;
 
 	}
 
@@ -77,6 +66,12 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		} else {
 			return "AVAILABLE";
 		}
+	}
+
+	@Override
+	public int infuse() {
+		return 50;
+		
 	}
 
 }

@@ -1,5 +1,5 @@
 
-public class Nurse extends Employee implements HasVitals{
+public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	
 	private int bloodLevel;
 	private int healthLevel;
@@ -37,7 +37,6 @@ public class Nurse extends Employee implements HasVitals{
 
 	public void busy() {
 		super.busy();
-		
 	}
 
 	@Override
@@ -57,6 +56,18 @@ public class Nurse extends Employee implements HasVitals{
 		} else {
 			return "AVAILABLE";
 		}
+	}
+
+	@Override
+	public int infuse() {
+		System.out.println("Nurses aren't trained on infusion!");
+		return 0;
+	}
+	
+	@Override
+	public int medicatePatient() {
+		return 10;
+		
 	}
 
 }

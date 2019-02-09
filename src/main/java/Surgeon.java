@@ -57,5 +57,17 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 			return "AVAILABLE";
 		}
 	}
+	
+	@Override
+	public int infuse() {
+		return 100;
+		
+	}
+	
+	@Override
+	public int medicatePatient() {
+		return 75;
+
+	}
 
 }
