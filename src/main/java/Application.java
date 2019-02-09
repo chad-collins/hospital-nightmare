@@ -54,14 +54,22 @@ public class Application {
 		/*
 		 * End pre-population
 		 */
-
 		System.out.println("******************\n"
 				+ "NIGHTMARE HOSPITAL"
 				+"\n******************"
 				+"\n      v0.13"
-				+"\n------------------"
-				+ "\n*Welcome to Nightmare Hospital where you will lorem ipsum."
-				+"\n");
+				+"\n------------------");
+				System.out.println("\nPress Enter to start...");
+				String go = input.nextLine();
+				System.out.println("\n\nYou arrive at High Street Hospital ready to take on your new role as the top Administrator....");
+				go = input.nextLine();
+				System.out.println("\nThe hospital needs your expertise righting the ship. You're excited for this new challenge....");
+				go = input.nextLine();
+				System.out.println("\nFor some reason, some patients are getting sick and having trouble recovering...");
+				go = input.nextLine();
+				System.out.println("\nYou plan to solve this mystery and save the lives of both your patients and staff.\n\n");
+				
+		
 		boolean victoryCondition = true;
 		boolean loseCondition = true;
 		boolean forfeitCondition = true;
@@ -71,7 +79,9 @@ public class Application {
 			 * MAIN MENU BEGINS HERE
 			 */
 
-			System.out.println("1. Get Hospital Status\n2. See all patients.");
+			System.out.println("In your office."
+					+"\n-----------------"
+					+ "\n1. Get Hospital Status\n2. Review patient log.");
 			String mainMenuResponse = input.nextLine();
 
 			switch (mainMenuResponse) {
@@ -117,6 +127,12 @@ public class Application {
 				break;//Main menu default break
 			}
 
+			
+			
+			
+			
+			
+			
 		}//GameRunning Loop Ends
 		if(!forfeitCondition) {
 		System.out.println("\nYou have resigned your duties but kept your life. "
@@ -132,7 +148,7 @@ public class Application {
 			+ "\nThe only injury you receive is a small bite on the back of your neck.");
 	
 	}System.out.println("\nCredits:\n"
-			+ "Jessica Wright & Chad Collins");
+			+ "Jessica Wright & Chad Collins\n");
 	}
 
 }
