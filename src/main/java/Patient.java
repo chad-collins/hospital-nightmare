@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Patient implements HasVitals {
 
@@ -16,18 +17,14 @@ public class Patient implements HasVitals {
 		this.healthLevel = HEALTH_LEVEL;
 	}
 
-	
 	public void patientSummary() {
 		System.out.println(
-				
-				"[Room#:" + this.getPatientID() 
-				+ "]\t[Name: " + this.getPatientName() 
-				+ "]\t[Ward:" + this.getWard() 
-				+ "]\t[Health Rating" + this.getHealthLevel() 
-				+ "]\t[Blood Level: " + this.getBloodLevel()
-				+ "]\n");
+
+				"[Room#:" + this.getPatientID() + "]\t[Name: " + this.getPatientName() + "]\t[Ward:" + this.getWard()
+						+ "]\t[Health Rating" + this.getHealthLevel() + "]\t[Blood Level: " + this.getBloodLevel()
+						+ "]\n");
 	}
-	
+
 	public String getPatientID() {
 		return patientID;
 	}
@@ -59,17 +56,37 @@ public class Patient implements HasVitals {
 		return healthLevel;
 	}
 
-
 	@Override
 	public void bite() {
 		this.bloodLevel -= 9;
-		
+
 	}
-	
+
 	public void treatPatient() {
 		this.bloodLevel += 4;
-		
+
 	}
+
+	public void patientTick() {
+		this.getHealthLevel();
+		this.healthLevel -= 1;
+		this.chanceIncounter();
+	}
+
+	public void chanceIncounter() {
+
+		Random rand = new Random();
+		int randomOneToFive = rand.nextInt(5) + 1;
+
+		if (randomOneToFive == 2) {
+
+			this.bite();
+			System.out.println(this.getPatientName() + " has lost a lot of blood for some reason..");
+
+		}
+
+	}
+
 
 
 }

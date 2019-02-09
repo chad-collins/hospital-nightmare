@@ -8,7 +8,8 @@ public class Application {
 		/*
 		 * Populate the hospital with patients and employees
 		 */
-
+		
+		
 		Patient starterPatient1 = new Patient("01", "Freddie", "[Psych Ward]");
 		Patient starterPatient2 = new Patient("02", "Annabell", "[Psych Ward]");
 		Patient starterPatient3 = new Patient("03", "Jason", "[Psych Ward]");
@@ -44,6 +45,8 @@ public class Application {
 		staff.addEmployee(starterReceptionist);
 
 		PatientCollection admitted = new PatientCollection();
+		
+		tickHospital(staff, admitted);
 
 		admitted.addPatient(starterPatient1);
 		admitted.addPatient(starterPatient2);
@@ -229,6 +232,11 @@ public class Application {
 	
 	}System.out.println("\nCredits:\n"
 			+ "Jessica Wright & Chad Collins\n");
+	}
+
+	public static void tickHospital(AllEmployees staff, PatientCollection admitted) {
+		admitted.patientTickAll();
+		staff.empTickAll();
 	}
 
 }

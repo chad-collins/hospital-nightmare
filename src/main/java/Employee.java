@@ -48,10 +48,23 @@ public abstract class Employee {
 		isAvailable = false;
 
 	}
-
-	public String busyStatus() {
-
-		return "";
+	
+	
+	public void empTick() {
+		tickBusy();
+	}
+	
+	public void tickBusy(){
+		if (!this.isAvailable){
+			for(int x = 0; x<=3; x++){
+				int turn = 0;
+				turn += turn + x;
+				if (turn == 3) {
+					this.isAvailable = true;
+				}
+			}
+		}
+		
 	}
 
 	public void statusSummary() {
@@ -65,4 +78,9 @@ public abstract class Employee {
 
 	}
 
+	
+	public String busyStatus() {
+		
+		return "";
+	}
 }
