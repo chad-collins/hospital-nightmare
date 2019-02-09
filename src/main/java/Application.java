@@ -105,8 +105,8 @@ public class Application {
 						//PATIENT SUMMARY MENU START
 						System.out.println("Reviewing your patient log:\n"
 								+ "\n-----------------"
-								+ "\nn. Dispatch someone to check on all patients."
-								+ "\nd. Dispatch someone to treat a patient in need. "
+								+ "\na. Dispatch someone to check on all patients."
+								+ "\np. Dispatch someone to treat a patient in need. "
 								+ "\ns. Dispatch someone perform emergency surgury on a patient."
 								+ "\nw. Wait in your office and do nothing while those around you suffer.");
 								
@@ -115,12 +115,12 @@ public class Application {
 								String patientLogMenuChoice = "";
 								while (interactingWithPatientLog) {
 									switch(patientSummaryMenu) {
-									case "n": System.out.println("Employee to dispatch?");
+									case "a": System.out.println("Employee to dispatch?");
 										staff.allAvailMedical();
 										String staffToGet = input.nextLine();
 										Employee selectedStaff = staff.getEmployee(staffToGet);
 										if(selectedStaff instanceof Surgeon) {
-											System.out.println("Surgeons have more important things to do.");
+											System.out.println(selectedStaff.getEmpName() + " responded: I have more important things to do...like surgery.");
 										}
 										if(selectedStaff instanceof Doctor) {
 											admitted.allPatientSummary();
@@ -148,7 +148,7 @@ public class Application {
 											
 											break;//Select Nurse Break
 										
-									case "d": System.out.println("Which patient would you like to treat?");
+									case "p": System.out.println("Which patient would you like to treat?");
 									patientLogMenuChoice = input.nextLine();
 									admitted.allPatientSummary();
 									String patientToGet = input.nextLine();
