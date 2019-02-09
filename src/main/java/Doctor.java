@@ -1,5 +1,6 @@
 
-public class Doctor extends Employee implements HasVitals {
+public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
+
 
 	private String specialty;
 	private int bloodLevel;
@@ -43,6 +44,24 @@ public class Doctor extends Employee implements HasVitals {
 	public void receivesCare() {
 		this.healthLevel += 10;
 
+	}
+
+
+	public void drawBlood() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sedatePatient() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void medicatePatient() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

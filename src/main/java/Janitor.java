@@ -11,6 +11,7 @@ public class Janitor extends Employee implements HasVitals{
 		this.healthLevel = HEALTH_LEVEL;
 		
 	}
+	
 	public int getBloodLevel() {
 		return bloodLevel;
 	}
