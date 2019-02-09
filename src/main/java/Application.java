@@ -93,80 +93,92 @@ public class Application {
 
 			// Main case 2, Patient Summary top Menu
 			case "2":
-				System.out.println("PATIENT SUMMARY" + "\n-----------------");
-				admitted.allPatientSummary();
-				System.out.println("-----------------\n");
+				boolean interactingWithPatientSummary = true;
+				while (interactingWithPatientSummary) {
 
-				// PATIENT SUMMARY MENU START
-				System.out.println("Reviewing your patient log:\n" + "\n-----------------"
-						+ "\nn. Dispatch someone to treat all patients."
-						+ "\nd. Dispatch someone to treat a patient in need. "
-						+ "\ns. Dispatch someone perform emergency surgury on a patient."
-						+ "\nw. Wait in your office and do nothing while those around you suffer.");
+					System.out.println("PATIENT SUMMARY" + "\n-----------------");
+					admitted.allPatientSummary();
+					System.out.println("-----------------\n");
 
-				String patientSummaryMenu = input.nextLine();
-				boolean interactingWithPatientLog = true;
-				String patientLogMenuChoice = "";
-				while (interactingWithPatientLog) {
-					switch (patientSummaryMenu) {
-					case "n":
-						System.out.println("Employee to dispatch?");
-						staff.allAvailMedical();
-						String staffToGet = input.nextLine();
-						Employee selectedStaff = staff.getEmployee(staffToGet);
-						if (selectedStaff instanceof Doctor) {
-							selectedStaff.busy();
-							admitted.treatAllPatients();
-							System.out.println("All patients were treated.");
-							break;
+					// PATIENT SUMMARY MENU START
+					System.out.println("Reviewing your patient log:\n" + "\n-----------------"
+							+ "\nn. Dispatch someone to treat all patients."
+							+ "\nd. Dispatch someone to treat a patient in need. "
+							+ "\ns. Dispatch someone perform emergency surgury on a patient."
+							+ "\nw. Wait in your office and do nothing while those around you suffer.");
+
+					boolean interactingWithPatientLog = true;
+					while (interactingWithPatientLog) {
+
+						String patientLogMenu = input.nextLine();
+						switch (patientLogMenu) {
+						case "n":
+							System.out.println("Employee to dispatch?");
+							System.out.println("");
+							staff.allAvailMedical();
+							String staffToGet = input.nextLine();
+							Employee selectedStaff = staff.getEmployee(staffToGet);
+							if (staffToGet.equals("exit")) {
+								break;
+							} else if (selectedStaff.getIsAvailable() == false) {
+								System.out.println("That employee is not available.");
+								System.out.println("");
+							} else if (selectedStaff instanceof Doctor) {
+								selectedStaff.busy();
+								admitted.treatAllPatients();
+								System.out.println("All patients were treated.");
+								System.out.println("");
+							} else if (selectedStaff instanceof Nurse) {
+								selectedStaff.busy();
+								String nurseWard = selectedStaff.getSpecialty();
+								if (nurseWard == "[Psych Ward]") {
+									admitted.treatAllPsychPatients();
+									System.out.println("All Psych Ward patients were treated.");
+									System.out.println("");
+									break;
+								} else if (nurseWard == "[Pain Management]") {
+									admitted.allPainMgmtPatientSummary();
+									admitted.treatAllPainMgmtPatients();
+									System.out.println("All Pain management patients were treated.");
+									System.out.println("");
+									break;
+								}
+								break;
+							}
+						case "d":
+							System.out.println("Which patient would you like to treat?");
+							admitted.allPatientSummary();
+							String patientToGet = input.nextLine();
+							Patient selectedPatient = admitted.getPatient(patientToGet);
+							String patientsWard = selectedPatient.getWard();
+							System.out.println("Which employee should be dispatched to "
+									+ selectedPatient.getPatientName() + " ?");
+
+							String staffToGetNext = input.nextLine();
+							//// not complete
+
+							break;// Select Doctor Break
+
+						case "s":
+							System.out.println("Which patient needs emergency surgury?");
+							break;// Select Patient Break
+
+						case "w":
+							System.out.println("You've made a selfish choice...");
+							interactingWithPatientLog = false;
+							break;// EXIT PATIENT LOG
+
+						// default: System.out.println("Stop wasting time! There are people dieing
+						// here!");break;
+
 						}
-						if (selectedStaff instanceof Nurse) {
-							selectedStaff.busy();
-							String nurseWard = selectedStaff.getSpecialty();
-							if (nurseWard == "[Psych Ward]") {
-								admitted.treatAllPsychPatients();
-								System.out.println("All Psych Ward patients were treated.");
-							} else if (nurseWard == "[Pain Management]") {
-								admitted.allPainMgmtPatientSummary();
-								admitted.treatAllPainMgmtPatients();
-								System.out.println("All Pain management patients were treated.");
-							} break;
-						}
-					case "d":
-						System.out.println("Which patient would you like to treat?");
-						patientLogMenuChoice = input.nextLine();
-						admitted.allPatientSummary();
-						String patientToGet = input.nextLine();
-						Patient selectedPatient = admitted.getPatient(patientToGet);
-						String patientsWard = selectedPatient.getWard();
-						System.out.println(
-								"Which employee should be dispatched to " + selectedPatient.getPatientName() + " ?");
-
-						String staffToGetNext = input.nextLine();
-						//// not complete
-
-						break;// Select Doctor Break
-
-					case "s":
-						System.out.println("Which patient needs emergency surgury?");
-						patientLogMenuChoice = input.nextLine();
-						break;// Select Patient Break
-
-					case "w":
-						System.out.println("You've made a selfish choice...");
-						interactingWithPatientLog = false;
-						break;// EXIT PATIENT LOG
-
-					// default: System.out.println("Stop wasting time! There are people dieing
-					// here!");break;
 
 					}
 
-				}
+					break;
+				} // Main menu case 2 break
 
-				break;// Main menu case 2 break
-
-			// Main menu help
+				// Main menu help
 
 			case "help":
 				System.out.println(
