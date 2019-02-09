@@ -62,7 +62,7 @@ public class Patient implements HasVitals {
 
 	@Override
 	public void bite() {
-		this.bloodLevel -= 5;
+		this.bloodLevel -= 9;
 		
 	}
 

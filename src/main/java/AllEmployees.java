@@ -20,7 +20,8 @@ public class AllEmployees {
 	}
 
 	public void removeEmployee(Employee toRemove) {
-		employees.remove(toRemove.getEmpID(), toRemove);;
+		employees.remove(toRemove.getEmpID(), toRemove);
+		
 	}
 	
 	public void allempStatusSummary() {

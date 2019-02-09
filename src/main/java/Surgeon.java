@@ -69,5 +69,11 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 		return 75;
 
 	}
+	
+	@Override
+	public void bite() {
+		this.bloodLevel -= 9;
+
+	}
 
 }
