@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public abstract class Employee {
 
@@ -48,39 +49,32 @@ public abstract class Employee {
 		isAvailable = false;
 
 	}
-	
-	
+
 	public void empTick() {
 		tickBusy();
 	}
-	
-	public void tickBusy(){
-		if (!this.isAvailable){
-			for(int x = 0; x<=3; x++){
-				int turn = 0;
-				turn += turn + x;
-				if (turn == 3) {
-					this.isAvailable = true;
-				}
+
+	private void tickBusy() {
+		if (!this.isAvailable) {
+			Random h = new Random();
+			int maybeBusy = h.nextInt(6);
+
+			if (maybeBusy == 6) {
+				this.isAvailable = true;
 			}
+
 		}
-		
 	}
 
 	public void statusSummary() {
 		System.out.println(
-				"[ID:" + this.getEmpID() 
-				+ "]\t[" + this.getEmpName() 
-				+ "]\t[" + this.getEmpTitle() 
-				+ "]\t[CURRENTLY: " + this.busyStatus() 
-				+ "]\t[Salary: $" + this.getSalary() 
-				+ "]\t" + this.getSpecialty());
+				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[CURRENTLY: "
+						+ this.busyStatus() + "]\t[Salary: $" + this.getSalary() + "]\t" + this.getSpecialty());
 
 	}
 
-	
 	public String busyStatus() {
-		
+
 		return "";
 	}
 }

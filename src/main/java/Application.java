@@ -46,7 +46,7 @@ public class Application {
 
 		PatientCollection admitted = new PatientCollection();
 		
-		tickHospital(staff, admitted);
+		
 
 		admitted.addPatient(starterPatient1);
 		admitted.addPatient(starterPatient2);
@@ -120,6 +120,8 @@ public class Application {
 						if (selectedStaff instanceof Doctor) {
 							selectedStaff.busy();
 							admitted.treatAllPatients();
+							selectedStaff.empTick();
+							tickHospital(staff, admitted);
 							System.out.println("All patients were treated.");
 							break;
 						}
