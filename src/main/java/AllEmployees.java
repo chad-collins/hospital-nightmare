@@ -17,8 +17,9 @@ public class AllEmployees {
 	}
 
 	public void removeEmployee(Employee toRemove) {
+		//trying to figure out how to take the removed staff and add to patient collection
+		Patient newPatient = new Patient(toRemove.getEmpID(), toRemove.getEmpName(), "[Psych Ward]");
 		employees.remove(toRemove.getEmpID(), toRemove);
-
 	}
 
 	public void allempStatusSummary() {
@@ -42,7 +43,7 @@ public class AllEmployees {
 					if (employee.getIsAvailable() == true) {
 						employee.statusSummary();
 					} else {
-					System.out.println("[Psych nurse " + employee.getEmpName() + " is not available]");
+					System.out.println("[Psych " + employee.getEmpName() + " is not available]");
 				}
 			}
 		}
@@ -56,7 +57,7 @@ public class AllEmployees {
 					if (employee.getIsAvailable() == true) {
 						employee.statusSummary();
 					} else {
-					System.out.println("[Pain management nurse " + employee.getEmpName() + " is not available]");
+					System.out.println("[Pain management " + employee.getEmpName() + " is not available]");
 				}
 			}
 		}
@@ -70,7 +71,7 @@ public class AllEmployees {
 
 					doctor.statusSummary();
 				} else {
-					System.out.println("[No Doctors available]");
+					System.out.println("[" + doctor.getEmpName() + " is not available]");
 				}
 			}
 		}
@@ -81,7 +82,9 @@ public class AllEmployees {
 				if (surgeon.getIsAvailable() == true) {
 
 					surgeon.statusSummary();
-				} 
+				} else {
+					System.out.println("[" + surgeon.getEmpName() + " is not available]");
+				}
 					
 				}
 			}

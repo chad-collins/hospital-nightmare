@@ -20,9 +20,11 @@ public class Patient implements HasVitals {
 	public void patientSummary() {
 		System.out.println(
 
+
 				"[Room#:" + this.getPatientID() + "]\t[Name: " + this.getPatientName() + "]\t[Ward:" + this.getWard()
 						+ "]\t[Health Rating" + this.getHealthLevel() + "]\t[Blood Level: " + this.getBloodLevel()
 						+ "]\n");
+
 	}
 
 	public String getPatientID() {
@@ -42,9 +44,9 @@ public class Patient implements HasVitals {
 	}
 
 	public int getHealthLevel() {
-		if (this.bloodLevel > 0 && this.bloodLevel <= 9) {
+		if (this.bloodLevel == 0) {
 			this.healthLevel = 0;
-		} else if (this.bloodLevel >= 10 && this.bloodLevel <= 19) {
+		} else if (this.bloodLevel > 0 && this.bloodLevel <= 19) {
 			this.healthLevel = 5;
 		} else if (this.bloodLevel >= 20 && this.bloodLevel <= 29) {
 			this.healthLevel = 10;

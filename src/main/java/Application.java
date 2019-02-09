@@ -57,22 +57,20 @@ public class Application {
 		/*
 		 * End pre-population
 		 */
-		System.out.println("******************\n"
-				+ "NIGHTMARE HOSPITAL"
-				+"\n******************"
-				+"\n      v0.13"
-				+"\n------------------");
-				System.out.println("\nPress Enter to start...");
-				String go = input.nextLine();
-				System.out.println("\n\nYou arrive at High Street Hospital ready to take on your new role as the top Administrator....");
-				go = input.nextLine();
-				System.out.println("\nThe hospital needs your expertise righting the ship. You're excited for this new challenge....");
-				go = input.nextLine();
-				System.out.println("\nFor some reason, some patients are getting sick and having trouble recovering...");
-				go = input.nextLine();
-				System.out.println("\nYou plan to solve this mystery and save the lives of both your patients and staff.\n\n");
-				
-		
+		System.out.println("******************\n" + "NIGHTMARE HOSPITAL" + "\n******************" + "\n      v0.13"
+				+ "\n------------------");
+		System.out.println("\nPress Enter to start...");
+		String go = input.nextLine();
+		System.out.println(
+				"\n\nYou arrive at High Street Hospital ready to take on your new role as the top Administrator....");
+		go = input.nextLine();
+		System.out.println(
+				"\nThe hospital needs your expertise righting the ship. You're excited for this new challenge....");
+		go = input.nextLine();
+		System.out.println("\nFor some reason, some patients are getting sick and having trouble recovering...");
+		go = input.nextLine();
+		System.out.println("\nYou plan to solve this mystery and save the lives of both your patients and staff.\n\n");
+
 		boolean victoryCondition = true;
 		boolean loseCondition = true;
 		boolean forfeitCondition = true;
@@ -82,156 +80,134 @@ public class Application {
 			 * MAIN MENU BEGINS HERE
 			 */
 
-			System.out.println("In your office."
-					+"\n-----------------"
-					+ "\n1. Get Hospital Status\n2. Review patient log.");
+			System.out.println(
+					"In your office." + "\n-----------------" + "\n1. Get Hospital Status\n2. Review patient log.");
 			String mainMenuResponse = input.nextLine();
 
 			switch (mainMenuResponse) {
 
 			// Main case 1
 			case "1":
-				System.out.println("\n"
-						+ "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
-						+ "\n\nSTAFF INFORMATION"
-						+"\n-----------------");
-					staff.allempStatusSummary();
-						System.out.println("-----------------\n");
-				break;//Main menu case 1 break
+				System.out.println("\n" + "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
+						+ "\n\nSTAFF INFORMATION" + "\n-----------------");
+				staff.allempStatusSummary();
+				System.out.println("-----------------\n");
+				break;// Main menu case 1 break
 
-			// Main case 2, Patient Summary  top Menu
-			case "2":System.out.println("PATIENT SUMMARY"
-								+ "\n-----------------");
-					admitted.allPatientSummary();
-						System.out.println("-----------------\n");
-						
-						//PATIENT SUMMARY MENU START
-						System.out.println("Reviewing your patient log:\n"
-								+ "\n-----------------"
-								+ "\na. Dispatch someone to check on all patients."
-								+ "\np. Dispatch someone to treat a patient in need. "
-								+ "\ns. Dispatch someone perform emergency surgury on a patient."
-								+ "\nw. Wait in your office and do nothing while those around you suffer.");
-								
-								String patientSummaryMenu = input.nextLine();
-								boolean interactingWithPatientLog = true;
-								String patientLogMenuChoice = "";
-								while (interactingWithPatientLog) {
-									switch(patientSummaryMenu) {
-									case "a": System.out.println("Employee to dispatch?");
-										staff.allAvailMedical();
-										String staffToGet = input.nextLine();
-										Employee selectedStaff = staff.getEmployee(staffToGet);
-										if(selectedStaff instanceof Surgeon) {
-											System.out.println(selectedStaff.getEmpName() + " responded: I have more important things to do...like surgery.");
-										}
-										if(selectedStaff instanceof Doctor) {
-											admitted.allPatientSummary();
-											// i feel like here is where you decide to treat all patients or just one patient?
-											System.out.println("Would you like to treat all patients?");
-											String doctortreatallmenuchoice = input.nextLine();
-											if (doctortreatallmenuchoice.toLowerCase().contentEquals("yes")) {
-												admitted.treatAllPatients();
-												System.out.println("All patients were treated.");
-												interactingWithPatientLog = false;
-											} else {
-												System.out.println("Better things to do, eh?");
-											}
-										}
-										if(selectedStaff instanceof Nurse) {
-											String nurseWard = selectedStaff.getSpecialty();
-											if (nurseWard == "[Psych Ward]") {
-												admitted.allPsychPatientSummary();
-												
-											} else if (nurseWard == "[Pain Management]") {
-												admitted.allPainMgmtPatientSummary();
-											}
-										}
-										
-											
-											break;//Select Nurse Break
-										
-									case "p": System.out.println("Which patient would you like to treat?");
-									patientLogMenuChoice = input.nextLine();
-									admitted.allPatientSummary();
-									String patientToGet = input.nextLine();
-									Patient selectedPatient = admitted.getPatient(patientToGet);
-									String patientsWard = selectedPatient.getWard();
-									System.out.println("Which employee should be dispatched to " + selectedPatient.getPatientName() + " ?");
-									
-									
-									String staffToGetNext = input.nextLine();
-									////not complete
-									
-										break;//Select Doctor Break
-									
-									case "s": System.out.println("Which patient needs emergency surgury?");
-										patientLogMenuChoice = input.nextLine();
-										break;//Select Patient Break
-										
-									case "w": System.out.println("You've made a selfish choice..."); 
-									interactingWithPatientLog =false;
-									break;//EXIT PATIENT LOG
-									
-									//default: System.out.println("Stop wasting time! There are people dieing here!");break;
-									
-									}
-									
-									
-									
-									
-									
-								}
-								
-						
-				break;//Main menu case 2 break
-				
-				// Main menu help
+			// Main case 2, Patient Summary top Menu
+			case "2":
+				System.out.println("PATIENT SUMMARY" + "\n-----------------");
+				admitted.allPatientSummary();
+				System.out.println("-----------------\n");
+
+				// PATIENT SUMMARY MENU START
+				System.out.println("Reviewing your patient log:\n" + "\n-----------------"
+						+ "\nn. Dispatch someone to treat all patients."
+						+ "\nd. Dispatch someone to treat a patient in need. "
+						+ "\ns. Dispatch someone perform emergency surgury on a patient."
+						+ "\nw. Wait in your office and do nothing while those around you suffer.");
+
+				String patientSummaryMenu = input.nextLine();
+				boolean interactingWithPatientLog = true;
+				String patientLogMenuChoice = "";
+				while (interactingWithPatientLog) {
+					switch (patientSummaryMenu) {
+					case "n":
+						System.out.println("Employee to dispatch?");
+						staff.allAvailMedical();
+						String staffToGet = input.nextLine();
+						Employee selectedStaff = staff.getEmployee(staffToGet);
+						if (selectedStaff instanceof Doctor) {
+							selectedStaff.busy();
+							admitted.treatAllPatients();
+							System.out.println("All patients were treated.");
+							break;
+						}
+						if (selectedStaff instanceof Nurse) {
+							selectedStaff.busy();
+							String nurseWard = selectedStaff.getSpecialty();
+							if (nurseWard == "[Psych Ward]") {
+								admitted.treatAllPsychPatients();
+								System.out.println("All Psych Ward patients were treated.");
+							} else if (nurseWard == "[Pain Management]") {
+								admitted.allPainMgmtPatientSummary();
+								admitted.treatAllPainMgmtPatients();
+								System.out.println("All Pain management patients were treated.");
+							} break;
+						}
+					case "d":
+						System.out.println("Which patient would you like to treat?");
+						patientLogMenuChoice = input.nextLine();
+						admitted.allPatientSummary();
+						String patientToGet = input.nextLine();
+						Patient selectedPatient = admitted.getPatient(patientToGet);
+						String patientsWard = selectedPatient.getWard();
+						System.out.println(
+								"Which employee should be dispatched to " + selectedPatient.getPatientName() + " ?");
+
+						String staffToGetNext = input.nextLine();
+						//// not complete
+
+						break;// Select Doctor Break
+
+					case "s":
+						System.out.println("Which patient needs emergency surgury?");
+						patientLogMenuChoice = input.nextLine();
+						break;// Select Patient Break
+
+					case "w":
+						System.out.println("You've made a selfish choice...");
+						interactingWithPatientLog = false;
+						break;// EXIT PATIENT LOG
+
+					// default: System.out.println("Stop wasting time! There are people dieing
+					// here!");break;
+
+					}
+
+				}
+
+				break;// Main menu case 2 break
+
+			// Main menu help
+
 			case "help":
 				System.out.println(
-						"\n"
-						+ "-HELP MENU-"
-						+ "\n-Press '1' to display your hospital staff's metrics and availability."
-						+ "\n-Press '2' to view patients and begin patient interaction."
-						+ "\n-Type 'exit' to exit the game at any time."
-						+ "\n");
+						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
+								+ "\n-Press '2' to view patients and begin patient interaction."
+								+ "\n-Type 'exit' to exit the game at any time." + "\n");
 
-				break;//Main menu case 'help' break
-				
+				break;// Main menu case 'help' break
 
 			// Main exit game
-				case "exit": 
+			case "exit":
 				forfeitCondition = false;
-				break;//Main menu exit case
+				break;// Main menu exit case
 
-				// Main default case
+			// Main default case
 			default:
 				System.out.println("\nPlease try again.\n");
-				break;//Main menu default break
+				break;// Main menu default break
 			}
 
-			
-			
-			
-			
-			
-			
-		}//GameRunning Loop Ends
-		if(!forfeitCondition) {
-		System.out.println("\nYou have resigned your duties but kept your life. "
-				+ "\nPatients will suffer, and you will be haunted by their memory.");
-	}if (!loseCondition) 
-	{System.out.println("\nYou failed to contain whatever lurked in the hospital. "
-			+ "\nYour patients and staff have all been killed under your guidance. "
-			+ "\nIn your office a shadowy figure waits for you.");
-	}if (!victoryCondition)
-	{System.out.println("\nYou drive a spike into the vampire's heart. "
-			+ "\nIt's a long fight, but the vampire turns to dust. "
-			+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
-			+ "\nThe only injury you receive is a small bite on the back of your neck.");
-	
-	}System.out.println("\nCredits:\n"
-			+ "Jessica Wright & Chad Collins\n");
+		} // GameRunning Loop Ends
+		if (!forfeitCondition) {
+			System.out.println("\nYou have resigned your duties but kept your life. "
+					+ "\nPatients will suffer, and you will be haunted by their memory.");
+		}
+		if (!loseCondition) {
+			System.out.println("\nYou failed to contain whatever lurked in the hospital. "
+					+ "\nYour patients and staff have all been killed under your guidance. "
+					+ "\nIn your office a shadowy figure waits for you.");
+		}
+		if (!victoryCondition) {
+			System.out.println("\nYou drive a spike into the vampire's heart. "
+					+ "\nIt's a long fight, but the vampire turns to dust. "
+					+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
+					+ "\nThe only injury you receive is a small bite on the back of your neck.");
+
+		}
+		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n");
 	}
 
 	public static void tickHospital(AllEmployees staff, PatientCollection admitted) {

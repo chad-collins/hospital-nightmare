@@ -63,7 +63,24 @@ public class PatientCollection {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Pain management]")) {
 				patient.patientSummary();
-				;
+				break;
+			}
+		}
+	}
+	
+	public void treatAllPsychPatients() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Psych Ward]")) {
+				patient.treatPatient();
+				break;
+			}
+		}
+	}
+	
+	public void treatAllPainMgmtPatients() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Pain management]")) {
+				patient.treatPatient();
 				break;
 			}
 		}
