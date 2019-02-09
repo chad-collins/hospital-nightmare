@@ -5,6 +5,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	private String specialty;
 	private int bloodLevel;
 	private int healthLevel;
+	private int salary;
 
 	public Doctor(int empID, String empName, boolean isAvailable, String specialty) {
 
@@ -13,6 +14,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		this.specialty = specialty;
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
+		this.salary = 90;
 
 	}
 
@@ -21,11 +23,11 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	public int getBloodLevel() {
-		return bloodLevel;
+		return this.bloodLevel;
 	}
 
 	public int getHealthLevel() {
-		return healthLevel;
+		return this.healthLevel;
 	}
 
 	public void busy() {
