@@ -5,8 +5,7 @@ public interface HasVitals {
 	public static final int BLOOD_LEVEL = 20;
 	
 
-	public void bloodIsDrawn();
-	public void receivesCare();
+	public void bite();
 
 	
 }

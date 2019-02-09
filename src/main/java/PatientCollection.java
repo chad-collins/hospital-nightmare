@@ -21,10 +21,10 @@ public class PatientCollection {
 		for (Patient patient : patients.values()) {
 			if (patient.getHealthLevel() <= 0) {
 				patientToRemove = patient.getPatientID();
+				patients.remove(patientToRemove);
+				System.out.println("Patient #" + patientToRemove + " has passed away.");
 			}
 		}
-		patients.remove(patientToRemove);
-		System.out.println("Patient #" + patientToRemove + " has passed away.");
 
 	}
 	
