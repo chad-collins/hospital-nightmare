@@ -1,19 +1,14 @@
 
-public class Receptionist extends Employee implements HasVitals{
+public class Nurse extends Employee implements HasVitals{
 	
 	private int bloodLevel;
 	private int healthLevel;
-	
 
-	public Receptionist(String empID, String empName, boolean isAvailable) {
-
-	
-
+	public Nurse(int empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
-		
+	
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
-		
 	}
 	
 	public int getBloodLevel() {
@@ -25,8 +20,9 @@ public class Receptionist extends Employee implements HasVitals{
 	}
 
 	public void busy() {
-	super.busy();
-	System.out.println(this.getEmpName() + "is on the phone.");
+		super.busy();
+		System.out.println(this.getEmpName() + " is nursing patients back to health.");
+		
 	}
 
 	@Override
@@ -37,10 +33,8 @@ public class Receptionist extends Employee implements HasVitals{
 
 	@Override
 	public void receivesCare() {
-		healthLevel += 10;
+		this.healthLevel += 10;
 		
 	}
-	
 
 }
-
