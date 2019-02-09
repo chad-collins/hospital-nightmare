@@ -18,7 +18,7 @@ public class AllEmployees {
 
 	public void removeEmployee(Employee toRemove) {
 		employees.remove(toRemove.getEmpID(), toRemove);
-		;
+
 	}
 
 	public void allempStatusSummary() {
@@ -29,21 +29,37 @@ public class AllEmployees {
 	}
 
 	public void allAvailMedical() {
-		allAvailNurses();
+		allAvailPsychNurses();
+		allAvailPainMgmtNurses();
 		allAvailDoctors();
 		allAvailSurgeons();
 	}
 
-	public void allAvailNurses() {
-		for (Employee nurse : employees.values()) {
-			if (nurse instanceof Nurse) {
-				if (nurse.getIsAvailable() == true) {
-
-					nurse.statusSummary();
-				} else {
-					System.out.println("[No nurses available]");
+	public void allAvailPsychNurses() {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Nurse) {
+				if (employee.getSpecialty().contentEquals("[Psych Ward]")) {
+					if (employee.getIsAvailable() == true) {
+						employee.statusSummary();
+					} else {
+					System.out.println("[Psych nurse " + employee.getEmpName() + " is not available]");
 				}
 			}
+		}
+		}
+	}
+	
+	public void allAvailPainMgmtNurses() {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Nurse) {
+				if (employee.getSpecialty().contentEquals("[Pain management]")) {
+					if (employee.getIsAvailable() == true) {
+						employee.statusSummary();
+					} else {
+					System.out.println("[Pain management nurse " + employee.getEmpName() + " is not available]");
+				}
+			}
+		}
 		}
 	}
 

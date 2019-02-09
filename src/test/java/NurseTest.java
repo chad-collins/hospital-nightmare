@@ -29,20 +29,13 @@ public class NurseTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn15() {
-		testN.bloodIsDrawn();
+	public void bloodLevelShouldReturn31() {
+		testN.bite();
 		int answer = testN.getBloodLevel();
-		assertEquals(answer, 15); 
+		assertEquals(answer, 31); 
 		
 	}
-	
-	@Test
-	public void HealthLevelShouldReturn20() {
-		testN.receivesCare();
-		int answer = testN.getHealthLevel();
-		assertEquals(answer, 20); 
-		
-	}
+
 	
 	@Test
 	public void BusyStatusShouldReturnSout() {
