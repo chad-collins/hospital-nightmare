@@ -96,11 +96,53 @@ public class Application {
 						System.out.println("-----------------\n");
 				break;//Main menu case 1 break
 
-			// Main case 2
+			// Main case 2, Patient Summary  top Menu
 			case "2":System.out.println("PATIENT SUMMARY"
 								+ "\n-----------------");
 					admitted.allPatientSummary();
 						System.out.println("-----------------\n");
+						
+						//PATIENT SUMMARY MENU START
+						System.out.println("Reviewing your patient log:\n"
+								+ "\n-----------------"
+								+ "\nn. Dispatch a nurse check on all patients."
+								+ "\nd. Dispatch a doctor to treat a patient in need. "
+								+ "\ns. Have a surgeon perform emergency surgury on a patient."
+								+ "\nw. Wait in your office and do nothing while those around you suffer.");
+								
+								String patientSummaryMenu = input.nextLine();
+								boolean interactingWithPatientLog = true;
+								String patientLogMenuChoice = "";
+								while (interactingWithPatientLog) {
+									switch(patientSummaryMenu) {
+									case "n": System.out.println("Which nurse would you like to dispatch?");
+										patientLogMenuChoice = input.nextLine();
+
+											break;//Select Nurse Break
+										
+									case "d": System.out.println("Which patient would you like to treat?");
+									patientLogMenuChoice = input.nextLine();
+										break;//Select Doctor Break
+									
+									case "s": System.out.println("Which patient needs emergency surgury?");
+										patientLogMenuChoice = input.nextLine();
+										break;//Select Patient Break
+										
+									case "w": System.out.println("You've made a selfish choice..."); 
+									interactingWithPatientLog =false;
+									break;//EXIT PATIENT LOG
+									
+									//default: System.out.println("Stop wasting time! There are people dieing here!");break;
+									
+									}
+									
+									
+									
+									
+									
+								}
+								
+						
 				break;//Main menu case 2 break
 				
 				// Main menu help
