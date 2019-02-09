@@ -7,7 +7,8 @@ public class PatientCollection {
 	public int getCollectionLength() {
 		return patients.size();
 	}
-	//Changed patient getter from a void method in order to return a patient
+
+	// Changed patient getter from a void method in order to return a patient
 	public Patient getPatient(String patientID) {
 		return patients.get(patientID);
 
@@ -27,18 +28,45 @@ public class PatientCollection {
 		}
 
 	}
-	
+
 	public void infuseAllPatients() {
 		for (Patient patient : patients.values()) {
-			
+
 		}
 	}
 	
+	public void treatAllPatients() {
+		for (Patient patient : patients.values()) {
+			patient.treatPatient();
+		}
+	}
+
 	public void allPatientSummary() {
 		for (Patient patient : patients.values()) {
-			
-			patient.patientSummary();;
-		}}
-	
+
+			patient.patientSummary();
+			;
+		}
+	}
+
+	public void allPsychPatientSummary() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Psych Ward]")) {
+				patient.patientSummary();
+				;
+				break;
+			}
+		}
+	}
+
+	public void allPainMgmtPatientSummary() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Pain management]")) {
+				patient.patientSummary();
+				;
+				break;
+			}
+		}
+	}
 
 }

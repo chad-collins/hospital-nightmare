@@ -17,19 +17,19 @@ public class Application {
 		Patient starterPatient5 = new Patient("05", "Michael", "[Pain management]");
 		Patient starterPatient6 = new Patient("06", "Carrie", "[Pain management]");
 
-		Employee starterDoctor1 = new Doctor("01", "Dr. Loboto", true, "[Psych Ward]");
-		Employee starterDoctor2 = new Doctor("02", "Dr. Numb", true, "[Pain management]");
+		Employee starterDoctor1 = new Doctor("07", "Dr. Loboto", true, "[Psych Ward]");
+		Employee starterDoctor2 = new Doctor("08", "Dr. Numb", true, "[Pain management]");
 
-		Employee starterSurgeon1 = new Surgeon("03", "Dr. Cuts", false, "[Psych Ward]");
-		Employee starterSurgeon2 = new Surgeon("04", "Dr. Slasher ", false, "[Pain management]");
+		Employee starterSurgeon1 = new Surgeon("09", "Dr. Cuts", false, "[Psych Ward]");
+		Employee starterSurgeon2 = new Surgeon("10", "Dr. Slasher ", false, "[Pain management]");
 
-		Employee starterNurse1 = new Nurse("05", "Nurse Bates", true, "[Psych Ward]");
-		Employee starterNurse2 = new Nurse("06", "Nurse Damien", true, "[Pain management]");
+		Employee starterNurse1 = new Nurse("11", "Nurse Bates", true, "[Psych Ward]");
+		Employee starterNurse2 = new Nurse("12", "Nurse Damien", true, "[Pain management]");
 
-		Employee starterJanitor = new Janitor("07", "Zeke", true);
-		Employee starterVampireJanitor = new VampireJanitor("08", "Vlad", true);
+		Employee starterJanitor = new Janitor("13", "Zeke", true);
+		Employee starterVampireJanitor = new VampireJanitor("14", "Vlad", true);
 
-		Employee starterReceptionist = new Receptionist("09", "Pam", true);
+		Employee starterReceptionist = new Receptionist("15", "Pam", true);
 
 		AllEmployees staff = new AllEmployees();
 
@@ -119,9 +119,30 @@ public class Application {
 										staff.allAvailMedical();
 										String staffToGet = input.nextLine();
 										Employee selectedStaff = staff.getEmployee(staffToGet);
+										if(selectedStaff instanceof Surgeon) {
+											System.out.println("Surgeons have more important things to do.");
+										}
+										if(selectedStaff instanceof Doctor) {
+											admitted.allPatientSummary();
+											// i feel like here is where you decide to treat all patients or just one patient?
+											System.out.println("Would you like to treat all patients?");
+											String doctortreatallmenuchoice = input.nextLine();
+											if (doctortreatallmenuchoice.toLowerCase().contentEquals("yes")) {
+												admitted.treatAllPatients();
+												System.out.println("All patients were treated.");
+												interactingWithPatientLog = false;
+											} else {
+												System.out.println("Better things to do, eh?");
+											}
+										}
 										if(selectedStaff instanceof Nurse) {
 											String nurseWard = selectedStaff.getSpecialty();
-											///not completed
+											if (nurseWard == "[Psych Ward]") {
+												admitted.allPsychPatientSummary();
+												
+											} else if (nurseWard == "[Pain Management]") {
+												admitted.allPainMgmtPatientSummary();
+											}
 										}
 										
 											
