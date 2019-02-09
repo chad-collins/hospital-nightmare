@@ -121,18 +121,23 @@ public class Application {
 										Employee selectedStaff = staff.getEmployee(staffToGet);
 										if(selectedStaff instanceof Nurse) {
 											String nurseWard = selectedStaff.getSpecialty();
-											
+											///not completed
 										}
 										
 											
 											break;//Select Nurse Break
 										
-									case "d": System.out.println("Which patient?");
+									case "d": System.out.println("Which patient would you like to treat?");
 									patientLogMenuChoice = input.nextLine();
 									admitted.allPatientSummary();
 									String patientToGet = input.nextLine();
 									Patient selectedPatient = admitted.getPatient(patientToGet);
+									String patientsWard = selectedPatient.getWard();
+									System.out.println("Which employee should be dispatched to " + selectedPatient.getPatientName() + " ?");
 									
+									
+									String staffToGetNext = input.nextLine();
+									////not complete
 									
 										break;//Select Doctor Break
 									
