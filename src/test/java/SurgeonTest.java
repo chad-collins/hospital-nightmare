@@ -51,5 +51,13 @@ public class SurgeonTest {
 		assertEquals(answer, 20);
 
 	}
+	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testS.busyStatus();
+		testS.busy();
+		testS.busyStatus();
+		
+	}
 
 }

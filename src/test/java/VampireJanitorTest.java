@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class VampireJanitorTest {
 
-	Janitor testV = new Janitor("1", "TestV", true);
+	Janitor testV = new VampireJanitor("1", "TestV", true);
 
 	@Test
 	public void empIDshouldReturnNum() {
@@ -34,6 +34,14 @@ public class VampireJanitorTest {
 		boolean answer = testV.getIsAvailable();
 		assertEquals(answer, false);
 
+	}
+	
+	@Test
+	public void BusyStatusShouldReturnSout() {
+		testV.busyStatus();
+		testV.busy();
+		testV.busyStatus();
+		
 	}
 
 }

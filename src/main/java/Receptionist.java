@@ -29,7 +29,6 @@ public class Receptionist extends Employee implements HasVitals{
 
 	public void busy() {
 	super.busy();
-	System.out.println(this.getEmpName() + "is on the phone.");
 	}
 
 	@Override
@@ -42,6 +41,14 @@ public class Receptionist extends Employee implements HasVitals{
 	public void receivesCare() {
 		healthLevel += 10;
 		
+	}
+	
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("ON THE PHONE");
+		} else {
+			System.out.println("Receptionist " + this.getEmpName() + " is available.");
+		}
 	}
 	
 

@@ -23,7 +23,6 @@ public class Nurse extends Employee implements HasVitals{
 
 	public void busy() {
 		super.busy();
-		System.out.println(this.getEmpName() + " is nursing patients back to health.");
 		
 	}
 
@@ -37,6 +36,14 @@ public class Nurse extends Employee implements HasVitals{
 	public void receivesCare() {
 		this.healthLevel += 10;
 		
+	}
+	
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("WITH A PATIENT");
+		} else {
+			System.out.println("Nurse " + this.getEmpName() + " is available.");
+		}
 	}
 
 }

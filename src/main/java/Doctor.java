@@ -34,7 +34,6 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 
 	public void busy() {
 		super.busy();
-		System.out.println(this.getEmpName() + " is seeing patients.");
 
 	}
 
@@ -66,6 +65,14 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	public void medicatePatient() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void busyStatus() {
+		if (!getIsAvailable()) {
+			System.out.println("WITH A PATIENT");
+		} else {
+			System.out.println("Doctor " + this.getEmpName() + " is available.");
+		}
 	}
 
 }
