@@ -86,8 +86,8 @@ public class AllEmployees {
 					System.out.println("[" + surgeon.getEmpName() + " is not available]");
 				}
 					
-				
+				}
 			}
 		}
 	}
-}
+

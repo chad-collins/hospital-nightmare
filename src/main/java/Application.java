@@ -167,6 +167,7 @@ public class Application {
 				break;// Main menu case 2 break
 
 			// Main menu help
+
 			case "help":
 				System.out.println(
 						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
