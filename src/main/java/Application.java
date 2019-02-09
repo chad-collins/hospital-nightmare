@@ -48,12 +48,20 @@ public class Application {
 		admitted.addPatient(starterPatient1);
 		admitted.addPatient(starterPatient2);
 		admitted.addPatient(starterPatient3);
-
+		admitted.addPatient(starterPatient4);
+		admitted.addPatient(starterPatient5);
+		admitted.addPatient(starterPatient6);
 		/*
 		 * End pre-population
 		 */
 
-		System.out.println("Welcome message placeholder");
+		System.out.println("******************\n"
+				+ "NIGHTMARE HOSPITAL"
+				+"\n******************"
+				+"\n      v0.13"
+				+"\n------------------"
+				+ "\n*Welcome to Nightmare Hospital where you will lorem ipsum."
+				+"\n");
 
 		boolean gameRunning = true;
 		while (gameRunning) {
@@ -72,13 +80,15 @@ public class Application {
 				System.out.println("\n"
 						+ "STAFF INFORMATION"
 						+"\n-----------------");
-				staff.allempStatusSummary();
-				System.out.println("-----------------\n");
+					staff.allempStatusSummary();
+						System.out.println("-----------------\n");
 				break;//Main menu case 1 break
 
 			// Main case 2
-			case "2":System.out.println("not available yet.");
-
+			case "2":System.out.println("PATIENT SUMMARY"
+								+ "\n-----------------");
+					admitted.allPatientSummary();
+						System.out.println("-----------------\n");
 				break;//Main menu case 2 break
 				
 				// Main menu help

@@ -27,5 +27,12 @@ public class PatientCollection {
 		System.out.println("Patient #" + patientToRemove + " has passed away.");
 
 	}
+	
+	public void allPatientSummary() {
+		for (Patient patient : patients.values()) {
+			
+			patient.patientSummary();;
+		}}
+	
 
 }

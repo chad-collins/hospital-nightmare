@@ -16,6 +16,18 @@ public class Patient implements HasVitals {
 		this.healthLevel = HEALTH_LEVEL;
 	}
 
+	
+	public void patientSummary() {
+		System.out.println(
+				
+				"[Room#:" + this.getPatientID() 
+				+ "]\t[Name: " + this.getPatientName() 
+				+ "]\t[Ward:" + this.getWard() 
+				+ "]\t[Health Rating" + this.getHealthLevel() 
+				+ "]\t[Blood Level: " + this.getBloodLevel()
+				+ "]\n");
+	}
+	
 	public String getPatientID() {
 		return patientID;
 	}

@@ -56,8 +56,12 @@ public abstract class Employee {
 
 	public String statusSummary() {
 		System.out.println(
-				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[CURRENTLY: "
-						+ this.busyStatus() + "]\t[Salary: $" + this.getSalary() + "]\t" + this.getSpecialty());
+				"[ID:" + this.getEmpID() 
+				+ "]\t[" + this.getEmpName() 
+				+ "]\t[" + this.getEmpTitle() 
+				+ "]\t[CURRENTLY: " + this.busyStatus() 
+				+ "]\t[Salary: $" + this.getSalary() 
+				+ "]\t" + this.getSpecialty());
 		return "";
 
 	}
