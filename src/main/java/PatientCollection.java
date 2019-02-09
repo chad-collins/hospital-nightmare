@@ -28,6 +28,12 @@ public class PatientCollection {
 
 	}
 	
+	public void infuseAllPatients() {
+		for (Patient patient : patients.values()) {
+			
+		}
+	}
+	
 	public void allPatientSummary() {
 		for (Patient patient : patients.values()) {
 			
