@@ -4,13 +4,14 @@ public class Janitor extends Employee implements HasVitals{
 	private int bloodLevel;
 	private int healthLevel;
 	private int salary;
-
+	private String empTitle;
 	public Janitor(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
-		
+		this.empTitle = "Janitor";
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
 		this.salary = 40;
+		this.empTitle = "Janitor";
 		
 	}
 	
@@ -21,7 +22,12 @@ public class Janitor extends Employee implements HasVitals{
 	public int getHealthLevel() {
 		return this.healthLevel;
 	}
-
+	public String getEmpTitle() {
+		return empTitle;
+	}
+	public int getSalary() {
+		return salary;
+	}
 
 	public void busy() {
 	super.busy();
@@ -37,11 +43,11 @@ public class Janitor extends Employee implements HasVitals{
 		this.healthLevel += 10;		
 	}
 	
-	public void busyStatus() {
+	public String busyStatus() {
 		if (!getIsAvailable()) {
-			System.out.println("SWEEPING");
+			return "SWEEPING";
 		} else {
-			System.out.println("Janitor " + this.getEmpName() + " is available.");
+			return "AVAILABLE";
 		}
 	}
 	

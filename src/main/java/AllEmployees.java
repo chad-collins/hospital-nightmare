@@ -23,5 +23,11 @@ public class AllEmployees {
 		employees.remove(toRemove.getEmpID(), toRemove);;
 	}
 	
+	public void allempStatusSummary() {
+		for (Employee employee : employees.values()) {
+			
+			employee.statusSummary();
+		}}
+	
 
 }

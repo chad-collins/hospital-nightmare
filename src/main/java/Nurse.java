@@ -4,6 +4,7 @@ public class Nurse extends Employee implements HasVitals{
 	private int bloodLevel;
 	private int healthLevel;
 	private String specialty;
+	private String empTitle;
 	private int salary;
 	
 	public Nurse(String empID, String empName, boolean isAvailable, String specialty) {
@@ -11,6 +12,7 @@ public class Nurse extends Employee implements HasVitals{
 		this.specialty = specialty;
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
+		this.empTitle = "Nurse  ";
 		this.salary = 50;
 	}
 	
@@ -25,6 +27,12 @@ public class Nurse extends Employee implements HasVitals{
 	public String getSpecialty() {
 		return specialty;
 		
+	}
+	public String getEmpTitle() {
+		return empTitle;
+	}
+	public int getSalary() {
+		return salary;
 	}
 
 	public void busy() {
@@ -43,12 +51,11 @@ public class Nurse extends Employee implements HasVitals{
 		this.healthLevel += 10;
 		
 	}
-	
-	public void busyStatus() {
+	public String busyStatus() {
 		if (!getIsAvailable()) {
-			System.out.println("WITH A PATIENT");
+			return "WITH A PATIENT";
 		} else {
-			System.out.println("Nurse " + this.getEmpName() + " is available.");
+			return "AVAILABLE";
 		}
 	}
 
