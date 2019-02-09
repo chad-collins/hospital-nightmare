@@ -118,13 +118,27 @@ public class Application {
 									case "n": System.out.println("Employee to dispatch?");
 										staff.allAvailMedical();
 										String staffToGet = input.nextLine();
-										Employee SelectedStaff = staff.getEmployee(staffToGet);
+										Employee selectedStaff = staff.getEmployee(staffToGet);
+										if(selectedStaff instanceof Nurse) {
+											String nurseWard = selectedStaff.getSpecialty();
+											///not completed
+										}
 										
 											
 											break;//Select Nurse Break
 										
 									case "d": System.out.println("Which patient would you like to treat?");
 									patientLogMenuChoice = input.nextLine();
+									admitted.allPatientSummary();
+									String patientToGet = input.nextLine();
+									Patient selectedPatient = admitted.getPatient(patientToGet);
+									String patientsWard = selectedPatient.getWard();
+									System.out.println("Which employee should be dispatched to " + selectedPatient.getPatientName() + " ?");
+									
+									
+									String staffToGetNext = input.nextLine();
+									////not complete
+									
 										break;//Select Doctor Break
 									
 									case "s": System.out.println("Which patient needs emergency surgury?");
