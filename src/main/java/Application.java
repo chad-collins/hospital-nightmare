@@ -62,9 +62,10 @@ public class Application {
 				+"\n------------------"
 				+ "\n*Welcome to Nightmare Hospital where you will lorem ipsum."
 				+"\n");
-
-		boolean gameRunning = true;
-		while (gameRunning) {
+		boolean victoryCondition = true;
+		boolean loseCondition = true;
+		boolean forfeitCondition = true;
+		while (victoryCondition && loseCondition && forfeitCondition) {
 
 			/*
 			 * MAIN MENU BEGINS HERE
@@ -78,7 +79,8 @@ public class Application {
 			// Main case 1
 			case "1":
 				System.out.println("\n"
-						+ "STAFF INFORMATION"
+						+ "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
+						+ "\n\nSTAFF INFORMATION"
 						+"\n-----------------");
 					staff.allempStatusSummary();
 						System.out.println("-----------------\n");
@@ -106,7 +108,7 @@ public class Application {
 
 			// Main exit game
 				case "exit": 
-				gameRunning = false;
+				forfeitCondition = false;
 				break;//Main menu exit case
 
 				// Main default case
@@ -116,7 +118,21 @@ public class Application {
 			}
 
 		}//GameRunning Loop Ends
-		System.out.println("Goodbye message");
+		if(!forfeitCondition) {
+		System.out.println("\nYou have resigned your duties but kept your life. "
+				+ "\nPatients will suffer, and you will be haunted by their memory.");
+	}if (!loseCondition) 
+	{System.out.println("\nYou failed to contain whatever lurked in the hospital. "
+			+ "\nYour patients and staff have all been killed under your guidance. "
+			+ "\nIn your office a shadowy figure waits for you.");
+	}if (!victoryCondition)
+	{System.out.println("\nYou drive a spike into the vampire's heart. "
+			+ "\nIt's a long fight, but the vampire turns to dust. "
+			+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
+			+ "\nThe only injury you receive is a small bite on the back of your neck.");
+	
+	}System.out.println("\nCredits:\n"
+			+ "Jessica Wright & Chad Collins");
 	}
 
 }
