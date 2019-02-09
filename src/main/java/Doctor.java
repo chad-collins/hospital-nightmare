@@ -1,5 +1,5 @@
 
-public class Doctor extends Employee {
+public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 
 	private String specialty;
 	
@@ -19,5 +19,23 @@ public class Doctor extends Employee {
 	public void busy() {
 	super.busy();
 	
+	}
+
+	@Override
+	public void drawBlood() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sedatePatient() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void medicatePatient() {
+		// TODO Auto-generated method stub
+		
 	}
 }

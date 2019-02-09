@@ -6,10 +6,6 @@ public class Janitor extends Employee implements HasVitals{
 		
 	}
 
-	public void drawBlood() {
-		//DELETE THIS AFTER HASVITALS INTERFACE IS FINISHED AND MERGED.
-
-	}
 	
 
 	public void busy() {

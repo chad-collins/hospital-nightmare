@@ -1,5 +1,5 @@
 
-public class Surgeon extends Doctor implements HasVitals {
+public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 
 	
 	public Surgeon(int empID, String empName, boolean isAvailable, String specialty) {
@@ -17,10 +17,6 @@ public class Surgeon extends Doctor implements HasVitals {
 	
 	}
 
-	@Override
-	public void drawBlood() {
-		//DELETE WHEN HASVITALS IS FINISHED
-		
-	}
+
 }
 
