@@ -10,36 +10,39 @@ public class PatientTest {
 	
 	@Test
 	public void patientIDShouldReturnOne() {
-		
-		
 		int answer = test.getPatientID();
-		
-		
 		assertEquals(answer, 1); 
 		
 		
 	}
 	@Test
 	public void patientNameShouldReturnSicky() {
-		
-		
 		String answer = test.getPatientName();
-		
-		
 		assertEquals(answer, "Sicky"); 
-	
 		
 	}
 	
 	@Test
 	public void patientWardShouldReturnPsychWard() {
-		
-		
 		String answer = test.getWard();
-		
-		
 		assertEquals(answer, "Psych Ward"); 
 	
+		
+	}
+	
+	@Test
+	public void bloodLevelShouldReturn15() {
+		test.bloodIsDrawn();
+		int answer = test.getBloodLevel();
+		assertEquals(answer, 15); 
+		
+	}
+	
+	@Test
+	public void HealthLevelShouldReturn20() {
+		test.receivesCare();
+		int answer = test.getHealthLevel();
+		assertEquals(answer, 20); 
 		
 	}
 }

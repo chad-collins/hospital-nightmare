@@ -1,16 +1,16 @@
 
-public class Janitor extends Employee implements HasVitals{
+public class Nurse extends Employee implements HasVitals{
 	
 	private int bloodLevel;
 	private int healthLevel;
 
-	public Janitor(int empID, String empName, boolean isAvailable) {
+	public Nurse(int empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
-		
+	
 		this.bloodLevel = BLOOD_LEVEL;
 		this.healthLevel = HEALTH_LEVEL;
-		
 	}
+	
 	public int getBloodLevel() {
 		return bloodLevel;
 	}
@@ -20,21 +20,21 @@ public class Janitor extends Employee implements HasVitals{
 	}
 
 	public void busy() {
-	super.busy();
-	System.out.println(this.getEmpName() + " is sweeping.");
+		super.busy();
+		System.out.println(this.getEmpName() + " is nursing patients back to health.");
+		
 	}
 
 	@Override
 	public void bloodIsDrawn() {
-		bloodLevel -= 5;
+		this.bloodLevel -= 5;
 		
 	}
 
-
 	@Override
 	public void receivesCare() {
-		this.healthLevel += 10;		
+		this.healthLevel += 10;
+		
 	}
-	
 
 }
