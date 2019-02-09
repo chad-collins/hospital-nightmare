@@ -103,5 +103,12 @@ public class AllEmployees {
 				}
 			}
 		}
+	
+	public void empTickAll() {
+		for (Employee employee : employees.values()) {
+			employee.empTick();
+		}
+		
+	}
 	}
 

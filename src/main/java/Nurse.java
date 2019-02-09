@@ -76,5 +76,10 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 		this.bloodLevel -= 9;
 		
 	}
+	
+
+		
+		
+	
 
 }

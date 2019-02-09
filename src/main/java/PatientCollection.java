@@ -85,5 +85,12 @@ public class PatientCollection {
 			}
 		}
 	}
+	
+	public void patientTickAll() {
+		for (Patient patient : patients.values()) {
+			patient.patientTick();
+		}
+
+	}
 
 }
