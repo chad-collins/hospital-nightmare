@@ -10,7 +10,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 
 		super(empID,empName, isAvailable);
 		this.specialty = specialty;
-		this.bloodLevel = BLOOD_LEVEL;
+		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Doctor ";
 		this.salary = 90;
@@ -25,7 +25,18 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	public int getHealthLevel() {
-		return this.healthLevel;
+		if (this.bloodLevel > 0 && this.bloodLevel <= 9) {
+			this.healthLevel = 0;
+		} else if (this.bloodLevel >= 10 && this.bloodLevel <= 19) {
+			this.healthLevel = 5;
+		} else if (this.bloodLevel >= 20 && this.bloodLevel <= 29) {
+			this.healthLevel = 10;
+		} else if (this.bloodLevel >= 30 && this.bloodLevel <= 39) {
+			this.healthLevel = 15;
+		} else if (this.bloodLevel >= 40 && this.bloodLevel <= 49) {
+			this.healthLevel = 20;
+		}
+		return healthLevel;
 	}
 
 	public void busy() {
@@ -42,17 +53,6 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		return salary;
 	}
 	
-	@Override
-	public void bloodIsDrawn() {
-		this.bloodLevel -= 5;
-
-	}
-
-	@Override
-	public void receivesCare() {
-		this.healthLevel += 10;
-
-	}
 
 	@Override
 	public int medicatePatient() {
@@ -71,6 +71,12 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	@Override
 	public int infuse() {
 		return 50;
+		
+	}
+
+	@Override
+	public void bite() {
+		this.bloodLevel -= 9;
 		
 	}
 
