@@ -20,8 +20,8 @@ public class Application {
 		Employee starterDoctor1 = new Doctor("01", "Dr. Loboto", true, "[Psych Ward]");
 		Employee starterDoctor2 = new Doctor("02", "Dr. Numb", true, "[Pain management]");
 
-		Employee starterSurgeon1 = new Surgeon("03", "Dr. Cuts", true, "[Psych Ward]");
-		Employee starterSurgeon2 = new Surgeon("04", "Dr. Slasher ", true, "[Pain management]");
+		Employee starterSurgeon1 = new Surgeon("03", "Dr. Cuts", false, "[Psych Ward]");
+		Employee starterSurgeon2 = new Surgeon("04", "Dr. Slasher ", false, "[Pain management]");
 
 		Employee starterNurse1 = new Nurse("05", "Nurse Bates", true, "[Psych Ward]");
 		Employee starterNurse2 = new Nurse("06", "Nurse Damien", true, "[Pain management]");
@@ -105,9 +105,9 @@ public class Application {
 						//PATIENT SUMMARY MENU START
 						System.out.println("Reviewing your patient log:\n"
 								+ "\n-----------------"
-								+ "\nn. Dispatch a nurse check on all patients."
-								+ "\nd. Dispatch a doctor to treat a patient in need. "
-								+ "\ns. Have a surgeon perform emergency surgury on a patient."
+								+ "\nn. Dispatch someone to check on all patients."
+								+ "\nd. Dispatch someone to treat a patient in need. "
+								+ "\ns. Dispatch someone perform emergency surgury on a patient."
 								+ "\nw. Wait in your office and do nothing while those around you suffer.");
 								
 								String patientSummaryMenu = input.nextLine();
@@ -115,9 +115,12 @@ public class Application {
 								String patientLogMenuChoice = "";
 								while (interactingWithPatientLog) {
 									switch(patientSummaryMenu) {
-									case "n": System.out.println("Which nurse would you like to dispatch?");
-										patientLogMenuChoice = input.nextLine();
-
+									case "n": System.out.println("Employee to dispatch?");
+										staff.allAvailMedical();
+										String staffToGet = input.nextLine();
+										Employee SelectedStaff = staff.getEmployee(staffToGet);
+										
+											
 											break;//Select Nurse Break
 										
 									case "d": System.out.println("Which patient would you like to treat?");
