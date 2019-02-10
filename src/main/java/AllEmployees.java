@@ -65,25 +65,39 @@ public class AllEmployees {
 	}
 
 	public void allAvailDoctors() {
-		for (Employee doctor : employees.values()) {
-			if ((doctor instanceof Doctor) && !(doctor instanceof Surgeon)){
-				if (doctor.getIsAvailable() == true) {
+		for (Employee employee : employees.values()) {
+			if ((employee instanceof Doctor) && !(employee instanceof Surgeon)){
+				if (employee.getIsAvailable() == true) {
 
-					doctor.statusSummary();
+					employee.statusSummary();
 				} else {
-					System.out.println("[" + doctor.getEmpName() + " is not available]");
+					System.out.println("[" + employee.getEmpName() + " is not available]");
 				}
 			}
 		}
 	}
 	public void allAvailSurgeons() {
-		for (Employee surgeon : employees.values()) {
-			if (surgeon instanceof Surgeon) {
-				if (surgeon.getIsAvailable() == true) {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Surgeon) {
+				if (employee.getIsAvailable() == true) {
 
-					surgeon.statusSummary();
+					employee.statusSummary();
 				} else {
-					System.out.println("[" + surgeon.getEmpName() + " is not available]");
+					System.out.println("[" + employee.getEmpName() + " is not available]");
+				}
+					
+				}
+			}
+		}
+	
+	public void checkStaffAvailability() {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Surgeon) || (employee instanceof Nurse) || (employee instanceof Doctor) {
+				if (employee.getIsAvailable() == true) {
+
+					employee.statusSummary();
+				} else {
+					System.out.println("[" + employee.getEmpName() + " is not available]");
 				}
 					
 				}
