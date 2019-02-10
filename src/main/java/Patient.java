@@ -13,13 +13,18 @@ public class Patient implements HasVitals {
 		this.patientID = patientID;
 		this.patientName = patientName;
 		this.ward = ward;
-		this.bloodLevel = BLOOD_LEVEL;
+		this.bloodLevel = (BLOOD_LEVEL - randzeroToFifteen());
 		this.healthLevel = HEALTH_LEVEL;
+	}
+
+	public int randzeroToFifteen() {
+		Random randy = new Random();
+		int randomTenTwenty = randy.nextInt(16);
+		return randomTenTwenty;
 	}
 
 	public void patientSummary() {
 		System.out.println(
-
 
 				"[Room#:" + this.getPatientID() + "]\t[Name: " + this.getPatientName() + "]\t[Ward:" + this.getWard()
 						+ "]\t[Health Rating" + this.getHealthLevel() + "]\t[Blood Level: " + this.getBloodLevel()
@@ -73,14 +78,16 @@ public class Patient implements HasVitals {
 		this.getHealthLevel();
 		this.healthLevel -= 1;
 		this.chanceIncounter();
+		this.getHealthLevel();
 	}
 
 	public void chanceIncounter() {
 
 		Random rand = new Random();
-		int randomOneToFive = rand.nextInt(5) + 1;
+		int a = rand.nextInt(10);
+		int b = rand.nextInt(20);
 
-		if (randomOneToFive == 2) {
+		if (a == 2) {
 
 			this.bite();
 			System.out.println(this.getPatientName() + " has lost a lot of blood for some reason..");
@@ -88,7 +95,5 @@ public class Patient implements HasVitals {
 		}
 
 	}
-
-
 
 }
