@@ -28,10 +28,8 @@ public class PatientCollection {
 	public void removeDeadPatients() {
 		for (Patient patient : patients.values()) {
 			if (patient.getHealthLevel() <= 0) {
-				String patientToRemove = patient.getPatientID();
-				String patientToRemoveName = patient.getPatientName();
-				patients.remove(patientToRemove);
-				System.out.println("Patient #" + patientToRemoveName + " has passed away.");
+				patients.remove(patient.getPatientID());
+				System.out.println("Patient #" + patient.getPatientName() + " has passed away.");
 			}
 		}
 

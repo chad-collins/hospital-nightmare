@@ -1,5 +1,5 @@
 
-public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
+public class Nurse extends Employee implements HasVitals, HasGeneralMedicalTraining{
 	
 	private int bloodLevel;
 	private int healthLevel;
@@ -79,8 +79,8 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
 	

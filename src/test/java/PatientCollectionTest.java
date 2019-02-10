@@ -31,6 +31,15 @@ public class PatientCollectionTest {
 	public void shouldRemovePatient() {
 		testCollection.addPatient(test2);
 		testCollection.addPatient(test1);
+		System.out.println(test1.getHealthLevel());
+		test1.isBitten();
+		test1.isBitten();
+		test1.isBitten();
+		test1.isBitten();
+		test1.isBitten();
+		test1.isBitten();
+		test1.isBitten();
+		System.out.println(test1.getHealthLevel());
 		testCollection.removeDeadPatients();
 		int answer = testCollection.getCollectionLength();
 		assertEquals(answer, 1);

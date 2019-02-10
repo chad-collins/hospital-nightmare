@@ -1,5 +1,5 @@
 
-public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
+public class Doctor extends Employee implements HasVitals, HasGeneralMedicalTraining {
 
 	private String specialty;
 	private int bloodLevel;
@@ -76,8 +76,8 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
 

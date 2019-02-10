@@ -29,10 +29,10 @@ public class NurseTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn31() {
-		testN.bite();
+	public void bloodLevelShouldReturn30() {
+		testN.isBitten();
 		int answer = testN.getBloodLevel();
-		assertEquals(answer, 31); 
+		assertEquals(answer, 30); 
 		
 	}
 

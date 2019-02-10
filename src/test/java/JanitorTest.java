@@ -38,10 +38,10 @@ public class JanitorTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn31() {
-		testJ.bite();
+	public void bloodLevelShouldReturn30() {
+		testJ.isBitten();
 		int answer = testJ.getBloodLevel();
-		assertEquals(answer, 31); 
+		assertEquals(answer, 30); 
 		
 	}
 

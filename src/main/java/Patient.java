@@ -63,8 +63,8 @@ public class Patient implements HasVitals {
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 
 	}
 
@@ -98,7 +98,7 @@ public class Patient implements HasVitals {
 
 		if (a == 2) {
 
-			this.bite();
+			this.isBitten();
 			System.out.println(this.getPatientName() + " has lost a lot of blood for some reason..");
 
 		}

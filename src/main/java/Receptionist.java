@@ -64,8 +64,8 @@ public class Receptionist extends Employee implements HasVitals{
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
 	

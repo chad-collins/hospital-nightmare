@@ -207,6 +207,7 @@ public class Application {
 							staff.allAvailMedical();
 							String staffToGetNext = input.nextLine();
 							Employee chosenStaff = staff.getEmployee(staffToGetNext);
+							chosenStaff.busy();
 							if (chosenStaff instanceof Surgeon) {
 								System.out.println("Choose: \n1-Infusion \n2-Medication");
 								int surgeonTreatment = input.nextInt();
@@ -227,6 +228,7 @@ public class Application {
 									break;
 								}
 							} else if (chosenStaff instanceof Doctor) {
+								chosenStaff.busy();
 								System.out.println("Choose: \n1-Infusion \n2-Medication");
 								String doctorTreatment = input.nextLine();
 								switch (doctorTreatment) {
@@ -252,6 +254,7 @@ public class Application {
 													+ selectedPatient.getWard() + " ward!" + " " +
 											selectedPatient.getPatientName() + " wasn't treated.");
 								} else {
+									chosenStaff.busy();
 									System.out.println("Choose: \n1-Infusion \n2-Medication");
 									String NurseTreatment = input.nextLine();
 									switch (NurseTreatment) {
@@ -287,6 +290,7 @@ public class Application {
 									System.out.println(chosenSurgeon.getEmpName() + " is not available.");
 									break;
 								} else {
+									chosenSurgeon.busy();
 									chosenSurgeon.performsSurgery(selectedSurgeryPatient);
 									System.out.println(chosenSurgeon.getEmpName() + " saved patient " + selectedSurgeryPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);

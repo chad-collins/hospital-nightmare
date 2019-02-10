@@ -1,5 +1,5 @@
 
-public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
+public class Surgeon extends Doctor implements HasVitals, HasGeneralMedicalTraining, CanPerformSurgery {
 
 	private int bloodLevel;
 	private int healthLevel;
@@ -70,8 +70,8 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 
 	}
 	
