@@ -103,15 +103,15 @@ public class Application {
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
 
-					// PATIENT SUMMARY MENU START
-					System.out.println("Reviewing your patient log:\n" + "\n-----------------"
-							+ "\nn. Dispatch someone to treat all patients."
-							+ "\nd. Dispatch someone to treat a patient in need. "
-							+ "\ns. Dispatch someone perform emergency surgury on a patient."
-							+ "\nw. Wait in your office and do nothing while those around you suffer.");
 
 					boolean interactingWithPatientLog = true;
 					while (interactingWithPatientLog) {
+						// PATIENT SUMMARY MENU START
+						System.out.println("Reviewing your patient log:\n" + "\n-----------------"
+								+ "\nn. Dispatch someone to treat all patients."
+								+ "\nd. Dispatch someone to treat a patient in need. "
+								+ "\ns. Dispatch someone perform emergency surgury on a patient."
+								+ "\nw. Wait in your office and do nothing while those around you suffer.");
 
 						String patientLogMenu = input.nextLine();
 						switch (patientLogMenu) {
@@ -138,7 +138,6 @@ public class Application {
 									admitted.treatAllPsychPatients();
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
-									break;
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
