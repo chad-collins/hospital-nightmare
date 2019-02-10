@@ -6,8 +6,8 @@ import org.junit.Test;
 public class PatientCollectionTest {
 
 	PatientCollection testCollection = new PatientCollection();
-	Patient test1 = new Patient("123", "Bob", "ICU");
-	Patient test2 = new Patient("456", "Suzy", "Maternity");
+	Patient test1 = new Patient("123", "Bob", "Psych Ward");
+	Patient test2 = new Patient("456", "Suzy", "Pain management");
 
 	@Test
 	public void shouldGetAPatient() {
@@ -26,25 +26,24 @@ public class PatientCollectionTest {
 		assertEquals(answer, 2);
 
 	}
-
+	
 	@Test
 	public void shouldRemovePatient() {
-		testCollection.addPatient(test2);
 		testCollection.addPatient(test1);
-		System.out.println(test1.getHealthLevel());
+		testCollection.addPatient(test2);
+		System.out.println(test1.getBloodLevel());
 		test1.isBitten();
 		test1.isBitten();
 		test1.isBitten();
 		test1.isBitten();
-		test1.isBitten();
-		test1.isBitten();
-		test1.isBitten();
-		System.out.println(test1.getHealthLevel());
-		testCollection.removeDeadPatients();
+		System.out.println(test1.getBloodLevel());
+		testCollection.remove();
 		int answer = testCollection.getCollectionLength();
 		assertEquals(answer, 1);
 
 	}
+	
+
 	
 
 }

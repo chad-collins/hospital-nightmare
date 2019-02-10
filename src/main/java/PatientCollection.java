@@ -1,12 +1,11 @@
 import java.util.HashMap;
-import java.util.Random;
 
-import java.util.Scanner;
 
 
 public class PatientCollection {
 	
 	private HashMap<String, Patient> patients = new HashMap<String, Patient>();
+	
 
 	public int getCollectionLength() {
 		return patients.size();
@@ -21,26 +20,6 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 	
-	public void remove(String patientID) {
-		patients.remove(patientID);
-	}
-
-	public void removeDeadPatients() {
-		for (Patient patient : patients.values()) {
-			if (patient.getHealthLevel() <= 0) {
-				patients.remove(patient.getPatientID());
-				System.out.println("Patient #" + patient.getPatientName() + " has passed away.");
-			}
-		}
-
-	}
-
-	public void infuseAllPatients() {
-		for (Patient patient : patients.values()) {
-
-		}
-	}
-
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
 			patient.treatPatient();
@@ -97,6 +76,16 @@ public class PatientCollection {
 			patient.patientTick();
 		}
 
+	}
+
+	public void remove() {
+		String patientToRemove = "";
+		for (Patient patient : patients.values()) {
+			if (patient.getBloodLevel() <= 0) {
+				patientToRemove = patient.getPatientID();
+			} 
+		} patients.remove(patientToRemove);
+		
 	}
 
 }

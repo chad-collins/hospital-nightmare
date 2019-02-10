@@ -203,12 +203,12 @@ public class Application {
 									System.out.println("");
 									nightmare.tickHospital(staff, admitted, nightmare);
 									break;
-								} else if (nurseWard == "[Pain Management]") {
-									admitted.allPainMgmtPatientSummary();
+								} else if (nurseWard == "[Pain management]") {
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
 									nightmare.tickHospital(staff, admitted, nightmare);
+									break;
 								}
 								break;
 							}
@@ -242,7 +242,7 @@ public class Application {
 
 									break;
 								}
-							} else if (chosenStaff instanceof Doctor) {
+							} else if ((chosenStaff instanceof Doctor) && (!(chosenStaff instanceof Surgeon))) {
 								chosenStaff.busy();
 								System.out.println("Choose: \n1-Infusion \n2-Medication");
 								String doctorTreatment = input.nextLine();
@@ -252,13 +252,12 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-
+									break;
 								case "2":
 									((Doctor) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-
 									break;
 								}
 							} else if (chosenStaff instanceof Nurse) {
@@ -280,9 +279,8 @@ public class Application {
 												+ selectedPatient.getPatientName());
 										break;
 									}
-								}
-								break;
-							}
+								}break;
+							} break;
 						case "s":
 							if (staff.checkSurgeonAvailability() == 0) {
 								System.out.println("No surgeons are available.");
@@ -323,11 +321,8 @@ public class Application {
 									+ "\n-Press '2' to view patients and begin patient interaction."
 									+ "\n-Type 'exit' to exit the game at any time." + "\n");
 							break;
-//							This exit option isn't working.
-//						case "exit":
-//							interactingWithPatientLog = false;
-//							forfeitCondition = true;
-//							break;
+						case "exit":
+							break;
 						default:
 							System.out.println("Stop wasting time! There are people dieing here!");
 							break;
@@ -335,7 +330,8 @@ public class Application {
 						}
 						break;
 					}
-				}
+					break;
+					} 
 			case "help":
 				System.out.println(
 						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
