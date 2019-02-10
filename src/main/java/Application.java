@@ -1,3 +1,4 @@
+import java.awt.Label;
 import java.util.Scanner;
 
 public class Application {
@@ -22,7 +23,7 @@ public class Application {
 		Employee starterDoctor2 = new Doctor("08", "Dr. Numb", true, "[Pain management]");
 
 		Employee starterSurgeon1 = new Surgeon("09", "Dr. Cuts", false, "[Psych Ward]");
-		Employee starterSurgeon2 = new Surgeon("10", "Dr. Slasher ", false, "[Pain management]");
+		Employee starterSurgeon2 = new Surgeon("10", "Dr. Slasher", false, "[Pain management]");
 
 		Employee starterNurse1 = new Nurse("11", "Nurse Bates", true, "[Psych Ward]");
 		Employee starterNurse2 = new Nurse("12", "Nurse Damien", true, "[Pain management]");
@@ -71,10 +72,13 @@ public class Application {
 		go = input.nextLine();
 		System.out.println("You plan to solve this mystery and save the lives of both your patients and staff.\n\n");
 		System.out.println("At any time, press \"help\" to learn more or \"exit\" to quit the game");
-		boolean victoryCondition = false;
 		boolean loseCondition = false;
 		boolean forfeitCondition = false;
-		while (!victoryCondition && !loseCondition && !forfeitCondition) {
+		boolean winCondition = false;
+		
+		while (!winCondition && !loseCondition && !forfeitCondition) {
+			nightmare.getVladFound();
+			winCondition = checkForWin(nightmare, winCondition);
 
 			/*
 			 * MAIN MENU BEGINS HERE
@@ -100,13 +104,20 @@ public class Application {
 			case "2":
 				boolean interactingWithPatientSummary = true;
 				while (interactingWithPatientSummary) {
-
+					winCondition = checkForWin(nightmare, winCondition);
+					if (winCondition == true) {
+						interactingWithPatientSummary = false;
+					}
 					System.out.println("PATIENT SUMMARY" + "\n-----------------");
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
 
 					boolean interactingWithPatientLog = true;
 					while (interactingWithPatientLog) {
+						winCondition = checkForWin(nightmare, winCondition);
+						if (winCondition == true) {
+							interactingWithPatientLog = false;
+						}
 						// PATIENT SUMMARY MENU START
 						System.out.println("Reviewing your patient log:\n" + "\n-----------------"
 								+ "\nn. Dispatch someone to treat all patients."
@@ -144,13 +155,15 @@ public class Application {
 								selectedStaff.busy();
 								admitted.treatAllPatients();
 								System.out.println("All patients were treated.");
-								nightmare.tickHospital(staff, admitted);
+								nightmare.tickHospital(staff, admitted, nightmare);
+						
+								if (winCondition ==true) {interactingWithPatientLog = false;};
 								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Surgeon) {
 								System.out.println(
 										"Surgeons don't get paid to walk the ward." + "\nNo patients were treated.");
-								nightmare.tickHospital(staff, admitted);
+								nightmare.tickHospital(staff, admitted, nightmare);
 								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Nurse) {
@@ -160,14 +173,14 @@ public class Application {
 									admitted.treatAllPsychPatients();
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
-									nightmare.tickHospital(staff, admitted);
+									nightmare.tickHospital(staff, admitted, nightmare);
 									break;
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
-									nightmare.tickHospital(staff, admitted);
+									nightmare.tickHospital(staff, admitted, nightmare);
 									break;
 								}
 								break;
@@ -292,6 +305,7 @@ public class Application {
 				break;
 			default:
 				System.out.println("\nPlease try again.\n");
+
 				break;
 			}
 
@@ -309,7 +323,7 @@ public class Application {
 						+ "\nIn your office a shadowy figure waits for you."
 						+ "\nCredits: Jessica Wright & Chad Collins\n");
 			}
-			if (victoryCondition) {
+			if (winCondition) {
 				System.out.println("\nYou drive a spike into the vampire's heart. "
 						+ "\nIt's a long fight, but the vampire turns to dust. "
 						+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
@@ -319,5 +333,18 @@ public class Application {
 			}
 			
 		}
+
+		Label copyrightL = new Label("\u00a9");
+		System.out.println("\nCredits:\n" 
+		+ "Jessica Wright & Chad Collins\n"
+		+ "All Rights Reserved. ©2019");
+	}
+
+	public static boolean checkForWin(Hospital nightmare, boolean winCondition) {
+		if (nightmare.getVladFound() == true) {
+			winCondition = true;
+		}
+		return winCondition;
+
 	}
 }

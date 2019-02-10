@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.Random;
 
+import java.util.Scanner;
+
+
 public class PatientCollection {
 	
 	private HashMap<String, Patient> patients = new HashMap<String, Patient>();
@@ -39,7 +42,7 @@ public class PatientCollection {
 
 		}
 	}
-	
+
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
 			patient.treatPatient();
@@ -72,7 +75,7 @@ public class PatientCollection {
 			}
 		}
 	}
-	
+
 	public void treatAllPsychPatients() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Psych Ward]")) {
@@ -81,7 +84,7 @@ public class PatientCollection {
 			}
 		}
 	}
-	
+
 	public void treatAllPainMgmtPatients() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Pain management]")) {
@@ -90,7 +93,7 @@ public class PatientCollection {
 			}
 		}
 	}
-	
+
 	public void patientTickAll() {
 		for (Patient patient : patients.values()) {
 			patient.patientTick();
@@ -98,5 +101,8 @@ public class PatientCollection {
 
 	}
 
-	}
+}
+
+	
+
 
