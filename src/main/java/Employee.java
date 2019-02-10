@@ -49,22 +49,15 @@ public abstract class Employee {
 		isAvailable = false;
 
 	}
-
-	public void empTick() {
-		tickBusy();
-	}
-
-	private void tickBusy() {
-		if (!this.isAvailable) {
-			Random h = new Random();
-			int maybeBusy = h.nextInt(6);
-
-			if (maybeBusy == 6) {
-				this.isAvailable = true;
-			}
-
-		}
-	}
+	/*
+	 * public void empTick() { tickBusy(); }
+	 * 
+	 * private void tickBusy() { if (this.getIsAvailable() == false) { Random h =
+	 * new Random(); int maybeBusy = h.nextInt(1); if (maybeBusy == 2) {
+	 * this.isAvailable = true; }
+	 * 
+	 * } }
+	 */
 
 	public void statusSummary() {
 		System.out.println(

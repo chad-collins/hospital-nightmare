@@ -131,6 +131,7 @@ public class Application {
 								selectedStaff.busy();
 								admitted.treatAllPatients();
 								System.out.println("All patients were treated.");
+								tickHospital(staff,admitted);
 								System.out.println("");
 								admitted.allPatientSummary();
 								break;
@@ -141,12 +142,14 @@ public class Application {
 									admitted.treatAllPsychPatients();
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
+									tickHospital(staff,admitted);
 									admitted.allPsychPatientSummary();
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
+									tickHospital(staff,admitted);
 									admitted.allPainMgmtPatientSummary();
 									break;
 								}

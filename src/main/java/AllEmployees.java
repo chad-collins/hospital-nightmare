@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Random;
 
 public class AllEmployees {
 
@@ -90,25 +91,34 @@ public class AllEmployees {
 			}
 		}
 	
-	public void checkStaffAvailability() {
-		for (Employee employee : employees.values()) {
-			if (employee instanceof Surgeon) || (employee instanceof Nurse) || (employee instanceof Doctor) {
-				if (employee.getIsAvailable() == true) {
-
-					employee.statusSummary();
-				} else {
-					System.out.println("[" + employee.getEmpName() + " is not available]");
-				}
-					
-				}
-			}
-		}
+//	public void checkStaffAvailability() {
+//		for (Employee employee : employees.values()) {
+//			if (employee instanceof Surgeon) || (employee instanceof Nurse) || (employee instanceof Doctor) {
+//				if (employee.getIsAvailable() == true) {
+//
+//					employee.statusSummary();
+//				} else {
+//					System.out.println("[" + employee.getEmpName() + " is not available]");
+//				}
+//					
+//				}
+//			}
+//		}
 	
 	public void empTickAll() {
 		for (Employee employee : employees.values()) {
-			employee.empTick();
+			if (employee.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(3);
+				if (maybeBusy == 1) 
+					employee.notBusy();}
 		}
+	}
+}
+
+				
 		
-	}
-	}
+
+		
+
 
