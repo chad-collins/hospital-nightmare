@@ -249,7 +249,7 @@ public class Application {
 						case "s":
 							if (staff.checkSurgeonAvailability() == 0) {
 								System.out.println("No surgeons are available.");
-								nightmare.tickHospital(staff, admitted);
+								nightmare.tickHospital(staff, admitted, nightmare);
 								System.out.println(" ");
 								break;
 							} else {
