@@ -13,7 +13,7 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Surgeon";
-		this.salary = 120;
+		this.salary = 120000;
 
 	}
 

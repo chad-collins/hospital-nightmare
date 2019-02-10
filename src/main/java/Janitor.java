@@ -5,13 +5,16 @@ public class Janitor extends Employee implements HasVitals{
 	private int healthLevel;
 	private int salary;
 	private String empTitle;
+	private Boolean isAvailable;
+	
 	public Janitor(String empID, String empName, boolean isAvailable) {
 		super(empID, empName, isAvailable);
 		this.empTitle = "Janitor";
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
-		this.salary = 40;
+		this.salary = 40000;
 		this.empTitle = "Janitor";
+		this.isAvailable = isAvailable;
 		
 	}
 	
@@ -36,7 +39,9 @@ public class Janitor extends Employee implements HasVitals{
 	public String getEmpTitle() {
 		return empTitle;
 	}
-	public int getSalary() {
+	
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 
@@ -57,6 +62,7 @@ public class Janitor extends Employee implements HasVitals{
 		this.bloodLevel -= 9;
 		
 	}
+
 	
 
 }

@@ -13,7 +13,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Doctor ";
-		this.salary = 90;
+		this.salary = 90000;
 	}
 
 	public String getSpecialty() {
@@ -49,7 +49,8 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		return empTitle;
 	}
 
-	public int getSalary() {
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 	
@@ -79,4 +80,5 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		this.bloodLevel -= 9;
 		
 	}
+
 }

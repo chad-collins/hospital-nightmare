@@ -6,14 +6,17 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	private String specialty;
 	private String empTitle;
 	private int salary;
+	private boolean isAvailable;
 	
 	public Nurse(String empID, String empName, boolean isAvailable, String specialty) {
 		super(empID, empName, isAvailable);
+		this.empTitle = "Nurse";
 		this.specialty = specialty;
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Nurse  ";
-		this.salary = 50;
+		this.salary = 50000;
+		this.isAvailable = isAvailable;
 	}
 	
 	public int getBloodLevel() {
@@ -42,7 +45,9 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	public String getEmpTitle() {
 		return empTitle;
 	}
-	public int getSalary() {
+	
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 
