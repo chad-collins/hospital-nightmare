@@ -1,5 +1,5 @@
 
-public class Nurse extends Employee implements HasVitals{
+public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	
 	private int bloodLevel;
 	private int healthLevel;
@@ -10,7 +10,7 @@ public class Nurse extends Employee implements HasVitals{
 	public Nurse(String empID, String empName, boolean isAvailable, String specialty) {
 		super(empID, empName, isAvailable);
 		this.specialty = specialty;
-		this.bloodLevel = BLOOD_LEVEL;
+		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Nurse  ";
 		this.salary = 50;
@@ -21,7 +21,18 @@ public class Nurse extends Employee implements HasVitals{
 	}
 	
 	public int getHealthLevel() {
-		return this.healthLevel;
+		if (this.bloodLevel == 0) {
+			this.healthLevel = 0;
+		} else if (this.bloodLevel > 0 && this.bloodLevel <= 19) {
+			this.healthLevel = 5;
+		} else if (this.bloodLevel >= 20 && this.bloodLevel <= 29) {
+			this.healthLevel = 10;
+		} else if (this.bloodLevel >= 30 && this.bloodLevel <= 39) {
+			this.healthLevel = 15;
+		} else if (this.bloodLevel >= 40 && this.bloodLevel <= 49) {
+			this.healthLevel = 20;
+		}
+		return healthLevel;
 	}
 	
 	public String getSpecialty() {
@@ -37,20 +48,9 @@ public class Nurse extends Employee implements HasVitals{
 
 	public void busy() {
 		super.busy();
-		
 	}
 
-	@Override
-	public void bloodIsDrawn() {
-		this.bloodLevel -= 5;
-		
-	}
-
-	@Override
-	public void receivesCare() {
-		this.healthLevel += 10;
-		
-	}
+	
 	public String busyStatus() {
 		if (!getIsAvailable()) {
 			return "WITH A PATIENT";
@@ -58,5 +58,28 @@ public class Nurse extends Employee implements HasVitals{
 			return "AVAILABLE";
 		}
 	}
+
+	@Override
+	public int infuse() {
+		System.out.println("Nurses aren't trained on infusion!");
+		return 0;
+	}
+	
+	@Override
+	public int medicatePatient() {
+		return 10;
+		
+	}
+
+	@Override
+	public void bite() {
+		this.bloodLevel -= 9;
+		
+	}
+	
+
+		
+		
+	
 
 }

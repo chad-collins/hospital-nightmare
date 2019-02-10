@@ -8,8 +8,8 @@ public class PatientCollection {
 		return patients.size();
 	}
 
-	public void getPatient(String patientID) {
-		patients.get(patientID);
+	public Patient getPatient(String patientID) {
+		return patients.get(patientID);
 
 	}
 
@@ -17,22 +17,80 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 
-	public void removePatient(String patientToRemove) {
+	public void removeDeadPatients() {
 		for (Patient patient : patients.values()) {
 			if (patient.getHealthLevel() <= 0) {
-				patientToRemove = patient.getPatientID();
+				String patientToRemove = patient.getPatientID();
+				String patientToRemoveName = patient.getPatientName();
+				patients.remove(patientToRemove);
+				System.out.println("Patient #" + patientToRemoveName + " has passed away.");
 			}
 		}
-		patients.remove(patientToRemove);
-		System.out.println("Patient #" + patientToRemove + " has passed away.");
 
 	}
+
+	public void infuseAllPatients() {
+		for (Patient patient : patients.values()) {
+
+		}
+	}
 	
+	public void treatAllPatients() {
+		for (Patient patient : patients.values()) {
+			patient.treatPatient();
+		}
+	}
+
 	public void allPatientSummary() {
 		for (Patient patient : patients.values()) {
-			
-			patient.patientSummary();;
-		}}
+
+			patient.patientSummary();
+			;
+		}
+	}
+
+	public void allPsychPatientSummary() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Psych Ward]")) {
+				patient.patientSummary();
+				;
+				break;
+			}
+		}
+	}
+
+	public void allPainMgmtPatientSummary() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Pain management]")) {
+				patient.patientSummary();
+				break;
+			}
+		}
+	}
 	
+	public void treatAllPsychPatients() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Psych Ward]")) {
+				patient.treatPatient();
+				break;
+			}
+		}
+	}
+	
+	public void treatAllPainMgmtPatients() {
+		for (Patient patient : patients.values()) {
+			while (patient.getWard().equals("[Pain management]")) {
+				patient.treatPatient();
+				break;
+			}
+		}
+	}
+	
+	public void patientTickAll() {
+		for (Patient patient : patients.values()) {
+			patient.patientTick();
+		}
+
+	}
 
 }

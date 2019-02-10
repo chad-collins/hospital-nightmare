@@ -37,20 +37,13 @@ public class ReceptionistTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn15() {
-		testR.bloodIsDrawn();
+	public void bloodLevelShouldReturn31() {
+		testR.bite();
 		int answer = testR.getBloodLevel();
-		assertEquals(answer, 15); 
+		assertEquals(answer, 31); 
 		
 	}
-	
-	@Test
-	public void HealthLevelShouldReturn20() {
-		testR.receivesCare();
-		int answer = testR.getHealthLevel();
-		assertEquals(answer, 20); 
-		
-	}
+
 	
 	@Test
 	public void BusyStatusShouldReturnSout() {

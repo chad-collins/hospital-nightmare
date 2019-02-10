@@ -31,18 +31,11 @@ public class PatientTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn15() {
-		test.bloodIsDrawn();
+	public void bloodLevelShouldReturn11() {
+		test.bite();
 		int answer = test.getBloodLevel();
-		assertEquals(answer, 15); 
+		assertEquals(answer, 11); 
 		
 	}
-	
-	@Test
-	public void HealthLevelShouldReturn20() {
-		test.receivesCare();
-		int answer = test.getHealthLevel();
-		assertEquals(answer, 20); 
-		
-	}
+
 }
