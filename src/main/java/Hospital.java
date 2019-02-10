@@ -1,12 +1,16 @@
 import java.util.Random;
+
 import java.util.Scanner;
+
 
 public class Hospital {
 	Scanner guess = new Scanner(System.in);
 
 	Boolean cleanHospital;
+
 	private boolean vladFound = false;
 	
+
 	public Hospital() {
 		this.cleanHospital = true;
 	}
@@ -35,6 +39,7 @@ public class Hospital {
 		return vladFound;
 	}
 
+
 	public void findVlad() {
 
 		Random r = new Random();
@@ -58,4 +63,23 @@ public class Hospital {
 		
 		
 	}
+
+
+//	public int roomNumbers(PatientCollection admitted) {
+//		int numOfRooms = admitted.getCollectionLength();
+//		return numOfRooms;
+//
+//	}
+//
+//	public void findVlad() {
+//		Random r = new Random();
+//		int chanceToCatch = r.nextInt(10) + 1;
+//		if (chanceToCatch == 7) {
+//			System.out.println("You find yourself suspecting that something is lurking in either the Psych Ward."
+//					+ "Which room will you check? Choose room 1 - " + roomNumbers(admitted) + ".");
+//		}
+//		// it doesnt like the roomNumbers method in the printLn
+//
+//	}
+
 

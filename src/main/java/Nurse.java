@@ -60,15 +60,17 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	}
 
 	@Override
-	public int infuse() {
-		System.out.println("Nurses aren't trained on infusion!");
-		return 0;
+	public void infuse(Patient patient) {
+		patient.receiveInfusion(0);
+		System.out.println("Nurses aren't trained in infusion!");
+		return;
+		
 	}
 	
-	@Override
-	public int medicatePatient() {
-		return 10;
-		
+	@ Override
+	public void medicatePatient(Patient patient) {
+		patient.medicatePatient(5);
+		return;
 	}
 
 	@Override

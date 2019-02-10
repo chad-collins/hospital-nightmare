@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Random;
+
 import java.util.Scanner;
 
+
 public class PatientCollection {
-
 	
-
 	private HashMap<String, Patient> patients = new HashMap<String, Patient>();
 
 	public int getCollectionLength() {
@@ -19,6 +19,10 @@ public class PatientCollection {
 
 	public void addPatient(Patient x) {
 		patients.put(x.getPatientID(), x);
+	}
+	
+	public void remove(String patientID) {
+		patients.remove(patientID);
 	}
 
 	public void removeDeadPatients() {
@@ -97,5 +101,8 @@ public class PatientCollection {
 
 	}
 
-
 }
+
+	
+
+

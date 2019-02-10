@@ -31,10 +31,11 @@ public class PatientCollectionTest {
 	public void shouldRemovePatient() {
 		testCollection.addPatient(test2);
 		testCollection.addPatient(test1);
-		testCollection.removePatient(test1.getPatientID());
+		testCollection.removeDeadPatients();
 		int answer = testCollection.getCollectionLength();
 		assertEquals(answer, 1);
 
 	}
+	
 
 }

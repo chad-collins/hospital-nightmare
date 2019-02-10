@@ -141,6 +141,12 @@ public class Application {
 							Employee selectedStaff = staff.getEmployee(staffToGet);
 							if (staffToGet.equals("exit")) {
 								break;
+							} else if (staffToGet.equals("help")) {
+								System.out.println("\n" + "-HELP MENU-"
+										+ "\n-Press '1' to display your hospital staff's metrics and availability."
+										+ "\n-Press '2' to view patients and begin patient interaction."
+										+ "\n-Type 'exit' to exit the game at any time." + "\n");
+								break;
 							} else if (selectedStaff.getIsAvailable() == false) {
 								System.out.println("That employee is not available.");
 								System.out.println("");
@@ -184,7 +190,6 @@ public class Application {
 							admitted.allPatientSummary();
 							String patientToGet = input.nextLine();
 							Patient selectedPatient = admitted.getPatient(patientToGet);
-							String patientsWard = selectedPatient.getWard();
 							System.out.println("Which employee should be dispatched to "
 									+ selectedPatient.getPatientName() + " ?");
 							staff.allAvailMedical();
@@ -195,13 +200,52 @@ public class Application {
 								int surgeonTreatment = input.nextInt();
 								switch (surgeonTreatment) {
 								case 1:
-									// can't figure how to infuse one patient using the surgeon's return value for
-									// infuse()
+									((Surgeon) chosenStaff).infuse(selectedPatient);
+									System.out.println(chosenStaff.getEmpName() + " has saved "
+											+ selectedPatient.getPatientName());
+									break;
+								case 2:
+									((Surgeon) chosenStaff).medicatePatient(selectedPatient);
+									System.out.println(chosenStaff.getEmpName() + " has saved "
+											+ selectedPatient.getPatientName());
+									break;
 								}
-							}
-
-							break;// Select Doctor Break
-
+							} else if (chosenStaff instanceof Doctor) {
+								System.out.println("Choose: \n1-Infusion \n2-Medication");
+								String doctorTreatment = input.nextLine();
+								switch (doctorTreatment) {
+								case "1":
+									((Doctor) chosenStaff).infuse(selectedPatient);
+									System.out.println(chosenStaff.getEmpName() + " has saved "
+											+ selectedPatient.getPatientName());
+									break;
+								case "2":
+									((Doctor) chosenStaff).medicatePatient(selectedPatient);
+									System.out.println(chosenStaff.getEmpName() + " has saved "
+											+ selectedPatient.getPatientName());
+									break;
+								}
+							} else if (chosenStaff instanceof Nurse) {
+								if (!chosenStaff.getSpecialty().equals(selectedPatient.getWard())) {
+									System.out.println(
+											"The " + chosenStaff.getSpecialty() + " nurse can't treat patients on the "
+													+ selectedPatient.getWard() + " ward!" + " " +
+											selectedPatient.getPatientName() + " wasn't treated.");
+								} else {
+									System.out.println("Choose: \n1-Infusion \n2-Medication");
+									String NurseTreatment = input.nextLine();
+									switch (NurseTreatment) {
+									case "1":
+										System.out.println("Nurses aren't trained in infusion!");
+										break;
+									case "2":
+										((Nurse) chosenStaff).medicatePatient(selectedPatient);
+										System.out.println(chosenStaff.getEmpName() + " has treated "
+												+ selectedPatient.getPatientName());
+										break;
+									}
+								} break;
+								}
 						case "s":
 							System.out.println("Which patient needs emergency surgery?");
 							break;// Select Patient Break
@@ -216,17 +260,19 @@ public class Application {
 									+ "\n-Press '2' to view patients and begin patient interaction."
 									+ "\n-Type 'exit' to exit the game at any time." + "\n");
 							break;
+//							This exit option isn't working.
+//						case "exit":
+//							interactingWithPatientLog = false;
+//							forfeitCondition = true;
+//							break;
 						default:
 							System.out.println("Stop wasting time! There are people dieing here!");
 							break;
 
 						}
 						break;
-
 					}
-
 				}
-
 			case "help":
 				System.out.println(
 						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
@@ -235,31 +281,38 @@ public class Application {
 				break;
 			case "exit":
 				forfeitCondition = true;
-				break;// Main menu exit case
-
-			// Main default case
+				break;
 			default:
 				System.out.println("\nPlease try again.\n");
-				break;// Main menu default break
-				}
-			winCondition = checkForWin(nightmare, winCondition);
-		} // GameRunning Loop Ends
-		if (forfeitCondition) {
-			System.out.println("\nYou have resigned your duties but kept your life. "
-					+ "\nPatients will suffer, and you will be haunted by their memory.");
-		}
-		if (loseCondition) {
-			System.out.println("\nYou failed to contain whatever lurked in the hospital. "
-					+ "\nYour patients and staff have all been killed under your guidance. "
-					+ "\nIn your office a shadowy figure waits for you.");
-		}
-		if (winCondition) {
-			System.out.println("\nYou drive a spike into the vampire's heart. "
-					+ "\nIt's a long fight, but the vampire turns to dust. "
-					+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
-					+ "\nThe only injury you receive is a small bite on the back of your neck.");
 
+				break;
+			}
+
+			// GameRunning Loop Ends
+			if (forfeitCondition)
+
+			{
+				System.out.println("\nYou have resigned your duties but kept your life. "
+						+ "\nPatients will suffer, and you will be haunted by their memory."
+						+ "\nCredits: Jessica Wright & Chad Collins\n");
+			}
+			if (loseCondition) {
+				System.out.println("\nYou failed to contain whatever lurked in the hospital. "
+						+ "\nYour patients and staff have all been killed under your guidance. "
+						+ "\nIn your office a shadowy figure waits for you."
+						+ "\nCredits: Jessica Wright & Chad Collins\n");
+			}
+			if (winCondition) {
+				System.out.println("\nYou drive a spike into the vampire's heart. "
+						+ "\nIt's a long fight, but the vampire turns to dust. "
+						+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
+						+ "\nThe only injury you receive is a small bite on the back of your neck."
+						+ "\nCredits: Jessica Wright & Chad Collins\n");
+
+			}
+			
 		}
+
 		Label copyrightL = new Label("\u00a9");
 		System.out.println("\nCredits:\n" 
 		+ "Jessica Wright & Chad Collins\n"
@@ -271,5 +324,6 @@ public class Application {
 			winCondition = true;
 		}
 		return winCondition;
+
 	}
 }
