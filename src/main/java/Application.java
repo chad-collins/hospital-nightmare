@@ -95,6 +95,7 @@ public class Application {
 						+ "\n\nHOSPITAL STATUS: " + nightmare.getCleanHospital() + "\n-----------------"
 						+ "\n\nALL STAFF" + "\n-----------------");
 				staff.allempStatusSummary();
+/////////Start chad code
 				System.out.println();
 				System.out.println("j. Dispatch Janitor\nb.Back out.");
 				String janitorMenu = input.nextLine();
@@ -114,6 +115,19 @@ public class Application {
 				
 				}
 				break;// Main menu case 1 break
+///////End chad code and start Jess code
+				System.out.println("-----------------\n");
+				System.out.println("Select an employee ID for availability or press exit to return to the main menu:");
+				String mainMenuChoice = input.nextLine();
+				if (mainMenuChoice.equals("exit")) {
+					break;
+				} else {
+					Employee chosenEmployee = staff.getEmployee(mainMenuChoice);
+					System.out.println(chosenEmployee);
+					System.out.println("");
+					break;// Main menu case 1 break
+				}
+/////////end Jess code
 
 			// Main case 2, Patient Summary top Menu
 			case "2":
@@ -331,21 +345,18 @@ public class Application {
 
 			{
 				System.out.println("\nYou have resigned your duties but kept your life. "
-						+ "\nPatients will suffer, and you will be haunted by their memory."
-						+ "\nCredits: Jessica Wright & Chad Collins\n");
+						+ "\nPatients will suffer, and you will be haunted by their memory.");
 			}
 			if (loseCondition) {
 				System.out.println("\nYou failed to contain whatever lurked in the hospital. "
 						+ "\nYour patients and staff have all been killed under your guidance. "
-						+ "\nIn your office a shadowy figure waits for you."
-						+ "\nCredits: Jessica Wright & Chad Collins\n");
+						+ "\nIn your office a shadowy figure waits for you.");
 			}
 			if (winCondition) {
 				System.out.println("\nYou drive a spike into the vampire's heart. "
 						+ "\nIt's a long fight, but the vampire turns to dust. "
 						+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
-						+ "\nThe only injury you receive is a small bite on the back of your neck."
-						+ "\nCredits: Jessica Wright & Chad Collins\n");
+						+ "\nThe only injury you receive is a small bite on the back of your neck.");
 
 			}
 			

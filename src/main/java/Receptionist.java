@@ -15,7 +15,7 @@ public class Receptionist extends Employee implements HasVitals{
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Receptionist";
-		this.salary =45;
+		this.salary = 45000;
 		
 	}
 	
@@ -23,6 +23,11 @@ public class Receptionist extends Employee implements HasVitals{
 		return empTitle;
 	}
 	public int getSalary() {
+		return salary;
+	}
+	
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 	

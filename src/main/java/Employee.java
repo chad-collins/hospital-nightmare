@@ -36,9 +36,7 @@ public abstract class Employee {
 		return isAvailable;
 	}
 
-	public int getSalary() {
-		return salary;
-	}
+	abstract public int calculatePay();
 
 	public void notBusy() {
 		isAvailable = true;
@@ -61,10 +59,15 @@ public abstract class Employee {
 
 	public void statusSummary() {
 		System.out.println(
-				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[CURRENTLY: "
-						+ this.busyStatus() + "]\t[Salary: $" + this.getSalary() + ",000]\t" + this.getSpecialty());
+				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[Salary: $" + this.calculatePay() + "]\t" + this.getSpecialty());
 
 	}
+	
+	public String toString() {
+		return "[" + empName + "]" + "\t[CURRENTLY AVAILABLE: "
++ isAvailable + "]";
+	}
+
 
 	public String busyStatus() {
 
