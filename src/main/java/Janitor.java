@@ -5,18 +5,23 @@ public class Janitor extends Employee implements HasVitals{
 	private int healthLevel;
 	private int salary;
 	private String empTitle;
-	public Janitor(String empID, String empName, boolean isAvailable) {
+	private int sweepSkill;
+	public Janitor(String empID, String empName, boolean isAvailable, int sweepSkill) {
 		super(empID, empName, isAvailable);
 		this.empTitle = "Janitor";
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.salary = 40;
 		this.empTitle = "Janitor";
+		this.sweepSkill = sweepSkill;
 		
 	}
 	
 	public int getBloodLevel() {
 		return this.bloodLevel;
+	}
+	public int getSweepSkill(){
+		return sweepSkill;
 	}
 	
 	public int getHealthLevel() {

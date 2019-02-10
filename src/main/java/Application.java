@@ -6,7 +6,7 @@ public class Application {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		Hospital nightmare = new Hospital();
+		Hospital nightmare = new Hospital(5);
 		/*
 		 * Populate the hospital with patients and employees
 		 */
@@ -28,8 +28,8 @@ public class Application {
 		Employee starterNurse1 = new Nurse("11", "Nurse Bates", true, "[Psych Ward]");
 		Employee starterNurse2 = new Nurse("12", "Nurse Damien", true, "[Pain management]");
 
-		Employee starterJanitor = new Janitor("13", "Zeke", true);
-		Employee starterVampireJanitor = new VampireJanitor("14", "Vlad", true);
+		Employee starterJanitor = new Janitor("13", "Zeke", true, 2);
+		Employee starterVampireJanitor = new VampireJanitor("14", "Vlad", true, 1);
 
 		Employee starterReceptionist = new Receptionist("15", "Pam", true);
 
@@ -76,9 +76,8 @@ public class Application {
 		boolean forfeitCondition = false;
 		boolean winCondition = false;
 		
-		while (!winCondition && !loseCondition && !forfeitCondition) {
-			nightmare.getVladFound();
-			winCondition = checkForWin(nightmare, winCondition);
+		while (!loseCondition && !forfeitCondition) {
+			
 
 			/*
 			 * MAIN MENU BEGINS HERE
@@ -94,30 +93,40 @@ public class Application {
 			case "1":
 				System.out.println("\n" + "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
 						+ "\n\nHOSPITAL STATUS: " + nightmare.getCleanHospital() + "\n-----------------"
-						+ "\n\nSTAFF INFORMATION" + "\n-----------------");
-				System.out.println("");
+						+ "\n\nALL STAFF" + "\n-----------------");
 				staff.allempStatusSummary();
-				System.out.println("-----------------\n");
+				System.out.println();
+				System.out.println("j. Dispatch Janitor\nb.Back out.");
+				String janitorMenu = input.nextLine();
+				switch(janitorMenu) {
+				case "j": System.out.println(staff.checkJanitorAvailability() + "\nWhich Janitor?");
+							String whichJanitor = input.nextLine();
+							Janitor selectedJanitor = (Janitor) staff.getEmployee(whichJanitor);
+							int sweepThisMuch = selectedJanitor.getSweepSkill();
+					
+							nightmare.beCleaned(sweepThisMuch);
+							System.out.println(selectedJanitor.getEmpName() + "is sweeping.");
+							System.out.println(selectedJanitor.getSweepSkill());
+							System.out.println(nightmare.getCleanHospital());
+							selectedJanitor.busy();
+							nightmare.tickHospital(staff, admitted, nightmare);
+				
+				
+				}
 				break;// Main menu case 1 break
 
 			// Main case 2, Patient Summary top Menu
 			case "2":
 				boolean interactingWithPatientSummary = true;
 				while (interactingWithPatientSummary) {
-					checkForWin(nightmare, winCondition);
-					if (winCondition = true) {
-						interactingWithPatientSummary = false;
-					}
+				
 					System.out.println("PATIENT SUMMARY" + "\n-----------------");
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
 
 					boolean interactingWithPatientLog = true;
 					while (interactingWithPatientLog) {
-						checkForWin(nightmare, winCondition);
-						if (winCondition = true) {
-							interactingWithPatientLog = false;
-						}
+
 						// PATIENT SUMMARY MENU START
 						System.out.println("Reviewing your patient log:\n" + "\n-----------------"
 								+ "\nn. Dispatch someone to treat all patients."
@@ -156,15 +165,13 @@ public class Application {
 								admitted.treatAllPatients();
 								System.out.println("All patients were treated.");
 								nightmare.tickHospital(staff, admitted, nightmare);
-						
-								if (winCondition =true) {interactingWithPatientLog = false;};
 								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Surgeon) {
 								System.out.println(
 										"Surgeons don't get paid to walk the ward." + "\nNo patients were treated.");
 								nightmare.tickHospital(staff, admitted, nightmare);
-								if (winCondition =true) {interactingWithPatientLog = false;};
+	
 								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Nurse) {
@@ -175,16 +182,13 @@ public class Application {
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
 									break;
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
-									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
-									break;
+									nightmare.tickHospital(staff, admitted, nightmare);	
 								}
 								break;
 							}
@@ -207,14 +211,14 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
+								
 									break;
 								case 2:
 									((Surgeon) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
+									
 									break;
 								}
 							} else if (chosenStaff instanceof Doctor) {
@@ -226,14 +230,13 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
-									break;
+								
 								case "2":
 									((Doctor) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
+								
 									break;
 								}
 							} else if (chosenStaff instanceof Nurse) {
@@ -261,7 +264,7 @@ public class Application {
 							if (staff.checkSurgeonAvailability() == 0) {
 								System.out.println("No surgeons are available.");
 								nightmare.tickHospital(staff, admitted, nightmare);
-								if (winCondition =true) {interactingWithPatientLog = false;};
+								
 								System.out.println(" ");
 								break;
 							} else {
@@ -281,15 +284,13 @@ public class Application {
 									chosenSurgeon.performsSurgery(selectedSurgeryPatient);
 									System.out.println(chosenSurgeon.getEmpName() + " saved patient " + selectedSurgeryPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									if (winCondition =true) {interactingWithPatientLog = false;};
+								
 									break;
 								}
 							}
 						case "w":
 							System.out.println("You've made a selfish choice...");
 							nightmare.tickHospital(staff, admitted, nightmare);
-							if (winCondition =true) {interactingWithPatientLog = false;};
-							interactingWithPatientSummary = false;
 							break;
 						case "help":
 							System.out.println("\n" + "-HELP MENU-"
@@ -359,8 +360,8 @@ public class Application {
 	public static boolean checkForWin(Hospital nightmare, boolean winCondition) {
 		if (nightmare.getVladFound() == true) {
 			winCondition = true;
-		}
-		return winCondition;
+			return !winCondition;
+		}else {return winCondition;}
 
 	}
 }

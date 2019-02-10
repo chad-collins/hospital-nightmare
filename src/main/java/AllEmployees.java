@@ -136,6 +136,19 @@ public class AllEmployees {
 		int availableMedicalStaff = checkDoctorAvailability() + checkNurseAvailability();
 		return availableMedicalStaff;
 	}
+	
+	public int checkJanitorAvailability() {
+		int sum = 0;
+		int x = 0;
+		for (Employee janitor : employees.values()) {
+			if (janitor instanceof Janitor) {
+				if (janitor.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}return sum;
+	}
 
 	public int checkDoctorAvailability() {
 		int sum = 0;
@@ -179,16 +192,60 @@ public class AllEmployees {
 		return sum;
 	}
 
+	/*
+	 * public void empTickAll() { for (Employee employee : employees.values()) { if
+	 * (employee.getIsAvailable() == false) { Random h = new Random(); int maybeBusy
+	 * = h.nextInt(3); if (maybeBusy == 1) employee.notBusy(); } } }
+	 */
+	
 	public void empTickAll() {
-		for (Employee employee : employees.values()) {
-			if (employee.getIsAvailable() == false) {
+		tickJanitorsAll();
+		tickNursesAll();
+		tickDoctorsAll();
+		tickReceptionistsAll();
+	}
+	public void tickJanitorsAll() {
+		for (Employee j : employees.values()) {
+			if(j instanceof Janitor)
+			if (j.getIsAvailable() == false) {
 				Random h = new Random();
 				int maybeBusy = h.nextInt(3);
 				if (maybeBusy == 1)
-					employee.notBusy();
+					j.notBusy();
 			}
 		}
 	}
-
-
+	public void tickNursesAll() {
+		for (Employee n : employees.values()) {
+			if(n instanceof Nurse)
+			if (n.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(5);
+				if (maybeBusy == 4)
+					n.notBusy();
+			}
+		}
+	}
+	public void tickDoctorsAll() {
+		for (Employee d : employees.values()) {
+			if(d instanceof Doctor)
+			if (d.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(4);
+				if (maybeBusy == 3)
+					d.notBusy();
+			}
+		}
+	}
+	public void tickReceptionistsAll() {
+		for (Employee r : employees.values()) {
+			if(r instanceof Janitor)
+			if (r.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(4);
+				if (maybeBusy == 3)
+					r.notBusy();
+			}
+		}
+	}
 }
