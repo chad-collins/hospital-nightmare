@@ -7,6 +7,7 @@ public class Patient implements HasVitals {
 	private String ward;
 	private int bloodLevel;
 	private int healthLevel;
+	private boolean isDead;
 
 	public Patient(String patientID, String patientName, String ward) {
 
@@ -15,6 +16,7 @@ public class Patient implements HasVitals {
 		this.ward = ward;
 		this.bloodLevel = (BLOOD_LEVEL - randzeroToFifteen());
 		this.healthLevel = HEALTH_LEVEL;
+		this.isDead = isDead;
 	}
 
 	public int randzeroToFifteen() {
@@ -48,7 +50,7 @@ public class Patient implements HasVitals {
 	}
 
 	public int getHealthLevel() {
-		if (this.bloodLevel == 0) {
+		if (this.bloodLevel <= 0) {
 			this.healthLevel = 0;
 		} else if (this.bloodLevel > 0 && this.bloodLevel <= 19) {
 			this.healthLevel = 5;
@@ -62,6 +64,19 @@ public class Patient implements HasVitals {
 		return healthLevel;
 	}
 
+	public void die() {
+		if (this.healthLevel <= 0) {
+			this.isDead = true;
+		} else {
+			this.isDead = false;
+		}
+	}
+
+	public boolean getIsDead() {
+		this.die();
+		return isDead;
+	}
+
 	@Override
 	public void isBitten() {
 		this.bloodLevel -= 10;
@@ -72,13 +87,13 @@ public class Patient implements HasVitals {
 		this.bloodLevel += 4;
 
 	}
-	
+
 	public void receiveInfusion(int x) {
 		this.bloodLevel += x;
 		return;
-		
+
 	}
-	
+
 	public void hasSurgery() {
 		this.bloodLevel = 60;
 	}

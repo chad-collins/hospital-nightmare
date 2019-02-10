@@ -20,6 +20,29 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 	
+<<<<<<< HEAD
+=======
+	public void remove(String patientID) {
+		patients.remove(patientID);
+	}
+
+	public void removeDeadPatients() {
+		for (Patient patient : patients.values()) {
+			if (patient.getIsDead() == true) {
+				patients.remove(patient.getPatientID());
+				System.out.println("Patient " + patient.getPatientName() + " has passed away.");
+			}
+		}
+
+	}
+
+	public void infuseAllPatients() {
+		for (Patient patient : patients.values()) {
+
+		}
+	}
+
+>>>>>>> b3a233fc490e1a4e38d4d49c34e08b6a805178d2
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
 			patient.treatPatient();
@@ -73,7 +96,7 @@ public class PatientCollection {
 
 	public void patientTickAll() {
 		for (Patient patient : patients.values()) {
-			patient.patientTick();
+			removeDeadPatients();
 		}
 
 	}
