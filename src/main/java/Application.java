@@ -62,14 +62,14 @@ public class Application {
 		System.out.println("\nPress Enter to start...");
 		String go = input.nextLine();
 		System.out.println(
-				"\n\nYou arrive at High Street Hospital ready to take on your new role as the top Administrator....");
+				"\nYou arrive at High Street Hospital ready to take on your new role as the top Administrator....");
 		go = input.nextLine();
 		System.out.println(
-				"\nThe hospital needs your expertise righting the ship. You're excited for this new challenge....");
+				"The hospital needs your expertise righting the ship. You're excited for this new challenge....");
 		go = input.nextLine();
-		System.out.println("\nFor some reason, some patients are getting sick and having trouble recovering...");
+		System.out.println("For some reason, some patients are getting sick and having trouble recovering...");
 		go = input.nextLine();
-		System.out.println("\nYou plan to solve this mystery and save the lives of both your patients and staff.\n\n");
+		System.out.println("You plan to solve this mystery and save the lives of both your patients and staff.\n\n");
 
 		boolean victoryCondition = true;
 		boolean loseCondition = true;
@@ -126,11 +126,14 @@ public class Application {
 							} else if (selectedStaff.getIsAvailable() == false) {
 								System.out.println("That employee is not available.");
 								System.out.println("");
+								break;
 							} else if (selectedStaff instanceof Doctor) {
 								selectedStaff.busy();
 								admitted.treatAllPatients();
 								System.out.println("All patients were treated.");
 								System.out.println("");
+								admitted.allPatientSummary();
+								break;
 							} else if (selectedStaff instanceof Nurse) {
 								selectedStaff.busy();
 								String nurseWard = selectedStaff.getSpecialty();
@@ -138,11 +141,13 @@ public class Application {
 									admitted.treatAllPsychPatients();
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
+									admitted.allPsychPatientSummary();
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
+									admitted.allPainMgmtPatientSummary();
 									break;
 								}
 								break;
