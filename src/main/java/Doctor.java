@@ -25,7 +25,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	public int getHealthLevel() {
-		if (this.bloodLevel == 0) {
+		if (this.bloodLevel <= 0) {
 			this.healthLevel = 0;
 		} else if (this.bloodLevel > 0 && this.bloodLevel <= 19) {
 			this.healthLevel = 5;

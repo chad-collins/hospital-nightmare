@@ -8,7 +8,6 @@ public class PatientCollection {
 		return patients.size();
 	}
 
-	// Changed patient getter from a void method in order to return a patient
 	public Patient getPatient(String patientID) {
 		return patients.get(patientID);
 
@@ -18,12 +17,13 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 
-	public void removePatient(String patientToRemove) {
+	public void removeDeadPatients() {
 		for (Patient patient : patients.values()) {
 			if (patient.getHealthLevel() <= 0) {
-				patientToRemove = patient.getPatientID();
+				String patientToRemove = patient.getPatientID();
+				String patientToRemoveName = patient.getPatientName();
 				patients.remove(patientToRemove);
-				System.out.println("Patient #" + patientToRemove + " has passed away.");
+				System.out.println("Patient #" + patientToRemoveName + " has passed away.");
 			}
 		}
 

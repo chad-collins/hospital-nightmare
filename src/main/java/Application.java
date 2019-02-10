@@ -5,11 +5,11 @@ public class Application {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		Hospital nightmare = new Hospital();
 		/*
 		 * Populate the hospital with patients and employees
 		 */
-		
-		
+
 		Patient starterPatient1 = new Patient("01", "Freddie", "[Psych Ward]");
 		Patient starterPatient2 = new Patient("02", "Annabell", "[Psych Ward]");
 		Patient starterPatient3 = new Patient("03", "Jason", "[Psych Ward]");
@@ -45,8 +45,8 @@ public class Application {
 		staff.addEmployee(starterReceptionist);
 
 		PatientCollection admitted = new PatientCollection();
-		
-		tickHospital(staff, admitted);
+
+//		tickHospital(staff, admitted);
 
 		admitted.addPatient(starterPatient1);
 		admitted.addPatient(starterPatient2);
@@ -70,11 +70,11 @@ public class Application {
 		System.out.println("For some reason, some patients are getting sick and having trouble recovering...");
 		go = input.nextLine();
 		System.out.println("You plan to solve this mystery and save the lives of both your patients and staff.\n\n");
-
-		boolean victoryCondition = true;
-		boolean loseCondition = true;
-		boolean forfeitCondition = true;
-		while (victoryCondition && loseCondition && forfeitCondition) {
+		System.out.println("At any time, press \"help\" to learn more or \"exit\" to quit the game");
+		boolean victoryCondition = false;
+		boolean loseCondition = false;
+		boolean forfeitCondition = false;
+		while (!victoryCondition && !loseCondition && !forfeitCondition) {
 
 			/*
 			 * MAIN MENU BEGINS HERE
@@ -89,7 +89,9 @@ public class Application {
 			// Main case 1
 			case "1":
 				System.out.println("\n" + "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
+						+ "\n\nHOSPITAL STATUS: " + nightmare.getCleanHospital() + "\n-----------------"
 						+ "\n\nSTAFF INFORMATION" + "\n-----------------");
+				System.out.println("");
 				staff.allempStatusSummary();
 				System.out.println("-----------------\n");
 				break;// Main menu case 1 break
@@ -103,7 +105,6 @@ public class Application {
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
 
-
 					boolean interactingWithPatientLog = true;
 					while (interactingWithPatientLog) {
 						// PATIENT SUMMARY MENU START
@@ -116,6 +117,12 @@ public class Application {
 						String patientLogMenu = input.nextLine();
 						switch (patientLogMenu) {
 						case "n":
+							int countOfAvailableMedicalStaff = staff.checkStaffAvailability();
+							if (countOfAvailableMedicalStaff == 0) {
+								System.out.println("There are no staff available.");
+								System.out.println("");
+								break;
+							}
 							System.out.println("Employee to dispatch?");
 							System.out.println("");
 							staff.allAvailMedical();
@@ -127,13 +134,18 @@ public class Application {
 								System.out.println("That employee is not available.");
 								System.out.println("");
 								break;
-							} else if (selectedStaff instanceof Doctor) {
+							} else if ((selectedStaff instanceof Doctor) && (!(selectedStaff instanceof Surgeon))) {
 								selectedStaff.busy();
 								admitted.treatAllPatients();
 								System.out.println("All patients were treated.");
-								tickHospital(staff,admitted);
+								nightmare.tickHospital(staff, admitted);
 								System.out.println("");
-								admitted.allPatientSummary();
+								break;
+							} else if (selectedStaff instanceof Surgeon) {
+								System.out.println(
+										"Surgeons don't get paid to walk the ward." + "\nNo patients were treated.");
+								nightmare.tickHospital(staff, admitted);
+								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Nurse) {
 								selectedStaff.busy();
@@ -142,15 +154,14 @@ public class Application {
 									admitted.treatAllPsychPatients();
 									System.out.println("All Psych Ward patients were treated.");
 									System.out.println("");
-									tickHospital(staff,admitted);
-									admitted.allPsychPatientSummary();
+									nightmare.tickHospital(staff, admitted);
+									break;
 								} else if (nurseWard == "[Pain Management]") {
 									admitted.allPainMgmtPatientSummary();
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
-									tickHospital(staff,admitted);
-									admitted.allPainMgmtPatientSummary();
+									nightmare.tickHospital(staff, admitted);
 									break;
 								}
 								break;
@@ -163,44 +174,54 @@ public class Application {
 							String patientsWard = selectedPatient.getWard();
 							System.out.println("Which employee should be dispatched to "
 									+ selectedPatient.getPatientName() + " ?");
-
+							staff.allAvailMedical();
 							String staffToGetNext = input.nextLine();
-							//// not complete
+							Employee chosenStaff = staff.getEmployee(staffToGetNext);
+							if (chosenStaff instanceof Surgeon) {
+								System.out.println("Choose: \n1-Infusion \n2-Medication");
+								int surgeonTreatment = input.nextInt();
+								switch (surgeonTreatment) {
+								case 1:
+									// can't figure how to infuse one patient using the surgeon's return value for
+									// infuse()
+								}
+							}
 
 							break;// Select Doctor Break
 
 						case "s":
-							System.out.println("Which patient needs emergency surgury?");
+							System.out.println("Which patient needs emergency surgery?");
 							break;// Select Patient Break
 
 						case "w":
 							System.out.println("You've made a selfish choice...");
 							interactingWithPatientSummary = false;
 							break;
+						case "help":
+							System.out.println("\n" + "-HELP MENU-"
+									+ "\n-Press '1' to display your hospital staff's metrics and availability."
+									+ "\n-Press '2' to view patients and begin patient interaction."
+									+ "\n-Type 'exit' to exit the game at any time." + "\n");
+							break;
 						default:
 							System.out.println("Stop wasting time! There are people dieing here!");
 							break;
 
-						} break;
+						}
+						break;
 
 					}
 
-					break;
-				} break;
-
-				// Main menu help
+				}
 
 			case "help":
 				System.out.println(
 						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
 								+ "\n-Press '2' to view patients and begin patient interaction."
 								+ "\n-Type 'exit' to exit the game at any time." + "\n");
-
-				break;// Main menu case 'help' break
-
-			// Main exit game
+				break;
 			case "exit":
-				forfeitCondition = false;
+				forfeitCondition = true;
 				break;// Main menu exit case
 
 			// Main default case
@@ -210,16 +231,16 @@ public class Application {
 			}
 
 		} // GameRunning Loop Ends
-		if (!forfeitCondition) {
+		if (forfeitCondition) {
 			System.out.println("\nYou have resigned your duties but kept your life. "
 					+ "\nPatients will suffer, and you will be haunted by their memory.");
 		}
-		if (!loseCondition) {
+		if (loseCondition) {
 			System.out.println("\nYou failed to contain whatever lurked in the hospital. "
 					+ "\nYour patients and staff have all been killed under your guidance. "
 					+ "\nIn your office a shadowy figure waits for you.");
 		}
-		if (!victoryCondition) {
+		if (victoryCondition) {
 			System.out.println("\nYou drive a spike into the vampire's heart. "
 					+ "\nIt's a long fight, but the vampire turns to dust. "
 					+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
@@ -228,10 +249,4 @@ public class Application {
 		}
 		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n");
 	}
-
-	public static void tickHospital(AllEmployees staff, PatientCollection admitted) {
-		admitted.patientTickAll();
-		staff.empTickAll();
-	}
-
 }
