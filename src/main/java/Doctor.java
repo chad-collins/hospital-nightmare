@@ -53,11 +53,10 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		return salary;
 	}
 	
-
-	@Override
-	public int medicatePatient() {
-		return 30;
-
+	@ Override
+	public void medicatePatient(Patient patient) {
+		patient.medicatePatient(10);
+		return;
 	}
 
 	public String busyStatus() {
@@ -69,8 +68,9 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	@Override
-	public int infuse() {
-		return 50;
+	public void infuse(Patient patient) {
+		patient.receiveInfusion(30);
+		return;
 		
 	}
 
@@ -79,5 +79,4 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		this.bloodLevel -= 9;
 		
 	}
-
 }

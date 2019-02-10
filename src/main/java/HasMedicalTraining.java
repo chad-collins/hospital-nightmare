@@ -1,8 +1,8 @@
 
 public interface HasMedicalTraining {
 
-	public int infuse();
-	public int medicatePatient();
+	public void infuse(Patient patient);
+	public void medicatePatient(Patient patient);
 	
 	
 }

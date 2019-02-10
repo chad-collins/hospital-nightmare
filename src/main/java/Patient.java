@@ -72,6 +72,12 @@ public class Patient implements HasVitals {
 		this.bloodLevel += 4;
 
 	}
+	
+	public void receiveInfusion(int x) {
+		this.bloodLevel += x;
+		return;
+		
+	}
 
 	public void patientTick() {
 		this.getHealthLevel();
@@ -93,6 +99,11 @@ public class Patient implements HasVitals {
 
 		}
 
+	}
+
+	public void medicatePatient(int i) {
+		this.bloodLevel += i;
+		return;
 	}
 
 }
