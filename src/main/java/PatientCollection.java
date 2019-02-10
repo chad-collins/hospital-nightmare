@@ -27,9 +27,9 @@ public class PatientCollection {
 
 	public void removeDeadPatients() {
 		for (Patient patient : patients.values()) {
-			if (patient.getHealthLevel() <= 0) {
+			if (patient.getIsDead() == true) {
 				patients.remove(patient.getPatientID());
-				System.out.println("Patient #" + patient.getPatientName() + " has passed away.");
+				System.out.println("Patient " + patient.getPatientName() + " has passed away.");
 			}
 		}
 
@@ -94,7 +94,7 @@ public class PatientCollection {
 
 	public void patientTickAll() {
 		for (Patient patient : patients.values()) {
-			patient.patientTick();
+			removeDeadPatients();
 		}
 
 	}
