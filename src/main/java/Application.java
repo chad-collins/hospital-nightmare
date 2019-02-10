@@ -234,9 +234,30 @@ public class Application {
 								} break;
 								}
 						case "s":
-							System.out.println("Which patient needs emergency surgery?");
-							break;// Select Patient Break
-
+							if (staff.checkSurgeonAvailability() == 0) {
+								System.out.println("No surgeons are available.");
+								nightmare.tickHospital(staff, admitted);
+								System.out.println(" ");
+								break;
+							} else {
+								System.out.println("Which patient needs emergency surgery?");
+								admitted.allPatientSummary();
+								String patientForSurgery = input.nextLine();
+								Patient selectedSurgeryPatient = admitted.getPatient(patientForSurgery);
+								System.out.println("Which surgeon should be dispatched to "
+										+ selectedSurgeryPatient.getPatientName() + " ?");
+								staff.allAvailSurgeons();
+								String selectedSurgeon = input.nextLine();
+								Surgeon chosenSurgeon = (Surgeon) staff.getEmployee(selectedSurgeon);
+								if (chosenSurgeon.getIsAvailable() == false) {
+									System.out.println(chosenSurgeon.getEmpName() + " is not available.");
+									break;
+								} else {
+									chosenSurgeon.performsSurgery(selectedSurgeryPatient);
+									System.out.println(chosenSurgeon.getEmpName() + " saved patient " + selectedSurgeryPatient.getPatientName());
+									break;
+								}
+							}
 						case "w":
 							System.out.println("You've made a selfish choice...");
 							interactingWithPatientSummary = false;

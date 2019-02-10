@@ -150,6 +150,20 @@ public class AllEmployees {
 		}
 		return sum;
 	}
+	
+	public int checkSurgeonAvailability() {
+		int sum = 0;
+		int x = 0;
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Surgeon) {
+				if (employee.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}
+		return sum;
+	}
 
 	public int checkNurseAvailability() {
 		int sum = 0;

@@ -74,5 +74,10 @@ public class Surgeon extends Doctor implements HasVitals, HasMedicalTraining {
 		this.bloodLevel -= 9;
 
 	}
+	
+	public void performsSurgery(Patient patient) {
+		patient.hasSurgery();
+		return;
+	}
 
 }

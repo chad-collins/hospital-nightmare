@@ -56,7 +56,7 @@ public class Patient implements HasVitals {
 			this.healthLevel = 10;
 		} else if (this.bloodLevel >= 30 && this.bloodLevel <= 39) {
 			this.healthLevel = 15;
-		} else if (this.bloodLevel >= 40 && this.bloodLevel <= 49) {
+		} else if (this.bloodLevel >= 40) {
 			this.healthLevel = 20;
 		}
 		return healthLevel;
@@ -77,6 +77,10 @@ public class Patient implements HasVitals {
 		this.bloodLevel += x;
 		return;
 		
+	}
+	
+	public void hasSurgery() {
+		this.bloodLevel = 60;
 	}
 
 	public void patientTick() {
