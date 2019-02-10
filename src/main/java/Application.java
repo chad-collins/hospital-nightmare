@@ -172,18 +172,18 @@ public class Application {
 
 						case "w":
 							System.out.println("You've made a selfish choice...");
-							interactingWithPatientLog = false;
-							break;// EXIT PATIENT LOG
+							interactingWithPatientSummary = false;
+							break;
+						default:
+							System.out.println("Stop wasting time! There are people dieing here!");
+							break;
 
-						// default: System.out.println("Stop wasting time! There are people dieing
-						// here!");break;
-
-						}
+						} break;
 
 					}
 
 					break;
-				} // Main menu case 2 break
+				} break;
 
 				// Main menu help
 
