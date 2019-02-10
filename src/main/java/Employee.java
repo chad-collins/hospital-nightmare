@@ -64,7 +64,7 @@ public abstract class Employee {
 	}
 	
 	public String toString() {
-		return "[" + empName + "]" + "\t[CURRENTLY AVAILABLE: "
+		return "[" + empName + "]\t[ID: " + empID + "]\t[CURRENTLY AVAILABLE: "
 + isAvailable + "]";
 	}
 

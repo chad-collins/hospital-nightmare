@@ -75,9 +75,8 @@ public class Application {
 		boolean loseCondition = false;
 		boolean forfeitCondition = false;
 		boolean winCondition = false;
-		
+
 		while (!loseCondition && !forfeitCondition) {
-			
 
 			/*
 			 * MAIN MENU BEGINS HERE
@@ -95,45 +94,52 @@ public class Application {
 						+ "\n\nHOSPITAL STATUS: " + nightmare.getCleanHospital() + "\n-----------------"
 						+ "\n\nALL STAFF" + "\n-----------------");
 				staff.allempStatusSummary();
-/////////Start chad code
-				System.out.println();
-				System.out.println("j. Dispatch Janitor\nb.Back out.");
-				String janitorMenu = input.nextLine();
-				switch(janitorMenu) {
-				case "j": System.out.println(staff.checkJanitorAvailability() + "\nWhich Janitor?");
-							String whichJanitor = input.nextLine();
-							Janitor selectedJanitor = (Janitor) staff.getEmployee(whichJanitor);
+				System.out.println("-----------------\n");
+//				boolean foo = true;
+//				while (foo) {
+					System.out.println("Make a selection: \n" + "\n-----------------" + "\n1. Dispatch a janitor"
+							+ "\n2. Remind the receptionist to take calls" + "\n3. Select an employee ID"
+							+ "\n4. Exit to the main menu" + "\n");
+					String mainMenuResponse2 = input.nextLine();
+					switch (mainMenuResponse2) {
+					case "1":
+						staff.allAvailJanitors();
+						System.out.println(staff.checkJanitorAvailability() + "\nWhich Janitor ID?");
+						String whichJanitor = input.nextLine();
+						Janitor selectedJanitor = (Janitor) staff.getEmployee(whichJanitor);
+						if (selectedJanitor.getIsAvailable() == true) {
 							int sweepThisMuch = selectedJanitor.getSweepSkill();
-					
 							nightmare.beCleaned(sweepThisMuch);
-							System.out.println(selectedJanitor.getEmpName() + "is sweeping.");
-							System.out.println(selectedJanitor.getSweepSkill());
+							System.out.println(selectedJanitor.getEmpName() + " is sweeping.");
+//							System.out.println(selectedJanitor.getSweepSkill());
 							System.out.println(nightmare.getCleanHospital());
 							selectedJanitor.busy();
 							nightmare.tickHospital(staff, admitted, nightmare);
-				
-				
-				}
-				break;// Main menu case 1 break
-///////End chad code and start Jess code
-				System.out.println("-----------------\n");
-				System.out.println("Select an employee ID for availability or press exit to return to the main menu:");
-				String mainMenuChoice = input.nextLine();
-				if (mainMenuChoice.equals("exit")) {
+							break;
+						} else {
+							System.out.println(selectedJanitor.getEmpName() + "is busy.");
+							break;
+						} 
+					case "2":
+//						need receptionist code here
+						break;
+					case "3":
+						staff.allempStatusSummary();
+						System.out.println("Select an employee ID:");
+						String whichEmployee = input.nextLine();
+						Employee chosenEmployee = staff.getEmployee(whichEmployee);
+						System.out.println(chosenEmployee);
+						System.out.println("");
+						break;// Main menu case 1 break
+					case "4":
+						break;
+					}
 					break;
-				} else {
-					Employee chosenEmployee = staff.getEmployee(mainMenuChoice);
-					System.out.println(chosenEmployee);
-					System.out.println("");
-					break;// Main menu case 1 break
-				}
-/////////end Jess code
-
 			// Main case 2, Patient Summary top Menu
 			case "2":
 				boolean interactingWithPatientSummary = true;
 				while (interactingWithPatientSummary) {
-				
+
 					System.out.println("PATIENT SUMMARY" + "\n-----------------");
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
@@ -185,7 +191,7 @@ public class Application {
 								System.out.println(
 										"Surgeons don't get paid to walk the ward." + "\nNo patients were treated.");
 								nightmare.tickHospital(staff, admitted, nightmare);
-	
+
 								System.out.println("");
 								break;
 							} else if (selectedStaff instanceof Nurse) {
@@ -202,7 +208,7 @@ public class Application {
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
-									nightmare.tickHospital(staff, admitted, nightmare);	
+									nightmare.tickHospital(staff, admitted, nightmare);
 								}
 								break;
 							}
@@ -226,14 +232,14 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-								
+
 									break;
 								case 2:
 									((Surgeon) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-									
+
 									break;
 								}
 							} else if (chosenStaff instanceof Doctor) {
@@ -246,21 +252,20 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-								
+
 								case "2":
 									((Doctor) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-								
+
 									break;
 								}
 							} else if (chosenStaff instanceof Nurse) {
 								if (!chosenStaff.getSpecialty().equals(selectedPatient.getWard())) {
-									System.out.println(
-											"The " + chosenStaff.getSpecialty() + " nurse can't treat patients on the "
-													+ selectedPatient.getWard() + " ward!" + " " +
-											selectedPatient.getPatientName() + " wasn't treated.");
+									System.out.println("The " + chosenStaff.getSpecialty()
+											+ " nurse can't treat patients on the " + selectedPatient.getWard()
+											+ " ward!" + " " + selectedPatient.getPatientName() + " wasn't treated.");
 								} else {
 									chosenStaff.busy();
 									System.out.println("Choose: \n1-Infusion \n2-Medication");
@@ -275,13 +280,14 @@ public class Application {
 												+ selectedPatient.getPatientName());
 										break;
 									}
-								} break;
 								}
+								break;
+							}
 						case "s":
 							if (staff.checkSurgeonAvailability() == 0) {
 								System.out.println("No surgeons are available.");
 								nightmare.tickHospital(staff, admitted, nightmare);
-								
+
 								System.out.println(" ");
 								break;
 							} else {
@@ -300,9 +306,10 @@ public class Application {
 								} else {
 									chosenSurgeon.busy();
 									chosenSurgeon.performsSurgery(selectedSurgeryPatient);
-									System.out.println(chosenSurgeon.getEmpName() + " saved patient " + selectedSurgeryPatient.getPatientName());
+									System.out.println(chosenSurgeon.getEmpName() + " saved patient "
+											+ selectedSurgeryPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-								
+
 									break;
 								}
 							}
@@ -363,20 +370,20 @@ public class Application {
 						+ "\nThe only injury you receive is a small bite on the back of your neck.");
 
 			}
-			
+
 		}
 
 		Label copyrightL = new Label("\u00a9");
-		System.out.println("\nCredits:\n" 
-		+ "Jessica Wright & Chad Collins\n"
-		+ "All Rights Reserved. ©2019");
+		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. ©2019");
 	}
 
 	public static boolean checkForWin(Hospital nightmare, boolean winCondition) {
 		if (nightmare.getVladFound() == true) {
 			winCondition = true;
 			return !winCondition;
-		}else {return winCondition;}
+		} else {
+			return winCondition;
+		}
 
 	}
 }

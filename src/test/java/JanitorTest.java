@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class JanitorTest {
 
-	Janitor testJ = new Janitor("1", "TestJ", true);
+	Janitor testJ = new Janitor("1", "TestJ", true, 0);
 	@Test
 	public void empIDshouldReturnNum() {
 		String answer = testJ.getEmpID();

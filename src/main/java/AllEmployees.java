@@ -90,6 +90,19 @@ public class AllEmployees {
 			}
 		}
 	}
+	
+	public void allAvailJanitors() {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Janitor) {
+				if (employee.getIsAvailable() == true) {
+						System.out.println(employee);;
+					} else {
+						System.out.println(employee.getEmpName() + " is not available]");
+					}
+				}
+			}
+		}
+	
 
 	public void allAvailPainMgmtNurses() {
 		for (Employee employee : employees.values()) {
@@ -191,6 +204,8 @@ public class AllEmployees {
 		}
 		return sum;
 	}
+	
+	
 
 	/*
 	 * public void empTickAll() { for (Employee employee : employees.values()) { if
