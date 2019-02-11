@@ -224,12 +224,12 @@ public class Application {
 									System.out.println("");
 									nightmare.tickHospital(staff, admitted, nightmare);
 									break;
-								} else if (nurseWard == "[Pain Management]") {
-									admitted.allPainMgmtPatientSummary();
+								} else if (nurseWard == "[Pain management]") {
 									admitted.treatAllPainMgmtPatients();
 									System.out.println("All Pain management patients were treated.");
 									System.out.println("");
 									nightmare.tickHospital(staff, admitted, nightmare);
+									break;
 								}
 								break;
 							}
@@ -263,7 +263,7 @@ public class Application {
 
 									break;
 								}
-							} else if (chosenStaff instanceof Doctor) {
+							} else if ((chosenStaff instanceof Doctor) && (!(chosenStaff instanceof Surgeon))) {
 								chosenStaff.busy();
 								System.out.println("Choose: \n1-Infusion \n2-Medication");
 								String doctorTreatment = input.nextLine();
@@ -273,13 +273,12 @@ public class Application {
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-
+									break;
 								case "2":
 									((Doctor) chosenStaff).medicatePatient(selectedPatient);
 									System.out.println(chosenStaff.getEmpName() + " has saved "
 											+ selectedPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
-
 									break;
 								}
 							} else if (chosenStaff instanceof Nurse) {
@@ -301,9 +300,8 @@ public class Application {
 												+ selectedPatient.getPatientName());
 										break;
 									}
-								}
-								break;
-							}
+								}break;
+							} break;
 						case "s":
 							if (staff.checkSurgeonAvailability() == 0) {
 								System.out.println("No surgeons are available.");
@@ -331,9 +329,9 @@ public class Application {
 											+ selectedSurgeryPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
 
-									break;
+								}break;
 								}
-							}
+							
 						case "w":
 							System.out.println("You've made a selfish choice...");
 							nightmare.tickHospital(staff, admitted, nightmare);
@@ -392,8 +390,10 @@ public class Application {
 
 		}
 
+
 		Label copyrightL = new Label("\u00a9");
 		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. Â©2019");
+
 	}
 
 	public static boolean checkForWin(Hospital nightmare, boolean winCondition) {

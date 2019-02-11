@@ -6,9 +6,11 @@ import org.junit.Test;
 public class PatientCollectionTest {
 
 	PatientCollection testCollection = new PatientCollection();
+
 	Patient test1 = new Patient("123", "Bob", "ICU");
 	Patient test2 = new Patient("456", "Suzy", "Maternity");
 	Patient test3 = new Patient("4564", "Suzy2", "Maternity");
+
 
 	@Test
 	public void shouldGetAPatient() {
@@ -27,7 +29,7 @@ public class PatientCollectionTest {
 		assertEquals(answer, 2);
 
 	}
-
+	
 	@Test
 	public void shouldRemovePatientaaa() {
 		testCollection.addPatient(test1);
@@ -61,11 +63,13 @@ public class PatientCollectionTest {
 		System.out.println(test1.getHealthLevel() + "after bite blood");
 		System.out.println(test1.getIsDead() + "after");
 		sick.remove(test1.getPatientID());
-	System.out.println(sick.getCollectionLength() + "after length");
+		System.out.println(sick.getCollectionLength() + "after length");
 		int answer = sick.getCollectionLength();
 		assertEquals(answer, 1);
 
 	}
+	
+
 	
 
 }
