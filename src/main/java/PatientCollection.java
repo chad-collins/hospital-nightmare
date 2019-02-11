@@ -29,17 +29,6 @@ public class PatientCollection {
 		patients.remove(patientToRemove);
 
 	}
-	
-//	public void removePet() {
-//		String petToRemove = "";
-//		for (Pet pet : pets.values()) {
-//			if (pet.getDeathValue() == -1) {
-//				petToRemove = pet.getPetName();
-//			}
-//		}
-//		pets.remove(petToRemove);
-//	}
-
 
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
