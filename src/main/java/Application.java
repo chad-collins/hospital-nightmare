@@ -12,7 +12,7 @@ public class Application {
 		 */
 
 		Patient starterPatient1 = new Patient("01", "Freddie", "[Psych Ward]");
-		Patient starterPatient2 = new Patient("02", "Annabell", "[Psych Ward]");
+		Patient starterPatient2 = new Patient("02", "Anna", "[Psych Ward]");
 		Patient starterPatient3 = new Patient("03", "Jason", "[Psych Ward]");
 
 		Patient starterPatient4 = new Patient("04", "Laurie", "[Pain management]");
@@ -28,8 +28,8 @@ public class Application {
 		Employee starterNurse1 = new Nurse("11", "Nurse Bates", true, "[Psych Ward]");
 		Employee starterNurse2 = new Nurse("12", "Nurse Damien", true, "[Pain management]");
 
-		Employee starterJanitor = new Janitor("13", "Zeke", true, 2);
-		Employee starterVampireJanitor = new VampireJanitor("14", "Vlad", true, 1);
+		Employee starterVampireJanitor = new VampireJanitor("13", "Vlad", true, 1);
+		Employee starterJanitor = new Janitor("14", "Zeke", true, 2);
 
 		Employee starterReceptionist = new Receptionist("15", "Pam", true, 1);
 
@@ -93,14 +93,13 @@ public class Application {
 				System.out.println("\n" 
 			+ "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
 						+ "\nHOSPITAL STATUS: " + nightmare.getCleanHospital()
-						+ "\nPhoneQueue: " + nightmare.getCallerMood()
+						+ "\nCALLS IN QUEUE: " + nightmare.getCallerMood()
 						+ "\n-----------------" 
 						+ "\n\nALL STAFF" 
 						+ "\n-----------------");
 				staff.allempStatusSummary();
 				System.out.println("-----------------\n");
-//				boolean foo = true;
-//				while (foo) {
+
 					System.out.println("Make a selection: \n" + "\n-----------------" + "\n1. Dispatch a janitor"
 							+ "\n2. Remind the receptionist to take calls" + "\n3. Select an employee ID"
 							+ "\n4. Exit to the main menu" + "\n");
@@ -114,14 +113,13 @@ public class Application {
 						if (selectedJanitor.getIsAvailable() == true) {
 							int sweepThisMuch = selectedJanitor.getSweepSkill();
 							nightmare.beCleaned(sweepThisMuch);
-							System.out.println(selectedJanitor.getEmpName() + " is sweeping.");
-//							System.out.println(selectedJanitor.getSweepSkill());
-							System.out.println(nightmare.getCleanHospital());
+							System.out.println(selectedJanitor.getEmpName() + " is sweeping.\n________");
+
 							selectedJanitor.busy();
 							nightmare.tickHospital(staff, admitted, nightmare);
 							break;
 						} else {
-							System.out.println(selectedJanitor.getEmpName() + "is busy.");
+							System.out.println(selectedJanitor.getEmpName() + "is busy.\n________");
 							break;
 						} 
 					case "2":
@@ -132,14 +130,12 @@ public class Application {
 						if (selectedRecept.getIsAvailable() == true) {
 							int callsToTake = selectedRecept.getCallSkill();
 							nightmare.callsAnswered(callsToTake);
-							System.out.println(selectedRecept.getEmpName() + " is taking calls.");
-//							System.out.println(selectedJanitor.getSweepSkill());
-							System.out.println(nightmare.getPhoneQueue());
+							System.out.println(selectedRecept.getEmpName() + " is taking calls.\n________");
 							selectedRecept.busy();
 							nightmare.tickHospital(staff, admitted, nightmare);
 							break;
 						} else {
-							System.out.println(selectedRecept.getEmpName() + "is busy.");
+							System.out.println(selectedRecept.getEmpName() + "is busy.\n________");
 							break;
 						} 
 						
@@ -381,10 +377,7 @@ public class Application {
 						+ "\nIn your office a shadowy figure waits for you.");
 			}
 			if (winCondition) {
-				System.out.println("\nYou drive a spike into the vampire's heart. "
-						+ "\nIt's a long fight, but the vampire turns to dust. "
-						+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
-						+ "\nThe only injury you receive is a small bite on the back of your neck.");
+			
 
 			}
 

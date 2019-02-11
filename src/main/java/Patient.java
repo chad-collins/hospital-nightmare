@@ -108,8 +108,7 @@ public class Patient implements HasVitals {
 	public void chanceIncounter() {
 
 		Random rand = new Random();
-		int a = rand.nextInt(10);
-		int b = rand.nextInt(20);
+		int a = rand.nextInt(8);
 
 		if (a == 2) {
 

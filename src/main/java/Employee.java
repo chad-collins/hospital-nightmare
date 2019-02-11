@@ -39,6 +39,7 @@ public abstract class Employee {
 	abstract public int calculatePay();
 
 	public void notBusy() {
+		System.out.println("--- " + this.getEmpName() + " has become available.");
 		isAvailable = true;
 
 	}
@@ -59,7 +60,12 @@ public abstract class Employee {
 
 	public void statusSummary() {
 		System.out.println(
-				"[ID:" + this.getEmpID() + "]\t[" + this.getEmpName() + "]\t[" + this.getEmpTitle() + "]\t[Salary: $" + this.calculatePay() + "]\t" + this.getSpecialty());
+				"[ID:" + this.getEmpID() 
+				+ "]\t" + this.getEmpName() 
+				+ "\t" + this.getEmpTitle() 
+				+ "\tSalary: $" + this.calculatePay() 
+				+ "\t" + this.getSpecialty() 
+				+ "\t" + this.busyStatus());
 
 	}
 	

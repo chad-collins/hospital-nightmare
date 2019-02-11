@@ -90,9 +90,21 @@ public class PatientCollection {
 	public void patientTickAll() {
 		for (Patient patient : patients.values()) {
 			removeDeadPatients();
+			
+			
 		}
 
 	}
+	public void patientsTickBite() {
+		for (Patient patient : patients.values()) {
+			
+			patient.chanceIncounter();
+			
+			
+		}
+
+	}
+	
 
 }
 
