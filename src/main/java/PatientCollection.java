@@ -1,8 +1,9 @@
 import java.util.HashMap;
 
 public class PatientCollection {
-
+	
 	private HashMap<String, Patient> patients = new HashMap<String, Patient>();
+	
 
 	public int getCollectionLength() {
 		return patients.size();
@@ -16,25 +17,21 @@ public class PatientCollection {
 	public void addPatient(Patient x) {
 		patients.put(x.getPatientID(), x);
 	}
-
-	public void removeDeadPatients() {
+	
+	public void removePatients() {
+		String patientToRemove = "";
 		for (Patient patient : patients.values()) {
-			if (patient.getHealthLevel() <= 0) {
-				String patientToRemove = patient.getPatientID();
-				String patientToRemoveName = patient.getPatientName();
-				patients.remove(patientToRemove);
-				System.out.println("Patient #" + patientToRemoveName + " has passed away.");
+			patient.checkIfDead();
+			if (patient.getIsDead() == true) {
+				patientToRemove = patient.getPatientID();
+				System.out.println("*Patient " + patient.getPatientName() + "'s remains have been removed.*\n");
 			}
 		}
+		patients.remove(patientToRemove);
+		
 
 	}
 
-	public void infuseAllPatients() {
-		for (Patient patient : patients.values()) {
-
-		}
-	}
-	
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
 			patient.treatPatient();
@@ -43,9 +40,8 @@ public class PatientCollection {
 
 	public void allPatientSummary() {
 		for (Patient patient : patients.values()) {
-
 			patient.patientSummary();
-			;
+			
 		}
 	}
 
@@ -53,7 +49,6 @@ public class PatientCollection {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Psych Ward]")) {
 				patient.patientSummary();
-				;
 				break;
 			}
 		}
@@ -62,12 +57,13 @@ public class PatientCollection {
 	public void allPainMgmtPatientSummary() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Pain management]")) {
+				
 				patient.patientSummary();
 				break;
 			}
 		}
 	}
-	
+
 	public void treatAllPsychPatients() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Psych Ward]")) {
@@ -76,7 +72,7 @@ public class PatientCollection {
 			}
 		}
 	}
-	
+
 	public void treatAllPainMgmtPatients() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Pain management]")) {
@@ -85,12 +81,39 @@ public class PatientCollection {
 			}
 		}
 	}
-	
-	public void patientTickAll() {
+
+	public void tickAllPatientsNoBite() {
 		for (Patient patient : patients.values()) {
+			patient.checkIfDead();
 			patient.patientTick();
+			removePatients();
+			
+			
 		}
 
 	}
+	public void tickTryToBiteAllPatients() {
+		for (Patient patient : patients.values()) {
+			patient.chanceIncounter();
+			
 
+			
+			
+		}
+
+	}
+	
+	public void checkAllPatientsAlive() {
+		for (Patient patient : patients.values()) {
+			patient.getHealthLevel();
+			patient.checkIfDead();
+			
+			
+		}
+
+	}
 }
+
+	
+
+

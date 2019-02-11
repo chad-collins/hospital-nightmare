@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class JanitorTest {
 
-	Janitor testJ = new Janitor("1", "TestJ", true);
+	Janitor testJ = new Janitor("1", "TestJ", true, 0);
 	@Test
 	public void empIDshouldReturnNum() {
 		String answer = testJ.getEmpID();
@@ -38,10 +38,10 @@ public class JanitorTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn31() {
-		testJ.bite();
+	public void bloodLevelShouldReturn30() {
+		testJ.isBitten();
 		int answer = testJ.getBloodLevel();
-		assertEquals(answer, 31); 
+		assertEquals(answer, 30); 
 		
 	}
 

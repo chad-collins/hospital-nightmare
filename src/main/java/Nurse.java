@@ -1,19 +1,22 @@
 
-public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
+public class Nurse extends Employee implements HasVitals, HasGeneralMedicalTraining{
 	
 	private int bloodLevel;
 	private int healthLevel;
 	private String specialty;
 	private String empTitle;
 	private int salary;
+	private boolean isAvailable;
 	
 	public Nurse(String empID, String empName, boolean isAvailable, String specialty) {
 		super(empID, empName, isAvailable);
+		this.empTitle = "Nurse";
 		this.specialty = specialty;
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Nurse  ";
-		this.salary = 50;
+		this.salary = 50000;
+		this.isAvailable = isAvailable;
 	}
 	
 	public int getBloodLevel() {
@@ -42,7 +45,9 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	public String getEmpTitle() {
 		return empTitle;
 	}
-	public int getSalary() {
+	
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 
@@ -60,20 +65,22 @@ public class Nurse extends Employee implements HasVitals, HasMedicalTraining{
 	}
 
 	@Override
-	public int infuse() {
-		System.out.println("Nurses aren't trained on infusion!");
-		return 0;
+	public void infuse(Patient patient) {
+		patient.receiveInfusion(0);
+		System.out.println("Nurses aren't trained in infusion!");
+		return;
+		
 	}
 	
-	@Override
-	public int medicatePatient() {
-		return 10;
-		
+	@ Override
+	public void medicatePatient(Patient patient) {
+		patient.medicatePatient(5);
+		return;
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
 	

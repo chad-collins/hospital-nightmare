@@ -1,5 +1,5 @@
 
-public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
+public class Doctor extends Employee implements HasVitals, HasGeneralMedicalTraining {
 
 	private String specialty;
 	private int bloodLevel;
@@ -13,7 +13,7 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Doctor ";
-		this.salary = 90;
+		this.salary = 90000;
 	}
 
 	public String getSpecialty() {
@@ -49,15 +49,15 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 		return empTitle;
 	}
 
-	public int getSalary() {
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 	
-
-	@Override
-	public int medicatePatient() {
-		return 30;
-
+	@ Override
+	public void medicatePatient(Patient patient) {
+		patient.medicatePatient(10);
+		return;
 	}
 
 	public String busyStatus() {
@@ -69,14 +69,15 @@ public class Doctor extends Employee implements HasVitals, HasMedicalTraining {
 	}
 
 	@Override
-	public int infuse() {
-		return 50;
+	public void infuse(Patient patient) {
+		patient.receiveInfusion(30);
+		return;
 		
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
 

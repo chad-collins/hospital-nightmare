@@ -2,10 +2,10 @@
 public class VampireJanitor extends Janitor {
 	private String empTitle;
 	private int salary;
-	public VampireJanitor(String empID, String empName, boolean isAvailable) {
-		super(empID, empName, isAvailable);
+	public VampireJanitor(String empID, String empName, boolean isAvailable, int sweepSkill) {
+		super(empID, empName, isAvailable, sweepSkill);
 		this.empTitle = "Janitor";
-		this.salary =10;
+		this.salary = 40000;
 	}
 
 	public String getEmpTitle() {

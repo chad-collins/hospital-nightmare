@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class VampireJanitorTest {
 
-	Janitor testV = new VampireJanitor("1", "TestV", true);
+	Janitor testV = new VampireJanitor("1", "TestV", true, 0);
 
 	@Test
 	public void empIDshouldReturnNum() {

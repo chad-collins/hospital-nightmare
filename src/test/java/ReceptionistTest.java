@@ -37,10 +37,10 @@ public class ReceptionistTest {
 	}
 	
 	@Test
-	public void bloodLevelShouldReturn31() {
-		testR.bite();
+	public void bloodLevelShouldReturn30() {
+		testR.isBitten();
 		int answer = testR.getBloodLevel();
-		assertEquals(answer, 31); 
+		assertEquals(answer, 30); 
 		
 	}
 

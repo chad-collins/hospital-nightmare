@@ -1,24 +1,37 @@
 
-public class Janitor extends Employee implements HasVitals{
-	
+public class Janitor extends Employee implements HasVitals {
+
 	private int bloodLevel;
 	private int healthLevel;
 	private int salary;
 	private String empTitle;
-	public Janitor(String empID, String empName, boolean isAvailable) {
+	private Boolean isAvailable;
+
+	private int sweepSkill;
+
+	public Janitor(String empID, String empName, boolean isAvailable, int sweepSkill) {
+
 		super(empID, empName, isAvailable);
 		this.empTitle = "Janitor";
 		this.bloodLevel = BLOOD_LEVEL + 20;
 		this.healthLevel = HEALTH_LEVEL;
-		this.salary = 40;
+		this.salary = 40000;
 		this.empTitle = "Janitor";
-		
+
+		this.sweepSkill = sweepSkill;
+
+		this.isAvailable = isAvailable;
+
 	}
-	
+
 	public int getBloodLevel() {
 		return this.bloodLevel;
 	}
-	
+
+	public int getSweepSkill() {
+		return sweepSkill;
+	}
+
 	public int getHealthLevel() {
 		if (this.bloodLevel == 0) {
 			this.healthLevel = 0;
@@ -33,17 +46,20 @@ public class Janitor extends Employee implements HasVitals{
 		}
 		return healthLevel;
 	}
+
 	public String getEmpTitle() {
 		return empTitle;
 	}
-	public int getSalary() {
+
+	@Override
+	public int calculatePay() {
 		return salary;
 	}
 
 	public void busy() {
-	super.busy();
+		super.busy();
 	}
-	
+
 	public String busyStatus() {
 		if (!getIsAvailable()) {
 			return "SWEEPING";
@@ -53,10 +69,9 @@ public class Janitor extends Employee implements HasVitals{
 	}
 
 	@Override
-	public void bite() {
-		this.bloodLevel -= 9;
+	public void isBitten() {
+		this.bloodLevel -= 10;
 		
 	}
-	
 
 }

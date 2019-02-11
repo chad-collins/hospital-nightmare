@@ -90,6 +90,19 @@ public class AllEmployees {
 			}
 		}
 	}
+	
+	public void allAvailJanitors() {
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Janitor) {
+				if (employee.getIsAvailable() == true) {
+						System.out.println(employee);;
+					} else {
+						System.out.println(employee.getEmpName() + " is not available]");
+					}
+				}
+			}
+		}
+	
 
 	public void allAvailPainMgmtNurses() {
 		for (Employee employee : employees.values()) {
@@ -118,6 +131,24 @@ public class AllEmployees {
 		}
 	}
 
+	
+	
+	public void allAvailReceptionists() {
+		for (Employee reception : employees.values()) {
+			if (reception instanceof Receptionist) {
+				if (reception.getIsAvailable() == true) {
+
+					reception.statusSummary();
+				} else {
+					System.out.println("[" + reception.getEmpName() + " is not available]");
+				}
+
+			}
+		}
+	}
+	
+	
+	
 	public void allAvailSurgeons() {
 		for (Employee employee : employees.values()) {
 			if (employee instanceof Surgeon) {
@@ -136,12 +167,39 @@ public class AllEmployees {
 		int availableMedicalStaff = checkDoctorAvailability() + checkNurseAvailability();
 		return availableMedicalStaff;
 	}
+	
+	public int checkJanitorAvailability() {
+		int sum = 0;
+		int x = 0;
+		for (Employee janitor : employees.values()) {
+			if (janitor instanceof Janitor) {
+				if (janitor.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}return sum;
+	}
 
 	public int checkDoctorAvailability() {
 		int sum = 0;
 		int x = 0;
 		for (Employee employee : employees.values()) {
 			if (employee instanceof Doctor) {
+				if (employee.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}
+		return sum;
+	}
+	
+	public int checkSurgeonAvailability() {
+		int sum = 0;
+		int x = 0;
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Surgeon) {
 				if (employee.getIsAvailable() == true) {
 					x++;
 					sum = x;
@@ -164,17 +222,79 @@ public class AllEmployees {
 		}
 		return sum;
 	}
-
-	public void empTickAll() {
+	
+	public int checkReceptionistAvailability() {
+		int sum = 0;
+		int x = 0;
 		for (Employee employee : employees.values()) {
-			if (employee.getIsAvailable() == false) {
+			if (employee instanceof Receptionist) {
+				if (employee.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}
+		return sum;
+	}
+	
+
+	/*
+	 * public void empTickAll() { for (Employee employee : employees.values()) { if
+	 * (employee.getIsAvailable() == false) { Random h = new Random(); int maybeBusy
+	 * = h.nextInt(3); if (maybeBusy == 1) employee.notBusy(); } } }
+	 */
+	
+	public void empTickAll() {
+		tickJanitorsAll();
+		tickNursesAll();
+		tickDoctorsAll();
+		tickReceptionistsAll();
+	}
+	public void tickJanitorsAll() {
+		for (Employee j : employees.values()) {
+			if(j instanceof Janitor)
+			if (j.getIsAvailable() == false) {
 				Random h = new Random();
-				int maybeBusy = h.nextInt(3);
+				int maybeBusy = h.nextInt(4);
 				if (maybeBusy == 1)
-					employee.notBusy();
+					j.notBusy();
 			}
 		}
 	}
+	public void tickNursesAll() {
+		for (Employee n : employees.values()) {
+			if(n instanceof Nurse)
+			if (n.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(4);
+				if (maybeBusy == 2)
+					n.notBusy();
+			}
+		}
+	}
+	public void tickDoctorsAll() {
+		for (Employee d : employees.values()) {
+			if(d instanceof Doctor)
+			if (d.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(4);
+				if (maybeBusy == 2)
+					d.notBusy();
+			}
+		}
+	}
+	public void tickReceptionistsAll() {
+		for (Employee r : employees.values()) {
+			if(r instanceof Receptionist)
+			if (r.getIsAvailable() == false) {
+				Random h = new Random();
+				int maybeBusy = h.nextInt(4);
+				if (maybeBusy == 2)
+					r.notBusy();
+			}
+		}
+	}
+	
 
-
+	
 }

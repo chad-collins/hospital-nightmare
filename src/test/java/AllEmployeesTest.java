@@ -8,7 +8,7 @@ public class AllEmployeesTest {
 
 	AllEmployees testgroup = new AllEmployees();
 	Employee doctorTest = new Doctor("1", "Test", true, "Practitioner");
-	Employee testJ = new Janitor("2", "TestJ", true);
+	Employee testJ = new Janitor("2", "TestJ", true, 0);
 
 	@Test
 	public void shouldAddEmployeeToEmployees() {
