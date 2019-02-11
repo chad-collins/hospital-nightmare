@@ -21,9 +21,9 @@ public class Hospital {
 	}
 
 	public void tickHospital(AllEmployees staff, PatientCollection admitted, Hospital nightmare) {
-		admitted.removeDeadPatients();
+		admitted.removePatients();
 		staff.empTickAll();
-		admitted.removeDeadPatients();
+		admitted.removePatients();
 		nightmare.phoneQueue += 1;
 		nightmare.cleanHospital -= 1;
 		admitted.patientTickAll();

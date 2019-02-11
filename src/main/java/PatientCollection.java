@@ -1,7 +1,5 @@
 import java.util.HashMap;
 
-
-
 public class PatientCollection {
 	
 	private HashMap<String, Patient> patients = new HashMap<String, Patient>();
@@ -20,20 +18,27 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 	
-
-	public void remove(String patientID) {
-		patients.remove(patientID);
-	}
-
-	public void removeDeadPatients() {
+	public void removePatients() {
+		String patientToRemove = "";
 		for (Patient patient : patients.values()) {
 			if (patient.getIsDead() == true) {
-				patients.remove(patient.getPatientID());
+				patientToRemove = patient.getPatientID();
 				System.out.println("Patient " + patient.getPatientName() + " has passed away.");
 			}
 		}
+		patients.remove(patientToRemove);
 
 	}
+	
+//	public void removePet() {
+//		String petToRemove = "";
+//		for (Pet pet : pets.values()) {
+//			if (pet.getDeathValue() == -1) {
+//				petToRemove = pet.getPetName();
+//			}
+//		}
+//		pets.remove(petToRemove);
+//	}
 
 
 	public void treatAllPatients() {
@@ -89,7 +94,7 @@ public class PatientCollection {
 
 	public void patientTickAll() {
 		for (Patient patient : patients.values()) {
-			removeDeadPatients();
+			removePatients();
 			
 			
 		}

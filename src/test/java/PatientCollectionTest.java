@@ -31,19 +31,6 @@ public class PatientCollectionTest {
 	}
 	
 	@Test
-	public void shouldRemovePatientaaa() {
-		testCollection.addPatient(test1);
-		System.out.println(testCollection.getCollectionLength());
-		testCollection.remove(test1.getPatientID());
-		int answer = testCollection.getCollectionLength();
-		assertEquals(answer, 0);
-
-	}
-	
-	
-	
-	
-	@Test
 	public void shouldRemoveDeadPatient() {
 		//add 2 patients to collection called sick
 		PatientCollection sick = new PatientCollection();
@@ -62,7 +49,7 @@ public class PatientCollectionTest {
 		//check levels after bite
 		System.out.println(test1.getHealthLevel() + "after bite blood");
 		System.out.println(test1.getIsDead() + "after");
-		sick.remove(test1.getPatientID());
+		sick.removePatients();
 		System.out.println(sick.getCollectionLength() + "after length");
 		int answer = sick.getCollectionLength();
 		assertEquals(answer, 1);
