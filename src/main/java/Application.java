@@ -308,9 +308,9 @@ public class Application {
 											+ selectedSurgeryPatient.getPatientName());
 									nightmare.tickHospital(staff, admitted, nightmare);
 
-									break;
+								}break;
 								}
-							}
+							
 						case "w":
 							System.out.println("You've made a selfish choice...");
 							nightmare.tickHospital(staff, admitted, nightmare);
@@ -369,7 +369,7 @@ public class Application {
 
 		}
 
-		Label copyrightL = new Label("\u00a9");
+		Label copyright = new Label("\u00a9");
 		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. ©2019");
 	}
 

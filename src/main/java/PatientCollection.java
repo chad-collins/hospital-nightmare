@@ -20,8 +20,7 @@ public class PatientCollection {
 		patients.put(x.getPatientID(), x);
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public void remove(String patientID) {
 		patients.remove(patientID);
 	}
@@ -36,13 +35,7 @@ public class PatientCollection {
 
 	}
 
-	public void infuseAllPatients() {
-		for (Patient patient : patients.values()) {
 
-		}
-	}
-
->>>>>>> b3a233fc490e1a4e38d4d49c34e08b6a805178d2
 	public void treatAllPatients() {
 		for (Patient patient : patients.values()) {
 			patient.treatPatient();
@@ -99,16 +92,6 @@ public class PatientCollection {
 			removeDeadPatients();
 		}
 
-	}
-
-	public void remove() {
-		String patientToRemove = "";
-		for (Patient patient : patients.values()) {
-			if (patient.getBloodLevel() <= 0) {
-				patientToRemove = patient.getPatientID();
-			} 
-		} patients.remove(patientToRemove);
-		
 	}
 
 }
