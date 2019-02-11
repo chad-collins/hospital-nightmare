@@ -12,35 +12,57 @@ public class Application {
 		 */
 
 		Patient starterPatient1 = new Patient("01", "Freddie", "[Psych Ward]");
-		Patient starterPatient2 = new Patient("02", "Anna", "[Psych Ward]");
+		Patient starterPatient2 = new Patient("02", "Miss Giddens", "[Psych Ward]");
 		Patient starterPatient3 = new Patient("03", "Jason", "[Psych Ward]");
+		Patient starterPatient4 = new Patient("04", "Frank N Furter", "[Psych Ward]");
+		Patient starterPatient5 = new Patient("05", "Father McGruder", "[Psych Ward]");
+		Patient starterPatient6 = new Patient("06", "Father Karras", "[Psych Ward]");
+		Patient starterPatient7 = new Patient("07", "Mrs Voorhees", "[Psych Ward]");
+		Patient starterPatient8 = new Patient("08", "Conal Cochran", "[Psych Ward]");
+		Patient starterPatient9 = new Patient("09", "Danny Torrance", "[Psych Ward]");
 
-		Patient starterPatient4 = new Patient("04", "Laurie", "[Pain management]");
-		Patient starterPatient5 = new Patient("05", "Michael", "[Pain management]");
-		Patient starterPatient6 = new Patient("06", "Carrie", "[Pain management]");
 
-		Employee starterDoctor1 = new Doctor("07", "Dr. Loboto", true, "[Psych Ward]");
-		Employee starterDoctor2 = new Doctor("08", "Dr. Numb", true, "[Pain management]");
+		Patient starterPatient10 = new Patient("10", "Peter Venkman", "[Pain management]");
+		Patient starterPatient11 = new Patient("11", "Stevie Wayne", "[Pain management]");
+		Patient starterPatient12 = new Patient("12", "The Tall Man", "[Pain management]");
+		Patient starterPatient13 = new Patient("13", "Linda", "[Pain management]");
+		Patient starterPatient14 = new Patient("14", "Jenny", "[Pain management]");
+		Patient starterPatient15 = new Patient("15", "Annie Wilkes", "[Pain management]");
+		Patient starterPatient16 = new Patient("16", "Carole Ledoux", "[Pain management]");
+		Patient starterPatient17 = new Patient("17", "Michel Delasalle", "[Pain management]");
+		Patient starterPatient18 = new Patient("18", "Chris MacNeil", "[Pain management]");
 
-		Employee starterSurgeon1 = new Surgeon("09", "Dr. Cuts", false, "[Psych Ward]");
-		Employee starterSurgeon2 = new Surgeon("10", "Dr. Slasher", false, "[Pain management]");
+		Employee starterDoctor1 = new Doctor("01", "Dr. Loboto", false, "[Psych Ward]");
+		Employee starterDoctor2 = new Doctor("02", "Dr. Asami", false, "[Pain management]");
+		Employee starterDoctor3 = new Doctor("03", "Dr. Génessier", true, "[Psych Ward]");
 
-		Employee starterNurse1 = new Nurse("11", "Nurse Bates", true, "[Psych Ward]");
-		Employee starterNurse2 = new Nurse("12", "Nurse Damien", true, "[Pain management]");
 
-		Employee starterVampireJanitor = new VampireJanitor("13", "Vlad", true, 1);
-		Employee starterJanitor = new Janitor("14", "Zeke", true, 2);
+		Employee starterSurgeon1 = new Surgeon("04", "Dr. Pazuzu", true, "[Psych Ward]");
+		Employee starterSurgeon2 = new Surgeon("05", "Dr. Slasher", false, "[Pain management]");
 
-		Employee starterReceptionist = new Receptionist("15", "Pam", true, 1);
+		
+
+		Employee starterNurse1 = new Nurse("06", "Nurse Bates", true, "[Psych Ward]");
+		Employee starterNurse2 = new Nurse("07", "Nurse Damien", false, "[Pain management]");
+		Employee starterNurse3 = new Nurse("08", "Nurse Alex Price", false, "[Psych Ward]");
+		Employee starterNurse4 = new Nurse("09", "Nurse Cesare", true, "[Pain management]");
+
+		Employee starterJanitor = new Janitor("10", "Van Helsing", true, 2);
+		Employee starterVampireJanitor = new VampireJanitor("13", "Count Orlok", true, 1);
+
+		Employee starterReceptionist = new Receptionist("11", "Pam", true, 1);
 
 		AllEmployees staff = new AllEmployees();
 
 		staff.addEmployee(starterDoctor1);
 		staff.addEmployee(starterDoctor2);
+		staff.addEmployee(starterDoctor3);
 		staff.addEmployee(starterSurgeon1);
 		staff.addEmployee(starterSurgeon2);
 		staff.addEmployee(starterNurse1);
 		staff.addEmployee(starterNurse2);
+		staff.addEmployee(starterNurse3);
+		staff.addEmployee(starterNurse4);
 		staff.addEmployee(starterJanitor);
 		staff.addEmployee(starterVampireJanitor);
 		staff.addEmployee(starterReceptionist);
@@ -55,6 +77,18 @@ public class Application {
 		admitted.addPatient(starterPatient4);
 		admitted.addPatient(starterPatient5);
 		admitted.addPatient(starterPatient6);
+		admitted.addPatient(starterPatient7);
+		admitted.addPatient(starterPatient8);
+		admitted.addPatient(starterPatient9);
+		admitted.addPatient(starterPatient10);
+		admitted.addPatient(starterPatient11);
+		admitted.addPatient(starterPatient12);
+		admitted.addPatient(starterPatient13);
+		admitted.addPatient(starterPatient14);
+		admitted.addPatient(starterPatient15);
+		admitted.addPatient(starterPatient16);
+		admitted.addPatient(starterPatient17);
+		admitted.addPatient(starterPatient18);
 		/*
 		 * End pre-population
 		 */

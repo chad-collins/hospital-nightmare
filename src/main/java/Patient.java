@@ -108,16 +108,44 @@ public class Patient implements HasVitals {
 	public void chanceIncounter() {
 
 		Random rand = new Random();
-		int a = rand.nextInt(8);
+		int a = rand.nextInt(10);
+
+		
+		Random rand2 = new Random();
+		int execution = rand2.nextInt(30) + 1;
 
 		if (a == 2) {
+			Random rand1 = new Random();
+			int b = rand.nextInt(4) + 1;
 
-			this.isBitten();
-			System.out.println(this.getPatientName() + " has lost a lot of blood for some reason..");
-
+			if (b == 1) {
+				this.isBitten();
+				System.out.println("---- " + this.getPatientName()
+						+ " was reported to be screaming. Strange marks on the neck were reported, as well as a large loss of blood.");
+			} else if (b == 2) {
+				this.isBitten();
+				this.isBitten();
+				System.out.println("---- " + this.getPatientName()
+						+ "'s body is covered in strange marks. The blood loss is...catastrophic");
+			} else if (b == 2) {
+				this.isBitten();
+				System.out.println("---- " + this.getPatientName()
+						+ "'s family is threatening to move to another hospital if these random marks and blood drops keep occuring.");
+			}
 		}
-
-	}
+		if (execution == 13) {
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			this.isBitten();
+			
+			System.out.println("---- " + 
+					this.getPatientName() + " is dead. Marks from head to toe. Completely drained of blood. ");}
+		}
 
 	public void medicatePatient(int i) {
 		this.bloodLevel += i;
