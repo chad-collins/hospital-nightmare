@@ -6,7 +6,7 @@ public class Application {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		Hospital nightmare = new Hospital(5);
+		Hospital nightmare = new Hospital(5, 2);
 		/*
 		 * Populate the hospital with patients and employees
 		 */
@@ -31,7 +31,7 @@ public class Application {
 		Employee starterJanitor = new Janitor("13", "Zeke", true, 2);
 		Employee starterVampireJanitor = new VampireJanitor("14", "Vlad", true, 1);
 
-		Employee starterReceptionist = new Receptionist("15", "Pam", true);
+		Employee starterReceptionist = new Receptionist("15", "Pam", true, 1);
 
 		AllEmployees staff = new AllEmployees();
 
@@ -90,9 +90,13 @@ public class Application {
 
 			// Main case 1
 			case "1":
-				System.out.println("\n" + "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
-						+ "\n\nHOSPITAL STATUS: " + nightmare.getCleanHospital() + "\n-----------------"
-						+ "\n\nALL STAFF" + "\n-----------------");
+				System.out.println("\n" 
+			+ "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
+						+ "\nHOSPITAL STATUS: " + nightmare.getCleanHospital()
+						+ "\nPhoneQueue: " + nightmare.getCallerMood()
+						+ "\n-----------------" 
+						+ "\n\nALL STAFF" 
+						+ "\n-----------------");
 				staff.allempStatusSummary();
 				System.out.println("-----------------\n");
 //				boolean foo = true;
@@ -121,8 +125,25 @@ public class Application {
 							break;
 						} 
 					case "2":
-//						need receptionist code here
-						break;
+						staff.allAvailReceptionists();
+						System.out.println(staff.checkReceptionistAvailability() + "\nWhich Receptionist ID?");
+						String whichRecept = input.nextLine();
+						Receptionist selectedRecept = (Receptionist) staff.getEmployee(whichRecept);
+						if (selectedRecept.getIsAvailable() == true) {
+							int callsToTake = selectedRecept.getCallSkill();
+							nightmare.callsAnswered(callsToTake);
+							System.out.println(selectedRecept.getEmpName() + " is taking calls.");
+//							System.out.println(selectedJanitor.getSweepSkill());
+							System.out.println(nightmare.getPhoneQueue());
+							selectedRecept.busy();
+							nightmare.tickHospital(staff, admitted, nightmare);
+							break;
+						} else {
+							System.out.println(selectedRecept.getEmpName() + "is busy.");
+							break;
+						} 
+						
+						
 					case "3":
 						staff.allempStatusSummary();
 						System.out.println("Select an employee ID:");
@@ -323,11 +344,8 @@ public class Application {
 									+ "\n-Press '2' to view patients and begin patient interaction."
 									+ "\n-Type 'exit' to exit the game at any time." + "\n");
 							break;
-//							This exit option isn't working.
-//						case "exit":
-//							interactingWithPatientLog = false;
-//							forfeitCondition = true;
-//							break;
+						case "exit":
+							break;
 						default:
 							System.out.println("Stop wasting time! There are people dieing here!");
 							break;
@@ -335,7 +353,8 @@ public class Application {
 						}
 						break;
 					}
-				}
+					break;
+					} 
 			case "help":
 				System.out.println(
 						"\n" + "-HELP MENU-" + "\n-Press '1' to display your hospital staff's metrics and availability."
@@ -374,7 +393,7 @@ public class Application {
 		}
 
 		Label copyrightL = new Label("\u00a9");
-		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. ©2019");
+		System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. Â©2019");
 	}
 
 	public static boolean checkForWin(Hospital nightmare, boolean winCondition) {

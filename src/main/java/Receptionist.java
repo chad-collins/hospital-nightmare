@@ -5,8 +5,9 @@ public class Receptionist extends Employee implements HasVitals{
 	private int healthLevel;
 	private String empTitle;
 	private int salary;
+	private int callSkill;
 
-	public Receptionist(String empID, String empName, boolean isAvailable) {
+	public Receptionist(String empID, String empName, boolean isAvailable, int callSkill) {
 
 	
 
@@ -16,7 +17,7 @@ public class Receptionist extends Employee implements HasVitals{
 		this.healthLevel = HEALTH_LEVEL;
 		this.empTitle = "Receptionist";
 		this.salary = 45000;
-		
+		this.callSkill = callSkill;
 	}
 	
 	public String getEmpTitle() {
@@ -24,6 +25,9 @@ public class Receptionist extends Employee implements HasVitals{
 	}
 	public int getSalary() {
 		return salary;
+	}
+	public int getCallSkill() {
+		return callSkill;
 	}
 	
 	@Override

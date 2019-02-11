@@ -131,6 +131,24 @@ public class AllEmployees {
 		}
 	}
 
+	
+	
+	public void allAvailReceptionists() {
+		for (Employee reception : employees.values()) {
+			if (reception instanceof Receptionist) {
+				if (reception.getIsAvailable() == true) {
+
+					reception.statusSummary();
+				} else {
+					System.out.println("[" + reception.getEmpName() + " is not available]");
+				}
+
+			}
+		}
+	}
+	
+	
+	
 	public void allAvailSurgeons() {
 		for (Employee employee : employees.values()) {
 			if (employee instanceof Surgeon) {
@@ -205,6 +223,19 @@ public class AllEmployees {
 		return sum;
 	}
 	
+	public int checkReceptionistAvailability() {
+		int sum = 0;
+		int x = 0;
+		for (Employee employee : employees.values()) {
+			if (employee instanceof Receptionist) {
+				if (employee.getIsAvailable() == true) {
+					x++;
+					sum = x;
+				}
+			}
+		}
+		return sum;
+	}
 	
 
 	/*

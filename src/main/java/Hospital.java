@@ -7,13 +7,23 @@ public class Hospital {
 	Scanner guess = new Scanner(System.in);
 
 	int cleanHospital;
+	int phoneQueue;
 
 	private boolean vladFound = false;
 	
 
-	public Hospital(int cleanHospital) {
+	public Hospital(int cleanHospital, int phoneQueue) {
 		this.cleanHospital = 5;
+		this.phoneQueue = 2;
 	}
+
+	
+	
+	
+	public int getPhoneQueue() {
+		return phoneQueue;
+	}
+	
 
 	
 	public void tickHospital(AllEmployees staff, PatientCollection admitted, Hospital nightmare) {
@@ -21,22 +31,41 @@ public class Hospital {
 		admitted.patientTickAll();
 		staff.empTickAll();
 		admitted.removeDeadPatients();
+		nightmare.phoneQueue += 1;
 	}
+	
+	public String getCallerMood() {
+		if (phoneQueue >=5) {
+			return phoneQueue + " callers in queue. Extremely long hold times.";
+		} else if (cleanHospital >=4){
+			return phoneQueue + " callers in queue. 10 minute hold time.";
+		}else if (cleanHospital >=2){
+			return phoneQueue + " callers in queue. 5 minute hold time.";
+		}else if (cleanHospital >=1){
+			return phoneQueue + " callers in queue. 2 minute hold time.";
+		}else
+		return phoneQueue + " callers in queue. No hold time.";
+	}
+	
 
 	public String getCleanHospital() {
 		if (cleanHospital >=9) {
-			return "5 STAR RATING";
+			return "VERY CLEAN - 5 STAR RATING";
 		} else if (cleanHospital >=8){
-			return "4 STAR RATING";
+			return "CLEAN - 4 STAR RATING";
 		}else if (cleanHospital >=7){
-			return "3 STAR RATING";
+			return "NOT VERY CLEAN - 3 STAR RATING";
 		}else if (cleanHospital >=6){
-			return "2 STAR RATING";
-		}else return "FORCLOSURE EXPECTED SOON.";
+			return "DIRTY - 2 STAR RATING";
+		}else return "FILTHY - BLOOD EVERYWHERE - FORCLOSURE EXPECTED SOON.";
 	}
 		
 	public void beCleaned(int s) {
 		this.cleanHospital += s;
+	}
+	
+	public void callsAnswered(int c) {
+		this.phoneQueue -= c;
 	}
 
 	public boolean getVladFound() {
