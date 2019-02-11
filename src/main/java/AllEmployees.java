@@ -255,7 +255,7 @@ public class AllEmployees {
 			if(j instanceof Janitor)
 			if (j.getIsAvailable() == false) {
 				Random h = new Random();
-				int maybeBusy = h.nextInt(2);
+				int maybeBusy = h.nextInt(4);
 				if (maybeBusy == 1)
 					j.notBusy();
 			}
@@ -266,7 +266,7 @@ public class AllEmployees {
 			if(n instanceof Nurse)
 			if (n.getIsAvailable() == false) {
 				Random h = new Random();
-				int maybeBusy = h.nextInt(3);
+				int maybeBusy = h.nextInt(4);
 				if (maybeBusy == 2)
 					n.notBusy();
 			}
@@ -277,7 +277,7 @@ public class AllEmployees {
 			if(d instanceof Doctor)
 			if (d.getIsAvailable() == false) {
 				Random h = new Random();
-				int maybeBusy = h.nextInt(3);
+				int maybeBusy = h.nextInt(4);
 				if (maybeBusy == 2)
 					d.notBusy();
 			}
@@ -285,13 +285,16 @@ public class AllEmployees {
 	}
 	public void tickReceptionistsAll() {
 		for (Employee r : employees.values()) {
-			if(r instanceof Janitor)
+			if(r instanceof Receptionist)
 			if (r.getIsAvailable() == false) {
 				Random h = new Random();
-				int maybeBusy = h.nextInt(3);
+				int maybeBusy = h.nextInt(4);
 				if (maybeBusy == 2)
 					r.notBusy();
 			}
 		}
 	}
+	
+
+	
 }

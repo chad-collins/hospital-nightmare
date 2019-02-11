@@ -21,12 +21,14 @@ public class PatientCollection {
 	public void removePatients() {
 		String patientToRemove = "";
 		for (Patient patient : patients.values()) {
+			patient.checkIfDead();
 			if (patient.getIsDead() == true) {
 				patientToRemove = patient.getPatientID();
-				System.out.println("Patient " + patient.getPatientName() + " has passed away.");
+				System.out.println("*Patient " + patient.getPatientName() + "'s remains have been removed.*\n");
 			}
 		}
 		patients.remove(patientToRemove);
+		
 
 	}
 
@@ -38,9 +40,8 @@ public class PatientCollection {
 
 	public void allPatientSummary() {
 		for (Patient patient : patients.values()) {
-
 			patient.patientSummary();
-			;
+			
 		}
 	}
 
@@ -48,7 +49,6 @@ public class PatientCollection {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Psych Ward]")) {
 				patient.patientSummary();
-				;
 				break;
 			}
 		}
@@ -57,6 +57,7 @@ public class PatientCollection {
 	public void allPainMgmtPatientSummary() {
 		for (Patient patient : patients.values()) {
 			while (patient.getWard().equals("[Pain management]")) {
+				
 				patient.patientSummary();
 				break;
 			}
@@ -81,25 +82,36 @@ public class PatientCollection {
 		}
 	}
 
-	public void patientTickAll() {
+	public void tickAllPatientsNoBite() {
 		for (Patient patient : patients.values()) {
+			patient.checkIfDead();
+			patient.patientTick();
 			removePatients();
 			
 			
 		}
 
 	}
-	public void patientsTickBite() {
+	public void tickTryToBiteAllPatients() {
 		for (Patient patient : patients.values()) {
-			
 			patient.chanceIncounter();
+			
+
 			
 			
 		}
 
 	}
 	
+	public void checkAllPatientsAlive() {
+		for (Patient patient : patients.values()) {
+			patient.getHealthLevel();
+			patient.checkIfDead();
+			
+			
+		}
 
+	}
 }
 
 	

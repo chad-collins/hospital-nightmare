@@ -28,9 +28,22 @@ public class Patient implements HasVitals {
 	public void patientSummary() {
 		System.out.println(
 
-				"[Room#:" + this.getPatientID() + "]\t[Name: " + this.getPatientName() + "]\t[Ward:" + this.getWard()
-						+ "]\t[Health Rating" + this.getHealthLevel() + "]\t[Blood Level: " + this.getBloodLevel());
+				"[Room#: " + this.getPatientID() 
+				+ "]\t[Name: " + this.getPatientName() 
+				
+				+ "]\t[Health Rating: " + this.getHealthLevel()
+				+ "]\t[Blood Level: " + this.getBloodLevel() 
+				+ "]\t[Ward: " + this.getWard()
+				+ "\t" + this.bodyStillHere());
 
+	}
+	
+	public String bodyStillHere() {
+		this.checkIfDead();
+		if (this.getIsDead() == true)
+		{return "DECEASED. AWAITING MORTUARY TRANSPORT.";
+			
+		}else return "";
 	}
 
 	public String getPatientID() {
@@ -64,16 +77,17 @@ public class Patient implements HasVitals {
 		return healthLevel;
 	}
 
-	public void die() {
+
+	public void checkIfDead() {
 		if (this.healthLevel <= 0) {
-			this.isDead = true;
-		} else {
-			this.isDead = false;
-		}
+		isDead = true;
+		
+		if (this.healthLevel > 0) {
+			isDead = false;
+		}}
 	}
 
 	public boolean getIsDead() {
-		this.die();
 		return isDead;
 	}
 
@@ -99,10 +113,11 @@ public class Patient implements HasVitals {
 	}
 
 	public void patientTick() {
+		this.getBloodLevel();
 		this.getHealthLevel();
-		this.healthLevel -= 1;
-		this.chanceIncounter();
-		this.getHealthLevel();
+		this.checkIfDead();
+		this.getIsDead();	
+
 	}
 
 	public void chanceIncounter() {
@@ -112,11 +127,11 @@ public class Patient implements HasVitals {
 
 		
 		Random rand2 = new Random();
-		int execution = rand2.nextInt(30) + 1;
+		int execution = rand2.nextInt(20);
 
 		if (a == 2) {
 			Random rand1 = new Random();
-			int b = rand.nextInt(4) + 1;
+			int b = rand.nextInt(12);
 
 			if (b == 1) {
 				this.isBitten();
@@ -124,24 +139,17 @@ public class Patient implements HasVitals {
 						+ " was reported to be screaming. Strange marks on the neck were reported, as well as a large loss of blood.");
 			} else if (b == 2) {
 				this.isBitten();
-				this.isBitten();
 				System.out.println("---- " + this.getPatientName()
-						+ "'s body is covered in strange marks. The blood loss is...catastrophic");
-			} else if (b == 2) {
+						+ "'s body is covered in strange marks. The blood loss is...catastrophic.");
+			} else if (b == 3) {
 				this.isBitten();
 				System.out.println("---- " + this.getPatientName()
 						+ "'s family is threatening to move to another hospital if these random marks and blood drops keep occuring.");
 			}
 		}
 		if (execution == 13) {
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
-			this.isBitten();
+			this.isDead = true;
+
 			
 			System.out.println("---- " + 
 					this.getPatientName() + " is dead. Marks from head to toe. Completely drained of blood. ");}

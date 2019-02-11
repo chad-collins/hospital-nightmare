@@ -21,25 +21,40 @@ public class Hospital {
 	}
 
 	public void tickHospital(AllEmployees staff, PatientCollection admitted, Hospital nightmare) {
+		admitted.checkAllPatientsAlive();
 		admitted.removePatients();
 		staff.empTickAll();
-		admitted.removePatients();
+		
 		nightmare.phoneQueue += 1;
 		nightmare.cleanHospital -= 1;
-		admitted.patientTickAll();
 
-		findVlad();
+		getVladFound();
 		if (vladFound == false) {
-			admitted.patientsTickBite();
+			admitted.checkAllPatientsAlive();
+			admitted.tickTryToBiteAllPatients();
+			admitted.checkAllPatientsAlive();
+			admitted.removePatients();
+			findVlad();
+			getVladFound();
 		}
-		if (vladFound == true) {
-			staff.remove("13");
+		if (vladFound == true ) {
+			if (staff.getAllEmployeesLength() > 11) {
+				
+				staff.remove("13");
+				System.out.println("\nYou drive a spike into the vampire's heart. "
+						+ "\nIt's a long fight, but the vampire turns to dust. "
+						+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
+						+ "\nThe only injury you receive is a small bite on the back of your neck.");
+				System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. ©2019");
+	
+			}
+			if (staff.getAllEmployeesLength() <= 11) {
+				admitted.checkAllPatientsAlive();
+				admitted.tickAllPatientsNoBite();
+				admitted.checkAllPatientsAlive();
+				admitted.removePatients();
+			}
 
-			System.out.println("\nYou drive a spike into the vampire's heart. "
-					+ "\nIt's a long fight, but the vampire turns to dust. "
-					+ "\nYou feel relief for the first time since ariving at High Street Hospital. "
-					+ "\nThe only injury you receive is a small bite on the back of your neck.");
-			System.out.println("\nCredits:\n" + "Jessica Wright & Chad Collins\n" + "All Rights Reserved. Â©2019");
 		}
 	}
 
@@ -84,22 +99,22 @@ public class Hospital {
 	public void findVlad() {
 
 		Random r = new Random();
-		int chanceToCatch = r.nextInt(10);
-		if (chanceToCatch == 7) {
+		int chanceToCatch = r.nextInt(5);
+		if (chanceToCatch == 3) {
 
-			System.out.println("You find yourself suspecting that something is lurking in one of the rooms."
+			System.out.println("You find yourself suspecting that something is lurking in one of the 10 rooms in a closed off wing."
 					+ "Which room will you check? Choose room 1 - 10");
 			int userGuess = guess.nextInt();
 
 			Random newr = new Random();
-			int newRoom = newr.nextInt(10);
+			int newRoom = newr.nextInt(10)+1;
 
 			guess.nextLine();
 			if (userGuess == newRoom) {
-				vladFound = true;
 				System.out.println("What... what..is this....." + "\n" + "\n" + "\n" + "\n");
+				vladFound = true;
 			} else {
-				System.out.println("Hmmm..nothing unusual here.");
+				System.out.println("Hmmm...doesn't look like anything is here.\n");
 			}
 		}
 

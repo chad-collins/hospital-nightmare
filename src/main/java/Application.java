@@ -92,6 +92,7 @@ public class Application {
 		/*
 		 * End pre-population
 		 */
+		System.out.println(staff.getAllEmployeesLength());
 		System.out.println("******************\n" + "NIGHTMARE HOSPITAL" + "\n******************" + "\n      v0.13"
 				+ "\n------------------");
 		System.out.println("\nPress Enter to start...");
@@ -115,15 +116,18 @@ public class Application {
 			/*
 			 * MAIN MENU BEGINS HERE
 			 */
-
+			admitted.checkAllPatientsAlive();
+			admitted.removePatients();
 			System.out.println(
 					"In your office." + "\n-----------------" + "\n1. Get Hospital Status\n2. Review patient log.");
 			String mainMenuResponse = input.nextLine();
 
 			switch (mainMenuResponse) {
-
+		
 			// Main case 1
 			case "1":
+				admitted.checkAllPatientsAlive();
+				admitted.removePatients();
 				System.out.println("\n" 
 			+ "CURRENT PATIENT COUNT: " + "[" + admitted.getCollectionLength() + "]"
 						+ "\nHOSPITAL STATUS: " + nightmare.getCleanHospital()
@@ -131,6 +135,8 @@ public class Application {
 						+ "\n-----------------" 
 						+ "\n\nALL STAFF" 
 						+ "\n-----------------");
+				admitted.checkAllPatientsAlive();
+				admitted.removePatients();
 				staff.allempStatusSummary();
 				System.out.println("-----------------\n");
 
@@ -188,16 +194,21 @@ public class Application {
 					break;
 			// Main case 2, Patient Summary top Menu
 			case "2":
+				admitted.checkAllPatientsAlive();
+				admitted.removePatients();
 				boolean interactingWithPatientSummary = true;
 				while (interactingWithPatientSummary) {
 
 					System.out.println("PATIENT SUMMARY" + "\n-----------------");
+					admitted.checkAllPatientsAlive();
+					admitted.removePatients();
 					admitted.allPatientSummary();
 					System.out.println("-----------------\n");
 
 					boolean interactingWithPatientLog = true;
 					while (interactingWithPatientLog) {
-
+						admitted.checkAllPatientsAlive();
+						admitted.removePatients();
 						// PATIENT SUMMARY MENU START
 						System.out.println("Reviewing your patient log:\n" + "\n-----------------"
 								+ "\nn. Dispatch someone to treat all patients."
@@ -214,7 +225,7 @@ public class Application {
 								System.out.println("");
 								break;
 							}
-							System.out.println("Employee to dispatch?");
+							System.out.println("Employee to dispatch? (enter ID#)");
 							System.out.println("");
 							staff.allAvailMedical();
 							String staffToGet = input.nextLine();
@@ -264,12 +275,14 @@ public class Application {
 								break;
 							}
 						case "d":
-							System.out.println("Which patient would you like to treat?");
+							System.out.println("Which patient would you like to treat? (enter Room #)");
+							admitted.checkAllPatientsAlive();
+							admitted.removePatients();
 							admitted.allPatientSummary();
 							String patientToGet = input.nextLine();
 							Patient selectedPatient = admitted.getPatient(patientToGet);
 							System.out.println("Which employee should be dispatched to "
-									+ selectedPatient.getPatientName() + " ?");
+									+ selectedPatient.getPatientName() + " ? (enter ID#)");
 							staff.allAvailMedical();
 							String staffToGetNext = input.nextLine();
 							Employee chosenStaff = staff.getEmployee(staffToGetNext);
@@ -340,7 +353,9 @@ public class Application {
 								System.out.println(" ");
 								break;
 							} else {
-								System.out.println("Which patient needs emergency surgery?");
+								System.out.println("Which patient needs emergency surgery? (enter room #)");
+								admitted.checkAllPatientsAlive();
+								admitted.removePatients();
 								admitted.allPatientSummary();
 								String patientForSurgery = input.nextLine();
 								Patient selectedSurgeryPatient = admitted.getPatient(patientForSurgery);
