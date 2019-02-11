@@ -26,11 +26,11 @@ public class Hospital {
 		admitted.removeDeadPatients();
 		nightmare.phoneQueue += 1;
 		nightmare.cleanHospital -= 1;
+		admitted.patientTickAll();
 
 		findVlad();
 		if (vladFound == false) {
-			admitted.patientTickAll();
-
+			admitted.patientsTickBite();
 		}
 		if (vladFound == true) {
 			staff.remove("13");
